@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary-50: 240 5.9% 90%;
+    --color-primary-100: 240 5.9% 90%;
+    --color-primary-200: 240 5.9% 90%;
+    --color-primary-300: 240 5.9% 90%;
+    --color-primary-400: 240 5.9% 90%;
+    --color-primary-500: 240 5.9% 90%;
+    --color-primary-600: 240 5.9% 90%;
+    --color-primary-700: 240 5.9% 90%;
+    --color-primary-800: 240 5.9% 90%;
+    --color-primary-900: 240 5.9% 90%;
+    --color-primary-950: 240 5.9% 90%;
+
+    --color-gray-25: 0 0% 98%;
+    --color-gray-50: 0 0% 96.1%;
+    --color-gray-100: 0 0% 94.1%;
+    --color-gray-200: 0 0% 90.2%;
+    --color-gray-300: 0 0% 85.1%;
+    --color-gray-400: 0 0% 75.3%;
+    --color-gray-500: 0 0% 60%;
+    --color-gray-600: 0 0% 45.1%;
+    --color-gray-700: 0 0% 32.2%;
+    --color-gray-800: 0 0% 17.3%;
+    --color-gray-900: 0 0% 8.6%;
+    --color-gray-950: 0 0% 3.9%;
+
+    --color-error-50: 0 84.2% 60.2%;
+    --color-error-100: 0 84.2% 60.2%;
+    --color-error-200: 0 84.2% 60.2%;
+    --color-error-300: 0 84.2% 60.2%;
+    --color-error-400: 0 84.2% 60.2%;
+    --color-error-500: 0 84.2% 60.2%;
+    --color-error-600: 0 84.2% 60.2%;
+    --color-error-700: 0 84.2% 60.2%;
+    --color-error-800: 0 84.2% 60.2%;
+    --color-error-900: 0 84.2% 60.2%;
+    --color-error-950: 0 84.2% 60.2%;
+  }
+
+  .dark {
+    --color-primary-50: 240 5.9% 10%;
+    --color-primary-100: 240 5.9% 10%;
+    --color-primary-200: 240 5.9% 10%;
+    --color-primary-300: 240 5.9% 10%;
+    --color-primary-400: 240 5.9% 10%;
+    --color-primary-500: 240 5.9% 10%;
+    --color-primary-600: 240 5.9% 10%;
+    --color-primary-700: 240 5.9% 10%;
+    --color-primary-800: 240 5.9% 10%;
+    --color-primary-900: 240 5.9% 10%;
+    --color-primary-950: 240 5.9% 10%;
+
+    --color-gray-25: 240 5.9% 10%;
+    --color-gray-50: 240 5.9% 10%;
+    --color-gray-100: 240 5.9% 10%;
+    --color-gray-200: 240 5.9% 10%;
+    --color-gray-300: 240 5.9% 10%;
+    --color-gray-400: 240 5.9% 10%;
+    --color-gray-500: 240 5.9% 10%;
+    --color-gray-600: 240 5.9% 10%;
+    --color-gray-700: 240 5.9% 10%;
+    --color-gray-800: 240 5.9% 10%;
+    --color-gray-900: 240 5.9% 10%;
+    --color-gray-950: 240 5.9% 10%;
+
+    --color-error-50: 0 84.2% 60.2%;
+    --color-error-100: 0 84.2% 60.2%;
+    --color-error-200: 0 84.2% 60.2%;
+    --color-error-300: 0 84.2% 60.2%;
+    --color-error-400: 0 84.2% 60.2%;
+    --color-error-500: 0 84.2% 60.2%;
+    --color-error-600: 0 84.2% 60.2%;
+    --color-error-700: 0 84.2% 60.2%;
+    --color-error-800: 0 84.2% 60.2%;
+    --color-error-900: 0 84.2% 60.2%;
+    --color-error-950: 0 84.2% 60.2%;
+  }
+}

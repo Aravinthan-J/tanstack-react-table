@@ -1,0 +1,1 @@
+export type CURRENCY_LIST_TYPE = string;
