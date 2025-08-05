@@ -47,6 +47,8 @@ const BasicTable = () => {
         enabled: false,
         groupBy: [],
       }}
+      rowHeight={40}
+      options={{}}
     />
   );
 };
