@@ -115,7 +115,7 @@ export function TableHeader() {
 function DraggableTableHeader({
   header
 }: { header: Header<unknown, unknown> }) {
-  const { tableRef, density } = useTable();
+  const { tableRef, density, classNames } = useTable();
 
   const { attributes, isDragging, listeners, setNodeRef, transform } =
     useSortable({
