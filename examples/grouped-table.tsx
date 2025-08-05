@@ -7,6 +7,8 @@ interface Order {
   product: string;
   quantity: number;
   status: 'Pending' | 'Shipped' | 'Delivered';
+  orderDate: string;
+  region: string;
 }
 
 const columns = [
@@ -35,15 +37,29 @@ const columns = [
     Title: 'Status',
     Type: 'text',
   },
+  {
+    Id: 'orderDate',
+    Title: 'Order Date',
+    Type: 'date',
+  },
+  {
+    Id: 'region',
+    Title: 'Region',
+    Type: 'text',
+  },
 ];
 
 const datasource: Order[] = [
-  { orderId: 'A001', customer: 'Alice', product: 'Laptop', quantity: 1, status: 'Delivered' },
-  { orderId: 'A002', customer: 'Bob', product: 'Mouse', quantity: 2, status: 'Shipped' },
-  { orderId: 'A003', customer: 'Alice', product: 'Keyboard', quantity: 1, status: 'Pending' },
-  { orderId: 'A004', customer: 'Charlie', product: 'Monitor', quantity: 1, status: 'Delivered' },
-  { orderId: 'A005', customer: 'Bob', product: 'Webcam', quantity: 1, status: 'Pending' },
-  { orderId: 'A006', customer: 'Alice', product: 'Laptop Bag', quantity: 1, status: 'Shipped' },
+  { orderId: 'A001', customer: 'Alice', product: 'Laptop', quantity: 1, status: 'Delivered', orderDate: '2023-01-15', region: 'North' },
+  { orderId: 'A002', customer: 'Bob', product: 'Mouse', quantity: 2, status: 'Shipped', orderDate: '2023-01-16', region: 'South' },
+  { orderId: 'A003', customer: 'Alice', product: 'Keyboard', quantity: 1, status: 'Pending', orderDate: '2023-01-15', region: 'North' },
+  { orderId: 'A004', customer: 'Charlie', product: 'Monitor', quantity: 1, status: 'Delivered', orderDate: '2023-01-17', region: 'East' },
+  { orderId: 'A005', customer: 'Bob', product: 'Webcam', quantity: 1, status: 'Pending', orderDate: '2023-01-16', region: 'South' },
+  { orderId: 'A006', customer: 'Alice', product: 'Laptop Bag', quantity: 1, status: 'Shipped', orderDate: '2023-01-18', region: 'North' },
+  { orderId: 'A007', customer: 'Charlie', product: 'Headphones', quantity: 2, status: 'Shipped', orderDate: '2023-01-17', region: 'East' },
+  { orderId: 'A008', customer: 'David', product: 'Desk Chair', quantity: 1, status: 'Delivered', orderDate: '2023-01-19', region: 'West' },
+  { orderId: 'A009', customer: 'Alice', product: 'External SSD', quantity: 1, status: 'Pending', orderDate: '2023-01-18', region: 'North' },
+  { orderId: 'A010', customer: 'David', product: 'Monitor Arm', quantity: 1, status: 'Shipped', orderDate: '2023-01-19', region: 'West' },
 ];
 
 const GroupedTable = () => {
@@ -66,7 +82,7 @@ const GroupedTable = () => {
       }}
       grouping={{
         enabled: true,
-        groupBy: ['customer'], // Group by customer
+        groupBy: ['customer', 'status'], // Group by customer and then status
       }}
       rowHeight={40}
       options={{}}
