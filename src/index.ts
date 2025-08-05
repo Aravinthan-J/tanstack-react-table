@@ -1,1 +1,1 @@
-export * from './components';
+export { DataTable as Table } from './components';

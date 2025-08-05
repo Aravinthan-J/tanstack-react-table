@@ -16,6 +16,7 @@ import {
   getCoreRowModel,
   getExpandedRowModel,
   getSortedRowModel,
+  getGroupedRowModel,
   type RowData,
   useReactTable,
   type ColumnDef,
@@ -626,14 +627,14 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
       columnPinning,
       rowSelection,
       expanded,
-      currentGrouping
+      grouping: currentGrouping,
     },
     initialState: {
       columnOrder,
       columnPinning,
       rowSelection: selectedKeys,
       expanded: expandedKeys,
-      grouping: grouping.groupBy
+      grouping: grouping.groupBy,
     },
     enableRowSelection: showRowSelection,
     enableExpanding: isExpandable,
@@ -657,8 +658,8 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
     getExpandedRowModel: getExpandedRowModel(),
     getGroupedRowModel: getGroupedRowModel(),
     meta: {
-      enableRowOrdering: tableOptions?.enableRowOrdering
-    }
+      enableRowOrdering: tableOptions?.enableRowOrdering,
+    },
   });
 
   useImperativeHandle(tableRef, () => ({

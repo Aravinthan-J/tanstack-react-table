@@ -7,6 +7,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
+    "start": "bun run build:dev && bun --bun --hot run --watch dev/index.html",
+    "build:dev": "bun build dev/index.tsx --outdir dev/dist --target browser --external react --external react-dom",
     "build": "bun build src/index.ts --outdir dist --target browser --format esm && bun build src/index.ts --outdir dist --target browser --format cjs && bun build src/index.ts --outdir dist --target browser --dts",
     "lint": "biome check --apply-unsafe .",
     "format": "biome format --write ."
