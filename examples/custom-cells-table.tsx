@@ -12,7 +12,7 @@ interface Product {
 }
 
 const CustomPriceCell = ({ row }: any) => {
-  const price = row.original.price;
+  const price = row?.original?.price;
   return (
     <div style={{ color: price > 100 ? 'green' : 'red' }}>
       ${price.toFixed(2)}
@@ -21,7 +21,7 @@ const CustomPriceCell = ({ row }: any) => {
 };
 
 const CustomStockCell = ({ row }: any) => {
-  const inStock = row.original.inStock;
+  const inStock = row?.original?.inStock;
   return (
     <span style={{ color: inStock ? 'blue' : 'orange' }}>
       {inStock ? 'Available' : 'Out of Stock'}
@@ -30,7 +30,7 @@ const CustomStockCell = ({ row }: any) => {
 };
 
 const CustomDescriptionCell = ({ row }: any) => {
-  const description = row.original.description;
+  const description = row?.original?.description;
   return (
     <div style={{ maxWidth: '150px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
       {description}
