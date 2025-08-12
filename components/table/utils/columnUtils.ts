@@ -1,5 +1,6 @@
 import type { Column, ColumnDef } from "@tanstack/react-table";
 import type { ColumnProps } from "../Table.types";
+import { ReactNode } from "react";
 
 export function getColumnWidth(column: Column<any>): number {
   return column.getSize();
@@ -29,7 +30,7 @@ export function createColumnFromLegacy(
   return {
     id: legacyColumn.Id,
     accessorKey: legacyColumn.Id,
-    header: legacyColumn.Title,
+    header: legacyColumn.Title as string,
     size: legacyColumn.Width || 150,
     minSize: legacyColumn.MinWidth || 50,
     maxSize: legacyColumn.MaxWidth || 500,

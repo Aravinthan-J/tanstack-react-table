@@ -1,6 +1,7 @@
-import type { ColumnDef } from "@tanstack/react-table";
+import React from "react";
+import { flexRender, type ColumnDef } from "@tanstack/react-table";
 import type { ColumnProps, TableOptionProps } from "../Table.types";
-import type { Checkbox } from "../cells/Checkbox";
+import { CheckBox } from "../cells/Checkbox";
 import { CELL_TYPES } from "./events";
 
 /**
@@ -14,7 +15,7 @@ export function mapLegacyColumns(
   return columns.map((col) => ({
     id: col.Id,
     accessorKey: col.Id,
-    header: col.Header || col.Title,
+    header: (col.Header || col.Title) as string,
     footer: col.Footer,
     size: col.Width || 150,
     minSize: col.MinWidth || 50,
@@ -31,16 +32,16 @@ export function mapLegacyColumns(
             onExpand: () => row.toggleExpanded(),
             onDone: ({ rowId, changedValue }) => {
               // Handle update
+              console.log(`Row ${rowId} updated with value:`, changedValue);
             },
           })
-      : ({ getValue }) => flexRender(getValue(), {}),
+      : ({ getValue, cell }) => flexRender(getValue(), cell.getContext()),
     meta: {
       ...col.meta,
       type: col.Type,
       customRender: !!col.Render,
       fixed: col.Fixed,
       enableOrdering: col.enableOrdering ?? options.enableOrdering,
-      customRender: !!col.Render,
     },
   }));
 }
@@ -57,7 +58,7 @@ export function createSerialNumberColumn(
     header: ({ table }) =>
       showRowSelection ? (
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <Checkbox
+          <CheckBox
             checked={table.getIsAllRowsSelected()}
             indeterminate={table.getIsSomeRowsSelected()}
             onChange={table.getToggleAllRowsSelectedHandler()}
@@ -69,7 +70,7 @@ export function createSerialNumberColumn(
     cell: ({ row, table }) =>
       showRowSelection ? (
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <Checkbox
+          <CheckBox
             checked={row.getIsSelected()}
             disabled={!row.getCanSelect()}
             onChange={row.getToggleSelectedHandler()}

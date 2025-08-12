@@ -32,7 +32,7 @@ import { useVirtualization } from "./useVirtualization.ts";
 import {
   createSerialNumberColumn,
   mapLegacyColumns,
-} from "./utils/compatibilityLayer.ts";
+} from "./utils/compatibilityLayer.tsx";
 import { EXPANDABLE_TYPES } from "./utils/events.ts";
 
 const DEFAULT_OPTIONS = {
