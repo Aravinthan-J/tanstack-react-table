@@ -8,7 +8,7 @@ interface CheckboxProps {
   onChange?: (event: any) => void;
 }
 
-export function Checkbox({
+export function CheckBox({
   checked = false,
   indeterminate = false,
   disabled = false,
