@@ -397,45 +397,20 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
       theme={theme}
       editableCellComponents={editableCellComponents}
     >
-      <div
-        className="advanced-table-container"
-        style={{
-          height: tableHeight,
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+      <div className="advanced-table-container h-full flex flex-col">
         <div
           ref={tableContainerRef}
-          className="table-scroll-container"
-          style={{
-            flex: 1,
-            overflow: "auto",
-            border: "1px solid hsl(var(--border))",
-            borderRadius: "12px",
-          }}
+          className="table-scroll-container flex-1 overflow-auto border rounded-lg"
           onScroll={handleScroll}
         >
-          <table
-            className="advanced-table"
-            style={{
-              width: "100%",
-              borderCollapse: "collapse",
-              display: "grid",
-            }}
-          >
+          <table className="advanced-table w-full border-collapse grid">
             <TableHeader />
             {tableData.length === 0 ? (
               <tbody>
                 <tr>
                   <td
                     colSpan={mappedColumns.length}
-                    className="empty-state"
-                    style={{
-                      padding: "2rem",
-                      textAlign: "center",
-                      color: "hsl(var(--muted-foreground))",
-                    }}
+                    className="empty-state p-8 text-center text-muted-foreground"
                   >
                     {emptyState || "No data available"}
                   </td>
@@ -451,14 +426,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
         </div>
 
         {loading && (
-          <div
-            className="loading-indicator"
-            style={{
-              padding: "1rem",
-              textAlign: "center",
-              color: "hsl(var(--muted-foreground))",
-            }}
-          >
+          <div className="loading-indicator p-4 text-center text-muted-foreground">
             Loading...
           </div>
         )}

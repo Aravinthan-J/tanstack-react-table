@@ -56,7 +56,7 @@ export function TableBody({ rowVirtualizer, isVirtual }: TableBodyProps) {
 
   if (!isVirtual) {
     return (
-      <tbody className="table-body">
+      <tbody className="table-body divide-y">
         <DndContext
           collisionDetection={closestCenter}
           modifiers={[restrictToVerticalAxis]}
@@ -78,10 +78,9 @@ export function TableBody({ rowVirtualizer, isVirtual }: TableBodyProps) {
 
   return (
     <tbody
-      className="table-body virtualized"
+      className="table-body virtualized relative"
       style={{
         height: `${rowVirtualizer.getTotalSize()}px`,
-        position: "relative",
       }}
     >
       <DndContext

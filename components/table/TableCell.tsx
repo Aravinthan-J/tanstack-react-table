@@ -1,6 +1,7 @@
 import { type Cell, flexRender } from "@tanstack/react-table";
 import type React from "react";
 import { useMemo } from "react";
+import clsx from "clsx";
 
 import { useTable } from "./TableProvider";
 import { cellRegistry } from "./cells";
@@ -48,17 +49,12 @@ export function TableCell({ cell }: TableCellProps) {
   if (isCustomRender) {
     return (
       <td
-        className="table-cell custom-render"
-        style={
-          {
-            ...style,
-            display: "flex",
-            alignItems: "center",
-            padding: "4px 12px",
-            borderRight: "1px solid hsl(var(--border))",
-            backgroundColor: "inherit",
-          } as React.CSSProperties
-        }
+        className={clsx(
+          "table-cell custom-render flex items-center p-3 border-r",
+          isPinned && "sticky z-10",
+          isLastLeftPinned && "shadow-inner"
+        )}
+        style={style}
       >
         {flexRender(column.columnDef.cell, cell.getContext())}
       </td>
@@ -70,17 +66,12 @@ export function TableCell({ cell }: TableCellProps) {
   if (CustomCellComponent) {
     return (
       <td
-        className="table-cell custom-component"
-        style={
-          {
-            ...style,
-            display: "flex",
-            alignItems: "center",
-            padding: "4px 12px",
-            borderRight: "1px solid hsl(var(--border))",
-            backgroundColor: "inherit",
-          } as React.CSSProperties
-        }
+        className={clsx(
+          "table-cell custom-component flex items-center p-3 border-r",
+          isPinned && "sticky z-10",
+          isLastLeftPinned && "shadow-inner"
+        )}
+        style={style as React.CSSProperties}
       >
         <CustomCellComponent
           row={cell.row}
@@ -113,17 +104,12 @@ export function TableCell({ cell }: TableCellProps) {
 
   return (
     <td
-      className="table-cell built-in group/table_cell"
-      style={
-        {
-          ...style,
-          display: "flex",
-          alignItems: "center",
-          padding: "4px 12px",
-          borderRight: "1px solid hsl(var(--border))",
-          backgroundColor: "inherit",
-        } as React.CSSProperties
-      }
+      className={clsx(
+        "table-cell built-in group/table_cell flex items-center p-3 border-r group/table_cell",
+        isPinned && "sticky z-10",
+        isLastLeftPinned && "shadow-inner"
+      )}
+      style={style as React.CSSProperties}
     >
       <CellComponent
         row={cell.row}

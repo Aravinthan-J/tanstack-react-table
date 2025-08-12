@@ -20,8 +20,20 @@ async function getAllTsFiles(dir: string): Promise<string[]> {
   return files;
 }
 
+async function buildCss() {
+  console.log("🎨 Building CSS...");
+  const proc = Bun.spawn([
+    "postcss",
+    "index.css",
+    "-o",
+    "dist/bundle.css",
+  ]);
+  await proc.exited;
+}
+
 async function buildLibrary() {
   console.log("🏗️  Building Advanced Table Library...");
+  await buildCss();
 
   const entrypoints = ["./components/index.ts"]; // Corrected from "./index.ts" to be more standard
 

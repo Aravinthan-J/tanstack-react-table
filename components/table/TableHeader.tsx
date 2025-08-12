@@ -18,6 +18,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { type Column, type Header, flexRender } from "@tanstack/react-table";
+import clsx from "clsx";
 
 import { useTable } from "./TableProvider";
 import { UPDATED_EVENTS } from "./utils/events";
@@ -50,16 +51,7 @@ export function TableHeader() {
   );
 
   return (
-    <thead
-      className="table-header"
-      style={{
-        display: "grid",
-        position: "sticky",
-        top: 0,
-        zIndex: 1,
-        backgroundColor: "hsl(var(--background))",
-      }}
-    >
+    <thead className="table-header grid sticky top-0 z-10 bg-background">
       <DndContext
         collisionDetection={closestCenter}
         modifiers={[restrictToHorizontalAxis]}
@@ -67,14 +59,7 @@ export function TableHeader() {
         sensors={sensors}
       >
         {table.getHeaderGroups().map((headerGroup) => (
-          <tr
-            key={headerGroup.id}
-            className="header-row"
-            style={{
-              display: "flex",
-              width: "100%",
-            }}
-          >
+          <tr key={headerGroup.id} className="header-row flex w-full">
             <SortableContext
               items={columnOrder}
               strategy={horizontalListSortingStrategy}
@@ -107,48 +92,21 @@ function DraggableTableHeader({ header }: DraggableTableHeaderProps) {
   const isLastLeftPinned =
     isPinned === "left" && header.column.getIsLastColumn("left");
 
-  const style = useMemo(
+  const headerStyle: React.CSSProperties = useMemo(
     () => ({
       transform: CSS.Transform.toString(transform),
-      opacity: isDragging ? 0.8 : 1,
-      zIndex: isDragging ? 999 : isPinned ? 10 : 1,
-      position: isPinned ? "sticky" : "relative",
       left:
         isPinned === "left" ? `${header.column.getStart("left")}px` : undefined,
       right:
         isPinned === "right"
           ? `${header.column.getAfter("right")}px`
           : undefined,
-      boxShadow: isLastLeftPinned
-        ? "inset -4px 0 4px -4px rgba(0, 0, 0, 0.1)"
-        : undefined,
+      width: header.getSize(),
+      minWidth: header.column.columnDef.minSize,
+      maxWidth: header.column.columnDef.maxSize,
     }),
-    [transform, isDragging, isPinned, isLastLeftPinned, header.column],
+    [transform, isPinned, header.column, header.getSize()],
   );
-
-  const handleDoubleClick = useCallback(() => {
-    header.column.resetSize();
-    tableRef.updateTableData({
-      type: UPDATED_EVENTS.COLUMN_RESIZE,
-      value: {
-        columnId: header.column.id,
-        width: header.column.columnDef.size,
-      },
-    });
-  }, [header, tableRef]);
-
-  const handleResizeEnd = useCallback(() => {
-    setTimeout(() => {
-      const newWidth = header.getSize();
-      tableRef.updateTableData({
-        type: UPDATED_EVENTS.COLUMN_RESIZE,
-        value: {
-          columnId: header.column.id,
-          width: newWidth,
-        },
-      });
-    }, 50);
-  }, [header, tableRef]);
 
   const canDrag =
     header.column.id !== "select" &&
@@ -157,50 +115,24 @@ function DraggableTableHeader({ header }: DraggableTableHeaderProps) {
   return (
     <th
       ref={setNodeRef}
-      className="table-header-cell group"
-      style={
-        {
-          ...style,
-          width: header.getSize(),
-          minWidth: header.column.columnDef.minSize,
-          maxWidth: header.column.columnDef.maxSize,
-          height: "44px",
-          display: "flex",
-          alignItems: "center",
-          padding: "8px 12px",
-          backgroundColor: "hsl(var(--muted))",
-          borderBottom: "1px solid hsl(var(--border))",
-          borderRight: "1px solid hsl(var(--border))",
-          cursor: canDrag ? "grab" : "default",
-          userSelect: "none",
-        } as React.CSSProperties
-      }
+      className={clsx(
+        "table-header-cell group group flex h-11 items-center justify-between p-3 select-none",
+        "border-b border-r bg-muted",
+        isDragging && "opacity-80 z-20",
+        isPinned && "sticky z-10",
+        isLastLeftPinned && "shadow-inner",
+        canDrag ? "cursor-grab" : "cursor-default"
+      )}
+      style={headerStyle}
       colSpan={header.colSpan}
       {...(canDrag ? { ...attributes, ...listeners } : {})}
     >
-      <div
-        className="header-content"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          width: "100%",
-          minWidth: 0,
-        }}
-      >
-        <div
-          className="header-title"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            minWidth: 0,
-            flex: 1,
-          }}
-        >
+      <div className="header-content flex items-center justify-between w-full min-w-0">
+        <div className="header-title flex items-center min-w-0 flex-1">
           {flexRender(header.column.columnDef.header, header.getContext())}
 
           {header.column.getIsSorted() && (
-            <span style={{ marginLeft: "4px" }}>
+            <span className="ml-1">
               {header.column.getIsSorted() === "desc" ? " ↓" : " ↑"}
             </span>
           )}
@@ -217,17 +149,7 @@ function DraggableTableHeader({ header }: DraggableTableHeaderProps) {
 
       {header.column.getCanResize() && (
         <div
-          className="resize-handle"
-          style={{
-            position: "absolute",
-            right: 0,
-            top: 0,
-            height: "100%",
-            width: "4px",
-            cursor: "col-resize",
-            backgroundColor: "transparent",
-            borderRadius: "2px",
-          }}
+          className="resize-handle absolute top-0 right-0 h-full w-1 cursor-col-resize bg-transparent rounded-sm"
           onDoubleClick={handleDoubleClick}
           onMouseDown={header.getResizeHandler()}
           onMouseUp={handleResizeEnd}
@@ -252,19 +174,11 @@ function HeaderMenu({ options, open, onOpenChange }: HeaderMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="header-menu" style={{ position: "relative" }}>
+    <div className="header-menu relative">
       <button
         onClick={() => onOpenChange(!open)}
-        style={{
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          padding: "2px",
-          borderRadius: "2px",
-          opacity: open ? 1 : 0,
-          transition: "opacity 0.2s",
-        }}
-        className="group-hover:opacity-100"
+        className="p-0.5 rounded-sm transition-opacity group-hover:opacity-100"
+        style={{ opacity: open ? 1 : 0 }}
       >
         ⋮
       </button>
@@ -272,18 +186,7 @@ function HeaderMenu({ options, open, onOpenChange }: HeaderMenuProps) {
       {open && (
         <div
           ref={menuRef}
-          className="menu-content"
-          style={{
-            position: "absolute",
-            top: "100%",
-            right: 0,
-            backgroundColor: "hsl(var(--background))",
-            border: "1px solid hsl(var(--border))",
-            borderRadius: "6px",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-            zIndex: 1000,
-            minWidth: "120px",
-          }}
+          className="menu-content absolute top-full right-0 z-50 min-w-[120px] bg-background border rounded-md shadow-lg"
         >
           {options.map((option) => (
             <button
@@ -292,16 +195,7 @@ function HeaderMenu({ options, open, onOpenChange }: HeaderMenuProps) {
                 option.onClick();
                 onOpenChange(false);
               }}
-              style={{
-                width: "100%",
-                padding: "8px 12px",
-                background: "none",
-                border: "none",
-                textAlign: "left",
-                cursor: "pointer",
-                fontSize: "14px",
-              }}
-              className="hover:bg-muted"
+              className="w-full px-3 py-2 text-left text-sm hover:bg-muted"
             >
               {option.value}
             </button>

@@ -2,6 +2,7 @@ import * as Popover from "@radix-ui/react-popover";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { CellProps } from "../Table.types";
+import clsx from "clsx";
 
 /**
  * Editable text cell using Radix UI Popover for inline editing
@@ -76,23 +77,12 @@ export function EditableTextCell({
     <Popover.Root open={isEditing} onOpenChange={setIsEditing}>
       <Popover.Trigger asChild>
         <div
-          className={`cell-display ${readOnly ? "readonly" : "editable"}`}
-          style={{
-            width: "100%",
-            padding: "4px 8px",
-            cursor: readOnly ? "default" : "pointer",
-            borderRadius: "4px",
-            minHeight: "32px",
-            display: "flex",
-            alignItems: "center",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-            border: isError ? "1px solid hsl(var(--destructive))" : "none",
-            backgroundColor: isError
-              ? "hsl(var(--destructive) / 0.1)"
-              : "transparent",
-          }}
+          className={clsx(
+            "cell-display w-full p-2 rounded-md min-h-[32px] flex items-center overflow-hidden text-ellipsis whitespace-nowrap",
+            !readOnly &&
+              "cursor-pointer hover:bg-muted/50 focus:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/20",
+            isError && "border border-destructive bg-destructive/10"
+          )}
           onClick={handleEdit}
           onDoubleClick={handleEdit}
           role="button"
@@ -104,27 +94,16 @@ export function EditableTextCell({
             }
           }}
           aria-label={ariaLabel || `Edit ${value}`}
-          className="hover:bg-muted/50 focus:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/20"
         >
           {value || (
-            <span style={{ color: "hsl(var(--muted-foreground))" }}>
-              Click to edit
-            </span>
+            <span className="text-muted-foreground">Click to edit</span>
           )}
         </div>
       </Popover.Trigger>
 
       <Popover.Portal>
         <Popover.Content
-          className="popover-content"
-          style={{
-            backgroundColor: "hsl(var(--background))",
-            border: "1px solid hsl(var(--border))",
-            borderRadius: "8px",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-            padding: "8px",
-            zIndex: 50,
-          }}
+          className="bg-background border rounded-lg shadow-lg p-2 z-50"
           onOpenAutoFocus={(e) => {
             if (autoFocus && inputRef.current) {
               e.preventDefault();
@@ -140,28 +119,11 @@ export function EditableTextCell({
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
             onBlur={handleCommit}
-            className="text-input"
-            style={{
-              width: "200px",
-              padding: "6px 8px",
-              border: "1px solid hsl(var(--border))",
-              borderRadius: "4px",
-              backgroundColor: "hsl(var(--background))",
-              color: "hsl(var(--foreground))",
-              fontSize: "14px",
-              outline: "none",
-            }}
+            className="w-[200px] px-2 py-1.5 border rounded-md bg-background text-foreground text-sm outline-none"
             aria-label={ariaLabel}
           />
           {errors.length > 0 && (
-            <div
-              className="error-messages"
-              style={{
-                marginTop: "4px",
-                fontSize: "12px",
-                color: "hsl(var(--destructive))",
-              }}
-            >
+            <div className="mt-1 text-xs text-destructive">
               {errors.map((error, index) => (
                 <div key={index}>{error}</div>
               ))}

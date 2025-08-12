@@ -1,8 +1,9 @@
+import React, { useCallback, useMemo } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { type Row, flexRender } from "@tanstack/react-table";
 import type { VirtualItem, Virtualizer } from "@tanstack/react-virtual";
-import React, { useCallback, useMemo } from "react";
+import clsx from "clsx";
 
 import { TableCell } from "./TableCell";
 import { useTable } from "./TableProvider";
@@ -44,15 +45,11 @@ export function VirtualizedRow({
   const isAccordionExpanded =
     expandableType === EXPANDABLE_TYPES.ACCORDION && row.getIsExpanded();
 
-  const style = useMemo(
+  const rowStyle = useMemo(
     () => ({
       transform: CSS.Transform.toString(transform),
       transition,
-      opacity: isDragging ? 0.8 : 1,
-      zIndex: isDragging ? 1 : 0,
-      position: "absolute" as const,
       top: `${virtualRow.start}px`,
-      width: "100%",
       height: isAccordionExpanded ? "auto" : `${rowHeight}px`,
     }),
     [
@@ -72,15 +69,13 @@ export function VirtualizedRow({
         rowVirtualizer.measureElement(node);
       }}
       data-index={virtualRow.index}
-      className={`table-row ${row.getIsSelected() ? "selected" : ""}`}
-      style={{
-        ...style,
-        display: "flex",
-        backgroundColor: row.getIsSelected()
-          ? "hsl(var(--accent))"
-          : "hsl(var(--background))",
-        cursor: expandEntireRowByClick ? "pointer" : "default",
-      }}
+      className={clsx(
+        "table-row flex absolute w-full",
+        isDragging && "opacity-80 z-10",
+        row.getIsSelected() && "bg-accent",
+        expandEntireRowByClick && "cursor-pointer"
+      )}
+      style={rowStyle}
       onClick={handleRowClick}
       {...attributes}
       {...listeners}
@@ -88,19 +83,14 @@ export function VirtualizedRow({
       {row.parentId &&
       expandableType === EXPANDABLE_TYPES.ROW &&
       expandedRowRender ? (
-        <td style={{ width: "100%", display: "flex" }}>
-          {expandedRowRender(row)}
-        </td>
+        <td className="w-full flex">{expandedRowRender(row)}</td>
       ) : (
         <>
           {row.getVisibleCells().map((cell) => (
             <TableCell key={cell.id} cell={cell} />
           ))}
           {isAccordionExpanded && expandedRowRender && (
-            <td
-              colSpan={row.getVisibleCells().length}
-              style={{ width: "100%", padding: "12px" }}
-            >
+            <td colSpan={row.getVisibleCells().length} className="w-full p-3">
               {expandedRowRender(row)}
             </td>
           )}
@@ -140,30 +130,24 @@ export function NormalRow({ row }: NormalRowProps) {
   const isAccordionExpanded =
     expandableType === EXPANDABLE_TYPES.ACCORDION && row.getIsExpanded();
 
-  const style = useMemo(
+  const rowStyle = useMemo(
     () => ({
       transform: CSS.Transform.toString(transform),
       transition,
-      opacity: isDragging ? 0.8 : 1,
-      zIndex: isDragging ? 1 : 0,
     }),
-    [transform, transition, isDragging],
+    [transform, transition],
   );
 
   return (
     <tr
       ref={setNodeRef}
-      className={`table-row ${row.getIsSelected() ? "selected" : ""}`}
-      style={{
-        ...style,
-        display: "flex",
-        width: "100%",
-        backgroundColor: row.getIsSelected()
-          ? "hsl(var(--accent))"
-          : "hsl(var(--background))",
-        cursor: expandEntireRowByClick ? "pointer" : "default",
-        borderBottom: "1px solid hsl(var(--border))",
-      }}
+      className={clsx(
+        "table-row flex w-full border-b",
+        isDragging && "opacity-80 z-10",
+        row.getIsSelected() && "bg-accent",
+        expandEntireRowByClick && "cursor-pointer"
+      )}
+      style={rowStyle}
       onClick={handleRowClick}
       {...attributes}
       {...listeners}
@@ -171,19 +155,14 @@ export function NormalRow({ row }: NormalRowProps) {
       {row.parentId &&
       expandableType === EXPANDABLE_TYPES.ROW &&
       expandedRowRender ? (
-        <td style={{ width: "100%", display: "flex" }}>
-          {expandedRowRender(row)}
-        </td>
+        <td className="w-full flex">{expandedRowRender(row)}</td>
       ) : (
         <>
           {row.getVisibleCells().map((cell) => (
             <TableCell key={cell.id} cell={cell} />
           ))}
           {isAccordionExpanded && expandedRowRender && (
-            <td
-              colSpan={row.getVisibleCells().length}
-              style={{ width: "100%", padding: "12px" }}
-            >
+            <td colSpan={row.getVisibleCells().length} className="w-full p-3">
               {expandedRowRender(row)}
             </td>
           )}
