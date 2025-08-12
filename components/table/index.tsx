@@ -5,4 +5,4 @@ export type {
   ColumnProps,
   TableEvent,
   CellProps,
-} from "./Table.types";
+} from "./Table.types.ts";

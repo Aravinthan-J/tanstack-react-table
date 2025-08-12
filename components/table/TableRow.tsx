@@ -4,8 +4,8 @@ import { type Row, flexRender } from "@tanstack/react-table";
 import type { VirtualItem, Virtualizer } from "@tanstack/react-virtual";
 import React, { useCallback, useMemo } from "react";
 
-import { useTable } from "../TableProvider";
-import { EXPANDABLE_TYPES } from "../utils/events";
+import { useTable } from "./TableProvider";
+import { EXPANDABLE_TYPES } from "./utils/events";
 import { TableCell } from "./TableCell";
 
 interface VirtualizedRowProps {

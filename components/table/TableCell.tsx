@@ -1,10 +1,16 @@
 import { type Cell, flexRender } from "@tanstack/react-table";
 import React, { useMemo } from "react";
 
-import { useTable } from "../TableProvider";
-import { cellRegistry } from "../cells";
-import { CELL_TYPES } from "../utils/events";
+import { useTable } from "./TableProvider";
+import { cellRegistry } from "./cells";
+import { CELL_TYPES } from "./utils/events";
 
+export interface ColumnMeta {
+  type?: string;
+  customRender?: boolean;
+  isReadOnly?: boolean; // <-- Add this line
+  // ...other meta properties
+}
 interface TableCellProps {
   cell: Cell<any, unknown>;
 }
@@ -30,25 +36,28 @@ export function TableCell({ cell }: TableCellProps) {
       minHeight: `${rowHeight}px`,
       width: column.getSize(),
     }),
-    [isPinned, isLastLeftPinned, column, rowHeight],
+    [isPinned, isLastLeftPinned, column, rowHeight]
   );
 
-  const cellType = column.columnDef.meta?.type || CELL_TYPES.READONLY;
-  const isCustomRender = !!column.columnDef.meta?.customRender;
+  const meta = column.columnDef.meta as ColumnMeta | undefined;
+  const cellType = meta?.type || CELL_TYPES.READONLY;
+  const isCustomRender = !!meta?.customRender;
 
   // Use custom render if available
   if (isCustomRender) {
     return (
       <td
         className="table-cell custom-render"
-        style={{
-          ...style,
-          display: "flex",
-          alignItems: "center",
-          padding: "4px 12px",
-          borderRight: "1px solid hsl(var(--border))",
-          backgroundColor: "inherit",
-        }}
+        style={
+          {
+            ...style,
+            display: "flex",
+            alignItems: "center",
+            padding: "4px 12px",
+            borderRight: "1px solid hsl(var(--border))",
+            backgroundColor: "inherit",
+          } as React.CSSProperties
+        }
       >
         {flexRender(column.columnDef.cell, cell.getContext())}
       </td>
@@ -61,20 +70,22 @@ export function TableCell({ cell }: TableCellProps) {
     return (
       <td
         className="table-cell custom-component"
-        style={{
-          ...style,
-          display: "flex",
-          alignItems: "center",
-          padding: "4px 12px",
-          borderRight: "1px solid hsl(var(--border))",
-          backgroundColor: "inherit",
-        }}
+        style={
+          {
+            ...style,
+            display: "flex",
+            alignItems: "center",
+            padding: "4px 12px",
+            borderRight: "1px solid hsl(var(--border))",
+            backgroundColor: "inherit",
+          } as React.CSSProperties
+        }
       >
         <CustomCellComponent
           row={cell.row}
           column={column}
           value={cell.getValue()}
-          onCommit={(value) => {
+          onCommit={(value: any) => {
             // Handle cell value commit
             console.log("Cell commit:", {
               rowId: cell.row.id,
@@ -86,7 +97,7 @@ export function TableCell({ cell }: TableCellProps) {
             // Handle cell edit cancel
             console.log("Cell cancel");
           }}
-          onChange={(value) => {
+          onChange={(value: any) => {
             // Handle cell value change
             console.log("Cell change:", value);
           }}
@@ -102,20 +113,22 @@ export function TableCell({ cell }: TableCellProps) {
   return (
     <td
       className="table-cell built-in group/table_cell"
-      style={{
-        ...style,
-        display: "flex",
-        alignItems: "center",
-        padding: "4px 12px",
-        borderRight: "1px solid hsl(var(--border))",
-        backgroundColor: "inherit",
-      }}
+      style={
+        {
+          ...style,
+          display: "flex",
+          alignItems: "center",
+          padding: "4px 12px",
+          borderRight: "1px solid hsl(var(--border))",
+          backgroundColor: "inherit",
+        } as React.CSSProperties
+      }
     >
       <CellComponent
         row={cell.row}
         column={column}
         value={cell.getValue()}
-        onCommit={(value) => {
+        onCommit={(value: any) => {
           // Update the cell value
           const meta = cell.table.options.meta as any;
           if (meta?.updateData) {
@@ -126,7 +139,7 @@ export function TableCell({ cell }: TableCellProps) {
           // Handle cancel
           console.log("Cell edit cancelled");
         }}
-        onChange={(value) => {
+        onChange={(value: any) => {
           // Handle live changes during editing
           console.log("Cell value changing:", value);
         }}

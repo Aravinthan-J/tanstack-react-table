@@ -23,26 +23,30 @@ async function getAllTsFiles(dir: string): Promise<string[]> {
 async function buildLibrary() {
   console.log("🏗️  Building Advanced Table Library...");
 
-  const entrypoints = ["./index.ts"];
+  const entrypoints = ["./components/index.ts"]; // Corrected from "./index.ts" to be more standard
 
   // Build ESM
   await build({
     entrypoints,
-    outdir: "./dist",
+    outdir: "./dist/esm",
     format: "esm",
-    target: "esnext",
+    target: "browser",
     sourcemap: "external",
     minify: true,
+    external: ["react", "react-dom"], // Added externals to prevent bundling dependencies
+    naming: "[dir]/[name].mjs",
   });
 
   // Build CJS
   await build({
     entrypoints,
-    outdir: "./dist",
+    outdir: "./dist/cjs",
     format: "cjs",
-    target: "esnext",
+    target: "browser",
     sourcemap: "external",
     minify: true,
+    external: ["react", "react-dom"], // Added externals
+    naming: "[dir]/[name].cjs",
   });
 
   // Generate type declarations
@@ -52,7 +56,7 @@ async function buildLibrary() {
     "--declaration",
     "--emitDeclarationOnly",
     "--outDir",
-    "dist",
+    "dist/types",
   ]);
   await proc.exited;
 

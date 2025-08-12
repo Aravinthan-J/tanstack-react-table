@@ -10,8 +10,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useVirtualizer } from "@tanstack/react-virtual";
-import React, {
+import {
   forwardRef,
   useImperativeHandle,
   useMemo,
@@ -21,20 +20,20 @@ import React, {
   useRef,
 } from "react";
 
-import type { ColumnProps, TableProps, TableRef } from "./Table.types";
-import { TableProvider } from "./TableProvider";
-import { TableBody } from "./components/TableBody";
-import { TableHeader } from "./components/TableHeader";
-import { useDnD } from "./useDnD";
-import { useGrouping } from "./useGrouping";
-import { useNestableRows } from "./useNestableRows";
-import { useTableCore } from "./useTableCore";
-import { useVirtualization } from "./useVirtualization";
+import type { ColumnProps, TableProps, TableRef } from "./Table.types.ts";
+import { TableProvider } from "./TableProvider.tsx";
+import { TableBody } from "./TableBody.tsx";
+import { TableHeader } from "./TableHeader.tsx";
+import { useDnD } from "./useDnD.ts";
+import { useGrouping } from "./useGrouping.ts";
+import { useNestableRows } from "./useNestableRows.ts";
+import { useTableCore } from "./useTableCore.ts";
+import { useVirtualization } from "./useVirtualization.ts";
 import {
   createSerialNumberColumn,
   mapLegacyColumns,
-} from "./utils/compatibilityLayer";
-import { EXPANDABLE_TYPES } from "./utils/events";
+} from "./utils/compatibilityLayer.ts";
+import { EXPANDABLE_TYPES } from "./utils/events.ts";
 
 const DEFAULT_OPTIONS = {
   enableSorting: true,
@@ -93,7 +92,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
       ...DEFAULT_OPTIONS,
       ...options,
     }),
-    [options],
+    [options]
   );
 
   // Map legacy columns to TanStack format
@@ -158,20 +157,20 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
       updateData: (rowIndex: number, columnId: string, value: any) => {
         setTableData((old) =>
           old.map((row, index) =>
-            index === rowIndex ? { ...row, [columnId]: value } : row,
-          ),
+            index === rowIndex ? { ...row, [columnId]: value } : row
+          )
         );
       },
     },
   });
 
   // Custom hooks
-  const tableCore = useTableCore(table, onEventUpdate);
+  // const tableCore = useTableCore(table, onEventUpdate);
   const virtualization = useVirtualization(
     table,
     virtual,
     rowHeight,
-    tableContainerRef,
+    tableContainerRef
   );
   const groupingHook = useGrouping(table, groupBy);
   const nestableRows = useNestableRows(table, expandable);
@@ -187,8 +186,8 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
         const rowIndex = row.index;
         setTableData((old) =>
           old.map((row, index) =>
-            index === rowIndex ? { ...row, ...changedValue } : row,
-          ),
+            index === rowIndex ? { ...row, ...changedValue } : row
+          )
         );
       },
 
@@ -198,7 +197,11 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
 
       onColumnValidate: ({ columnId }) => {
         const column = table.getColumn(columnId);
-        return column?.columnDef?.meta?.validate?.(columnId) || [];
+        // Type assertion to allow 'validate' on meta
+        const validateFn = (
+          column?.columnDef?.meta as { validate?: (colId: string) => any[] }
+        )?.validate;
+        return validateFn?.(columnId) || [];
       },
 
       onVisibilityChange: (columnId: string, value: boolean) => {
@@ -276,7 +279,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
 
       updateRow: (rowId: string, data: any) => {
         setTableData((old) =>
-          old.map((row) => (row[rowKey] === rowId ? { ...row, ...data } : row)),
+          old.map((row) => (row[rowKey] === rowId ? { ...row, ...data } : row))
         );
       },
 
@@ -295,8 +298,8 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
         const rowIndex = row.index;
         setTableData((old) =>
           old.map((row, index) =>
-            index === rowIndex ? { ...row, [columnId]: value } : row,
-          ),
+            index === rowIndex ? { ...row, [columnId]: value } : row
+          )
         );
       },
 
@@ -370,7 +373,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
         table.resetSorting();
       },
     }),
-    [table, columnOrder, rowSelection, expanded, onEventUpdate, rowKey],
+    [table, columnOrder, rowSelection, expanded, onEventUpdate, rowKey]
   );
 
   // Scroll handler for infinite loading

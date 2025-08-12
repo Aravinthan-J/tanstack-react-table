@@ -1,4 +1,4 @@
-import type { TableTheme } from "../components/Table/Table.types";
+import type { TableTheme } from "../table/Table.types";
 
 export const defaultTheme: TableTheme = {
   colors: {

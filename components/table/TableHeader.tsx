@@ -18,8 +18,8 @@ import { CSS } from "@dnd-kit/utilities";
 import { type Column, type Header, flexRender } from "@tanstack/react-table";
 import React, { useCallback, useMemo, useState, useRef } from "react";
 
-import { useTable } from "../TableProvider";
-import { UPDATED_EVENTS } from "../utils/events";
+import { useTable } from "./TableProvider";
+import { UPDATED_EVENTS } from "./utils/events";
 
 export function TableHeader() {
   const { table, tableRef } = useTable();
@@ -171,7 +171,7 @@ function DraggableTableHeader({ header }: DraggableTableHeaderProps) {
         borderRight: "1px solid hsl(var(--border))",
         cursor: canDrag ? "grab" : "default",
         userSelect: "none",
-      }}
+      } as React.CSSProperties}
       colSpan={header.colSpan}
       {...(canDrag ? { ...attributes, ...listeners } : {})}
     >
