@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useEffect } from 'react';
 import * as Select from '@radix-ui/react-select';
+import React, { useState, useCallback, useEffect } from 'react';
 import type { CellProps } from '../Table.types';
 
 interface SelectOption {

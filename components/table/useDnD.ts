@@ -1,5 +1,5 @@
-import { useCallback, useState } from "react";
 import type { Table } from "@tanstack/react-table";
+import { useCallback, useState } from "react";
 import type { DnDOptions } from "./Table.types";
 
 /**
@@ -19,7 +19,7 @@ export function useDnD(table: Table<any>, options: DnDOptions) {
 
       setDraggedItem(itemId);
     },
-    [options]
+    [options],
   );
 
   const handleDragOver = useCallback(
@@ -27,7 +27,7 @@ export function useDnD(table: Table<any>, options: DnDOptions) {
       if (!options.enabled || !draggedItem) return;
       setDragOverItem(itemId);
     },
-    [options, draggedItem]
+    [options, draggedItem],
   );
 
   const handleDrop = useCallback(
@@ -41,7 +41,7 @@ export function useDnD(table: Table<any>, options: DnDOptions) {
       } else if (type === "column" && options.cellReorder) {
         // Column reorder logic
         console.log(
-          `Reordering column ${draggedItem} to position of ${targetId}`
+          `Reordering column ${draggedItem} to position of ${targetId}`,
         );
       }
 
@@ -49,7 +49,7 @@ export function useDnD(table: Table<any>, options: DnDOptions) {
       setDraggedItem(null);
       setDragOverItem(null);
     },
-    [options, draggedItem]
+    [options, draggedItem],
   );
 
   const handleDragEnd = useCallback(() => {

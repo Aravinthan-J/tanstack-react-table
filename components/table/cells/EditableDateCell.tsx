@@ -1,5 +1,6 @@
-import React, { useState, useCallback, useEffect } from "react";
 import * as Popover from "@radix-ui/react-popover";
+import type React from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { CellProps } from "../Table.types";
 
 /**
@@ -33,7 +34,7 @@ export function EditableDateCell({
       if (isNaN(dateObj.getTime())) return "";
       return dateObj.toLocaleDateString(); // Localized format
     },
-    []
+    [],
   );
 
   useEffect(() => {
@@ -78,7 +79,7 @@ export function EditableDateCell({
         onChange(null);
       }
     },
-    [onChange]
+    [onChange],
   );
 
   const displayValue = formatDisplayDate(value);

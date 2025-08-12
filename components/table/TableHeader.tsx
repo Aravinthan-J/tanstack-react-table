@@ -1,8 +1,6 @@
-import React, { useCallback, useMemo, useState, useRef } from "react";
-import { flexRender, type Header, type Column } from "@tanstack/react-table";
 import {
   DndContext,
-  DragEndEvent,
+  type DragEndEvent,
   KeyboardSensor,
   MouseSensor,
   TouchSensor,
@@ -12,11 +10,13 @@ import {
 } from "@dnd-kit/core";
 import { restrictToHorizontalAxis } from "@dnd-kit/modifiers";
 import {
-  horizontalListSortingStrategy,
   SortableContext,
+  horizontalListSortingStrategy,
   useSortable,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { type Column, type Header, flexRender } from "@tanstack/react-table";
+import React, { useCallback, useMemo, useState, useRef } from "react";
 
 import { useTable } from "../TableProvider";
 import { UPDATED_EVENTS } from "../utils/events";
@@ -39,13 +39,13 @@ export function TableHeader() {
         });
       }
     },
-    [tableRef]
+    [tableRef],
   );
 
   const sensors = useSensors(
     useSensor(MouseSensor),
     useSensor(TouchSensor),
-    useSensor(KeyboardSensor)
+    useSensor(KeyboardSensor),
   );
 
   return (
@@ -122,7 +122,7 @@ function DraggableTableHeader({ header }: DraggableTableHeaderProps) {
         ? "inset -4px 0 4px -4px rgba(0, 0, 0, 0.1)"
         : undefined,
     }),
-    [transform, isDragging, isPinned, isLastLeftPinned, header.column]
+    [transform, isDragging, isPinned, isLastLeftPinned, header.column],
   );
 
   const handleDoubleClick = useCallback(() => {

@@ -1,5 +1,5 @@
+import type { Row, Table } from "@tanstack/react-table";
 import { useCallback, useState } from "react";
-import type { Table, Row } from "@tanstack/react-table";
 import type { ExpandableProps } from "./Table.types";
 
 /**
@@ -8,10 +8,10 @@ import type { ExpandableProps } from "./Table.types";
  */
 export function useNestableRows(
   table: Table<any>,
-  expandable: ExpandableProps
+  expandable: ExpandableProps,
 ) {
   const [expandedRows, setExpandedRows] = useState<Set<string>>(
-    new Set(expandable.expandedRowKeys || [])
+    new Set(expandable.expandedRowKeys || []),
   );
 
   const toggleRowExpansion = useCallback(
@@ -31,7 +31,7 @@ export function useNestableRows(
         return next;
       });
     },
-    [table]
+    [table],
   );
 
   const expandAllRows = useCallback(() => {
@@ -56,7 +56,7 @@ export function useNestableRows(
       }
       return depth;
     },
-    [table]
+    [table],
   );
 
   return {

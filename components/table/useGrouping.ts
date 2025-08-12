@@ -1,5 +1,5 @@
+import type { GroupingState, Table } from "@tanstack/react-table";
 import { useCallback, useEffect } from "react";
-import type { Table, GroupingState } from "@tanstack/react-table";
 
 /**
  * Grouping functionality hook
@@ -24,7 +24,7 @@ export function useGrouping(table: Table<any>, initialGroupBy: string[] = []) {
         table.setGrouping([...currentGrouping, columnId]);
       }
     },
-    [table]
+    [table],
   );
 
   const clearGrouping = useCallback(() => {
@@ -35,7 +35,7 @@ export function useGrouping(table: Table<any>, initialGroupBy: string[] = []) {
     (grouping: GroupingState) => {
       table.setGrouping(grouping);
     },
-    [table]
+    [table],
   );
 
   return {

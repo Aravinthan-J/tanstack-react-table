@@ -1,4 +1,4 @@
-export { Table } from "./Table";
+export { Table } from "./table";
 export type {
   TableProps,
   TableRef,
@@ -6,13 +6,13 @@ export type {
   TableEvent,
   CellProps,
   TableTheme,
-} from "./Table/Table.types";
+} from "./table/Table.types";
 
 export {
   EXPANDABLE_TYPES,
   UPDATED_EVENTS,
   CELL_TYPES,
-} from "./Table/utils/events";
+} from "./table/utils/events";
 
-export * from "./Table/cells";
-export * from "./themes";
+export * from "./table/cells";
+export * from "./themes/index";

@@ -18,10 +18,7 @@
       "types": "./dist/themes/*.d.ts"
     }
   },
-  "files": [
-    "dist",
-    "README.md"
-  ],
+  "files": ["dist", "README.md"],
   "scripts": {
     "build": "bun run build.ts",
     "test": "bun test",

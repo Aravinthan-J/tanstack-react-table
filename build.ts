@@ -1,6 +1,6 @@
+import { join } from "path";
 import { build } from "bun";
 import { readdir, stat } from "fs/promises";
-import { join } from "path";
 
 async function getAllTsFiles(dir: string): Promise<string[]> {
   const files: string[] = [];
@@ -23,7 +23,7 @@ async function getAllTsFiles(dir: string): Promise<string[]> {
 async function buildLibrary() {
   console.log("🏗️  Building Advanced Table Library...");
 
-  const entrypoints = ["./src/index.ts"];
+  const entrypoints = ["./index.ts"];
 
   // Build ESM
   await build({

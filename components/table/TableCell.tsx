@@ -1,5 +1,5 @@
+import { type Cell, flexRender } from "@tanstack/react-table";
 import React, { useMemo } from "react";
-import { flexRender, type Cell } from "@tanstack/react-table";
 
 import { useTable } from "../TableProvider";
 import { cellRegistry } from "../cells";
@@ -30,7 +30,7 @@ export function TableCell({ cell }: TableCellProps) {
       minHeight: `${rowHeight}px`,
       width: column.getSize(),
     }),
-    [isPinned, isLastLeftPinned, column, rowHeight]
+    [isPinned, isLastLeftPinned, column, rowHeight],
   );
 
   const cellType = column.columnDef.meta?.type || CELL_TYPES.READONLY;

@@ -23,7 +23,7 @@ export function EditableRatingCell({
         onCommit(rating);
       }
     },
-    [readOnly, onChange, onCommit]
+    [readOnly, onChange, onCommit],
   );
 
   const handleMouseEnter = useCallback(
@@ -32,7 +32,7 @@ export function EditableRatingCell({
         setHoverRating(rating);
       }
     },
-    [readOnly]
+    [readOnly],
   );
 
   const handleMouseLeave = useCallback(() => {

@@ -1,15 +1,15 @@
-import { EditableTextCell } from "./EditableTextCell";
-import { EditableNumberCell } from "./EditableNumberCell";
-import { EditableEmailCell } from "./EditableEmailCell";
-import { EditableTextAreaCell } from "./EditableTextAreaCell";
-import { EditableSelectCell } from "./EditableSelectCell";
-import { EditableDateCell } from "./EditableDateCell";
 import { EditableBooleanCell } from "./EditableBooleanCell";
+import { EditableDateCell } from "./EditableDateCell";
+import { EditableEmailCell } from "./EditableEmailCell";
+import { EditableNumberCell } from "./EditableNumberCell";
 import { EditableRatingCell } from "./EditableRatingCell";
+import { EditableSelectCell } from "./EditableSelectCell";
+import { EditableTextAreaCell } from "./EditableTextAreaCell";
+import { EditableTextCell } from "./EditableTextCell";
 import { ReadOnlyCell } from "./ReadOnlyCell";
 
-import { CELL_TYPES } from "../utils/events";
 import type { CellProps } from "../Table.types";
+import { CELL_TYPES } from "../utils/events";
 
 // Cell registry for mapping cell types to components
 export const cellRegistry: Record<string, React.ComponentType<CellProps>> = {

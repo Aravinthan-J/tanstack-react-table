@@ -1,12 +1,13 @@
-import React, { useMemo } from "react";
-import { useVirtualizer } from "@tanstack/react-virtual";
 import type { Table } from "@tanstack/react-table";
+import { useVirtualizer } from "@tanstack/react-virtual";
+import type React from "react";
+import { useMemo } from "react";
 
 export function useVirtualization(
   table: Table<any>,
   enabled: boolean,
   rowHeight: number,
-  containerRef: React.RefObject<HTMLDivElement>
+  containerRef: React.RefObject<HTMLDivElement>,
 ) {
   const rows = table.getRowModel().rows;
 
@@ -20,7 +21,7 @@ export function useVirtualization(
 
   const virtualRows = useMemo(
     () => (enabled ? rowVirtualizer.getVirtualItems() : []),
-    [enabled, rowVirtualizer]
+    [enabled, rowVirtualizer],
   );
 
   return {

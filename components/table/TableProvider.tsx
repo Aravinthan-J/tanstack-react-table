@@ -1,12 +1,7 @@
-import React, { createContext, useContext } from "react";
 import type { Table } from "@tanstack/react-table";
-import type {
-  ExpandableProps,
-  TableRef,
-  TableTheme,
-  CellProps,
-  ExpandableProps,
-} from "./Table.types";
+import type React from "react";
+import { createContext, useContext } from "react";
+import type {} from "./Table.types";
 
 interface TableContextValue {
   table: Table<any>;

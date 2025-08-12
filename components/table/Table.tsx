@@ -1,3 +1,16 @@
+import {
+  type ColumnDef,
+  type ColumnOrderState,
+  type ExpandedState,
+  type GroupingState,
+  type RowSelectionState,
+  getCoreRowModel,
+  getExpandedRowModel,
+  getGroupedRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
+import { useVirtualizer } from "@tanstack/react-virtual";
 import React, {
   forwardRef,
   useImperativeHandle,
@@ -7,33 +20,20 @@ import React, {
   useState,
   useRef,
 } from "react";
-import {
-  useReactTable,
-  getCoreRowModel,
-  getSortedRowModel,
-  getExpandedRowModel,
-  getGroupedRowModel,
-  type ColumnDef,
-  type ColumnOrderState,
-  type RowSelectionState,
-  type ExpandedState,
-  type GroupingState,
-} from "@tanstack/react-table";
-import { useVirtualizer } from "@tanstack/react-virtual";
 
-import type { TableProps, TableRef, ColumnProps } from "./Table.types";
-import { useTableCore } from "./useTableCore";
-import { useVirtualization } from "./useVirtualization";
+import type { ColumnProps, TableProps, TableRef } from "./Table.types";
+import { TableProvider } from "./TableProvider";
+import { TableBody } from "./components/TableBody";
+import { TableHeader } from "./components/TableHeader";
+import { useDnD } from "./useDnD";
 import { useGrouping } from "./useGrouping";
 import { useNestableRows } from "./useNestableRows";
-import { useDnD } from "./useDnD";
+import { useTableCore } from "./useTableCore";
+import { useVirtualization } from "./useVirtualization";
 import {
-  mapLegacyColumns,
   createSerialNumberColumn,
+  mapLegacyColumns,
 } from "./utils/compatibilityLayer";
-import { TableProvider } from "./TableProvider";
-import { TableHeader } from "./components/TableHeader";
-import { TableBody } from "./components/TableBody";
 import { EXPANDABLE_TYPES } from "./utils/events";
 
 const DEFAULT_OPTIONS = {
@@ -93,7 +93,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
       ...DEFAULT_OPTIONS,
       ...options,
     }),
-    [options]
+    [options],
   );
 
   // Map legacy columns to TanStack format
@@ -158,8 +158,8 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
       updateData: (rowIndex: number, columnId: string, value: any) => {
         setTableData((old) =>
           old.map((row, index) =>
-            index === rowIndex ? { ...row, [columnId]: value } : row
-          )
+            index === rowIndex ? { ...row, [columnId]: value } : row,
+          ),
         );
       },
     },
@@ -171,7 +171,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
     table,
     virtual,
     rowHeight,
-    tableContainerRef
+    tableContainerRef,
   );
   const groupingHook = useGrouping(table, groupBy);
   const nestableRows = useNestableRows(table, expandable);
@@ -187,8 +187,8 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
         const rowIndex = row.index;
         setTableData((old) =>
           old.map((row, index) =>
-            index === rowIndex ? { ...row, ...changedValue } : row
-          )
+            index === rowIndex ? { ...row, ...changedValue } : row,
+          ),
         );
       },
 
@@ -276,7 +276,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
 
       updateRow: (rowId: string, data: any) => {
         setTableData((old) =>
-          old.map((row) => (row[rowKey] === rowId ? { ...row, ...data } : row))
+          old.map((row) => (row[rowKey] === rowId ? { ...row, ...data } : row)),
         );
       },
 
@@ -295,8 +295,8 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
         const rowIndex = row.index;
         setTableData((old) =>
           old.map((row, index) =>
-            index === rowIndex ? { ...row, [columnId]: value } : row
-          )
+            index === rowIndex ? { ...row, [columnId]: value } : row,
+          ),
         );
       },
 
@@ -370,7 +370,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
         table.resetSorting();
       },
     }),
-    [table, columnOrder, rowSelection, expanded, onEventUpdate, rowKey]
+    [table, columnOrder, rowSelection, expanded, onEventUpdate, rowKey],
   );
 
   // Scroll handler for infinite loading

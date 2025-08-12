@@ -1,6 +1,6 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import type { ColumnProps, TableOptionProps } from "../Table.types";
-import { Checkbox } from "../components/Checkbox";
+import type { Checkbox } from "../components/Checkbox";
 
 /**
  * Maps legacy column structure to TanStack Table column definitions
@@ -74,7 +74,7 @@ export function createSerialNumberColumn(
           <span>{row.index + 1}</span>
         </div>
       ) : (
-        <span>{row.index + 1}</span>
+        <span>row.index + 1</span>
       ),
     size: 60,
     minSize: 60,
@@ -83,10 +83,9 @@ export function createSerialNumberColumn(
     enableResizing: false,
     enableHiding: false,
     enablePinning: false,
-    meta: {
+    meta: 
       fixed: "left",
-      enableOrdering: false,
-    },
+      enableOrdering: false,,
   };
 }
 

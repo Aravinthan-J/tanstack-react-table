@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
 import * as Toggle from "@radix-ui/react-toggle";
+import React, { useCallback } from "react";
 import type { CellProps } from "../Table.types";
 
 /**
@@ -22,7 +22,7 @@ export function EditableBooleanCell({
         onCommit(pressed);
       }
     },
-    [readOnly, onChange, onCommit]
+    [readOnly, onChange, onCommit],
   );
 
   if (readOnly) {

@@ -1,5 +1,6 @@
-import React, { useState, useRef, useCallback, useEffect } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
+import type React from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { CellProps } from "../Table.types";
 
 /**
@@ -51,7 +52,7 @@ export function EditableTextAreaCell({
       setEditValue(newValue);
       onChange(newValue);
     },
-    [onChange]
+    [onChange],
   );
 
   const truncatedValue =

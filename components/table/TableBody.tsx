@@ -1,8 +1,6 @@
-import React, { useCallback, useMemo } from "react";
-import type { Virtualizer } from "@tanstack/react-virtual";
 import {
   DndContext,
-  DragEndEvent,
+  type DragEndEvent,
   KeyboardSensor,
   MouseSensor,
   TouchSensor,
@@ -15,10 +13,12 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
+import type { Virtualizer } from "@tanstack/react-virtual";
+import React, { useCallback, useMemo } from "react";
 
 import { useTable } from "../TableProvider";
-import { VirtualizedRow, NormalRow } from "./TableRow";
 import { UPDATED_EVENTS } from "../utils/events";
+import { NormalRow, VirtualizedRow } from "./TableRow";
 
 interface TableBodyProps {
   rowVirtualizer: Virtualizer<HTMLDivElement, HTMLTableRowElement>;
@@ -43,13 +43,13 @@ export function TableBody({ rowVirtualizer, isVirtual }: TableBodyProps) {
         });
       }
     },
-    [tableRef]
+    [tableRef],
   );
 
   const sensors = useSensors(
     useSensor(MouseSensor),
     useSensor(TouchSensor),
-    useSensor(KeyboardSensor)
+    useSensor(KeyboardSensor),
   );
 
   const dataIds = useMemo(() => rows.map((row) => row.id), [rows]);

@@ -1,11 +1,12 @@
-import React, { ReactNode } from "react";
 import type {
-  Row,
   Column,
-  Table as TanStackTable,
   ColumnDef,
+  Row,
+  Table as TanStackTable,
   TableState as TanStackTableState,
 } from "@tanstack/react-table";
+import type React from "react";
+import type { ReactNode } from "react";
 
 // Preserve existing column structure exactly
 export interface ColumnProps {
@@ -126,7 +127,7 @@ export interface TableProps<T = any> {
   validateCellEdit?: (
     row: Row<T>,
     column: Column<T>,
-    value: any
+    value: any,
   ) => boolean | Promise<boolean>;
   onConflict?: (error: ValidationError) => void;
 }

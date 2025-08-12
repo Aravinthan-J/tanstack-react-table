@@ -1,5 +1,6 @@
-import React, { useState, useRef, useCallback, useEffect } from "react";
 import * as Popover from "@radix-ui/react-popover";
+import type React from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { CellProps } from "../Table.types";
 
 /**
@@ -59,7 +60,7 @@ export function EditableTextCell({
           break;
       }
     },
-    [handleCommit, handleCancel]
+    [handleCommit, handleCancel],
   );
 
   const handleInputChange = useCallback(
@@ -68,7 +69,7 @@ export function EditableTextCell({
       setEditValue(newValue);
       onChange(newValue);
     },
-    [onChange]
+    [onChange],
   );
 
   return (

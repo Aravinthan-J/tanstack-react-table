@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { Table } from "../src/components/Table";
 
 describe("Table Component", () => {
@@ -30,7 +30,7 @@ describe("Table Component", () => {
         tableHeight={600}
         rowHeight={60}
         options={{}}
-      />
+      />,
     );
 
     expect(screen.getByText("John Doe")).toBeInTheDocument();
@@ -58,7 +58,7 @@ describe("Table Component", () => {
         tableHeight={600}
         rowHeight={60}
         options={{}}
-      />
+      />,
     );
 
     expect(screen.getByText("Column 1")).toBeInTheDocument();

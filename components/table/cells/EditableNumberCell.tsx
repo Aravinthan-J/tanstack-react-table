@@ -1,5 +1,6 @@
-import React, { useState, useRef, useCallback, useEffect } from "react";
 import * as Popover from "@radix-ui/react-popover";
+import type React from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { CellProps } from "../Table.types";
 
 /**
@@ -33,7 +34,7 @@ export function EditableNumberCell({
   }, [readOnly, value]);
 
   const handleCommit = useCallback(() => {
-    const numValue = parseFloat(editValue);
+    const numValue = Number.parseFloat(editValue);
 
     if (isNaN(numValue)) {
       setError("Please enter a valid number");
@@ -78,7 +79,7 @@ export function EditableNumberCell({
           break;
       }
     },
-    [handleCommit, handleCancel]
+    [handleCommit, handleCancel],
   );
 
   const handleInputChange = useCallback(
@@ -88,11 +89,11 @@ export function EditableNumberCell({
       onChange(newValue);
       setError(null);
     },
-    [onChange]
+    [onChange],
   );
 
   const formatDisplay = (val: any) => {
-    const num = parseFloat(val);
+    const num = Number.parseFloat(val);
     if (isNaN(num)) return "0";
     return num.toLocaleString();
   };

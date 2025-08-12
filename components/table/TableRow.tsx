@@ -1,12 +1,12 @@
-import React, { useCallback, useMemo } from "react";
-import { flexRender, type Row } from "@tanstack/react-table";
-import type { VirtualItem, Virtualizer } from "@tanstack/react-virtual";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { type Row, flexRender } from "@tanstack/react-table";
+import type { VirtualItem, Virtualizer } from "@tanstack/react-virtual";
+import React, { useCallback, useMemo } from "react";
 
 import { useTable } from "../TableProvider";
-import { TableCell } from "./TableCell";
 import { EXPANDABLE_TYPES } from "../utils/events";
+import { TableCell } from "./TableCell";
 
 interface VirtualizedRowProps {
   row: Row<any>;
@@ -62,7 +62,7 @@ export function VirtualizedRow({
       virtualRow.start,
       rowHeight,
       isAccordionExpanded,
-    ]
+    ],
   );
 
   return (
@@ -147,7 +147,7 @@ export function NormalRow({ row }: NormalRowProps) {
       opacity: isDragging ? 0.8 : 1,
       zIndex: isDragging ? 1 : 0,
     }),
-    [transform, transition, isDragging]
+    [transform, transition, isDragging],
   );
 
   return (
