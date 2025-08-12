@@ -11,7 +11,7 @@ export function useVirtualization(
 ) {
   const rows = table.getRowModel().rows;
 
-  const rowVirtualizer =  useVirtualizer<HTMLDivElement, HTMLTableRowElement>({
+  const rowVirtualizer = useVirtualizer<HTMLDivElement, HTMLTableRowElement>({
     count: rows.length,
     getScrollElement: () => containerRef.current,
     estimateSize: () => rowHeight,

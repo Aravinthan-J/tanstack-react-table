@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Table } from "../../table/index.tsx";
 import type { ColumnProps } from "../../table/Table.types";
+import { Table } from "../../table/index.tsx";
 
 // Generate large dataset
 const generateLargeDataset = (count: number) => {

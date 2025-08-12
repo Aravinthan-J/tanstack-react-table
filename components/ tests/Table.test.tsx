@@ -1,7 +1,7 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import { Table } from "../table/index";
+import { fireEvent, render, screen } from "@testing-library/react";
 import type { ColumnProps } from "../table/Table.types";
+import { Table } from "../table/index";
 
 const mockColumns: ColumnProps[] = [
   {
@@ -119,7 +119,7 @@ describe("Table Component", () => {
         {...defaultProps}
         columns={legacyColumns}
         datasource={legacyData}
-      />
+      />,
     );
 
     expect(screen.getByText("Legacy Field")).toBeInTheDocument();

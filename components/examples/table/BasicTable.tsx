@@ -1,6 +1,6 @@
 import React from "react";
-import { Table } from "../../table/index.tsx";
 import type { ColumnProps } from "../../table/Table.types";
+import { Table } from "../../table/index.tsx";
 
 const sampleData = [
   { id: "1", name: "John Doe", email: "john@example.com", age: 30 },

@@ -1,5 +1,5 @@
-import { useCallback, useMemo } from "react";
 import type { Row, Table } from "@tanstack/react-table";
+import { useCallback, useMemo } from "react";
 import type { TableEvent } from "../Table.types";
 
 interface UseRowActionsProps<T = any> {
@@ -35,7 +35,7 @@ export function useRowActions<T = any>({
 
       return true;
     },
-    [canExpand, isExpanded, row, onEvent]
+    [canExpand, isExpanded, row, onEvent],
   );
 
   const toggleSelected = useCallback(
@@ -52,7 +52,7 @@ export function useRowActions<T = any>({
 
       return true;
     },
-    [canSelect, isSelected, row, onEvent]
+    [canSelect, isSelected, row, onEvent],
   );
 
   const expandAll = useCallback(() => {
@@ -151,7 +151,7 @@ export function useRowActions<T = any>({
 
       return true;
     },
-    [row.id, onEvent]
+    [row.id, onEvent],
   );
 
   const duplicate = useCallback((): boolean => {
@@ -191,7 +191,7 @@ export function useRowActions<T = any>({
 
       return true;
     },
-    [row.id, row.original, onEvent]
+    [row.id, row.original, onEvent],
   );
 
   return {

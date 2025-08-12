@@ -12,18 +12,18 @@ import {
 } from "@tanstack/react-table";
 import {
   forwardRef,
-  useImperativeHandle,
-  useMemo,
   useCallback,
   useEffect,
-  useState,
+  useImperativeHandle,
+  useMemo,
   useRef,
+  useState,
 } from "react";
 
 import type { ColumnProps, TableProps, TableRef } from "./Table.types.ts";
-import { TableProvider } from "./TableProvider.tsx";
 import { TableBody } from "./TableBody.tsx";
 import { TableHeader } from "./TableHeader.tsx";
+import { TableProvider } from "./TableProvider.tsx";
 import { useDnD } from "./useDnD.ts";
 import { useGrouping } from "./useGrouping.ts";
 import { useNestableRows } from "./useNestableRows.ts";
@@ -92,7 +92,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
       ...DEFAULT_OPTIONS,
       ...options,
     }),
-    [options]
+    [options],
   );
 
   // Map legacy columns to TanStack format
@@ -157,8 +157,8 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
       updateData: (rowIndex: number, columnId: string, value: any) => {
         setTableData((old) =>
           old.map((row, index) =>
-            index === rowIndex ? { ...row, [columnId]: value } : row
-          )
+            index === rowIndex ? { ...row, [columnId]: value } : row,
+          ),
         );
       },
     },
@@ -170,7 +170,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
     table,
     virtual,
     rowHeight,
-    tableContainerRef
+    tableContainerRef,
   );
   const groupingHook = useGrouping(table, groupBy);
   const nestableRows = useNestableRows(table, expandable);
@@ -186,8 +186,8 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
         const rowIndex = row.index;
         setTableData((old) =>
           old.map((row, index) =>
-            index === rowIndex ? { ...row, ...changedValue } : row
-          )
+            index === rowIndex ? { ...row, ...changedValue } : row,
+          ),
         );
       },
 
@@ -279,7 +279,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
 
       updateRow: (rowId: string, data: any) => {
         setTableData((old) =>
-          old.map((row) => (row[rowKey] === rowId ? { ...row, ...data } : row))
+          old.map((row) => (row[rowKey] === rowId ? { ...row, ...data } : row)),
         );
       },
 
@@ -298,8 +298,8 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
         const rowIndex = row.index;
         setTableData((old) =>
           old.map((row, index) =>
-            index === rowIndex ? { ...row, [columnId]: value } : row
-          )
+            index === rowIndex ? { ...row, [columnId]: value } : row,
+          ),
         );
       },
 
@@ -373,7 +373,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
         table.resetSorting();
       },
     }),
-    [table, columnOrder, rowSelection, expanded, onEventUpdate, rowKey]
+    [table, columnOrder, rowSelection, expanded, onEventUpdate, rowKey],
   );
 
   // Scroll handler for infinite loading

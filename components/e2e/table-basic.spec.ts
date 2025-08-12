@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 test.describe("Basic Table Functionality", () => {
   test.beforeEach(async ({ page }) => {
@@ -25,7 +25,7 @@ test.describe("Basic Table Functionality", () => {
 
   test("handles row selection", async ({ page }) => {
     const firstRowCheckbox = page.locator(
-      'tbody tr:first-child input[type="checkbox"]'
+      'tbody tr:first-child input[type="checkbox"]',
     );
     await firstRowCheckbox.click();
 

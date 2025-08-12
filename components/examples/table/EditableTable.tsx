@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Table } from "../../table/index.tsx";
 import type { ColumnProps } from "../../table/Table.types";
+import { Table } from "../../table/index.tsx";
 
 const editableData = [
   {
@@ -72,8 +72,8 @@ export function EditableTable() {
       const { rowId, columnId, newValue } = value;
       setData((prev) =>
         prev.map((row) =>
-          row.id === rowId ? { ...row, [columnId]: newValue } : row
-        )
+          row.id === rowId ? { ...row, [columnId]: newValue } : row,
+        ),
       );
     }
   };

@@ -1,5 +1,5 @@
-import { useState, useCallback, useRef, useEffect } from "react";
-import type { Row, Column } from "@tanstack/react-table";
+import type { Column, Row } from "@tanstack/react-table";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface UseEditableCellProps<T = any> {
   row: Row<T>;
@@ -45,7 +45,7 @@ export function useEditableCell<T = any>({
         return result.length === 0;
       }
     },
-    [validate]
+    [validate],
   );
 
   const startEditing = useCallback(() => {
@@ -89,7 +89,7 @@ export function useEditableCell<T = any>({
         setErrors([]);
       }
     },
-    [errors.length]
+    [errors.length],
   );
 
   const isReadOnly = column.columnDef.meta?.isReadOnly || false;

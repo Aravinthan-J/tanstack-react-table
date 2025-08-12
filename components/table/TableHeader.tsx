@@ -1,3 +1,5 @@
+import type React from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import {
   DndContext,
   type DragEndEvent,
@@ -16,7 +18,6 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { type Column, type Header, flexRender } from "@tanstack/react-table";
-import React, { useCallback, useMemo, useState, useRef } from "react";
 
 import { useTable } from "./TableProvider";
 import { UPDATED_EVENTS } from "./utils/events";
@@ -157,21 +158,23 @@ function DraggableTableHeader({ header }: DraggableTableHeaderProps) {
     <th
       ref={setNodeRef}
       className="table-header-cell group"
-      style={{
-        ...style,
-        width: header.getSize(),
-        minWidth: header.column.columnDef.minSize,
-        maxWidth: header.column.columnDef.maxSize,
-        height: "44px",
-        display: "flex",
-        alignItems: "center",
-        padding: "8px 12px",
-        backgroundColor: "hsl(var(--muted))",
-        borderBottom: "1px solid hsl(var(--border))",
-        borderRight: "1px solid hsl(var(--border))",
-        cursor: canDrag ? "grab" : "default",
-        userSelect: "none",
-      } as React.CSSProperties}
+      style={
+        {
+          ...style,
+          width: header.getSize(),
+          minWidth: header.column.columnDef.minSize,
+          maxWidth: header.column.columnDef.maxSize,
+          height: "44px",
+          display: "flex",
+          alignItems: "center",
+          padding: "8px 12px",
+          backgroundColor: "hsl(var(--muted))",
+          borderBottom: "1px solid hsl(var(--border))",
+          borderRight: "1px solid hsl(var(--border))",
+          cursor: canDrag ? "grab" : "default",
+          userSelect: "none",
+        } as React.CSSProperties
+      }
       colSpan={header.colSpan}
       {...(canDrag ? { ...attributes, ...listeners } : {})}
     >

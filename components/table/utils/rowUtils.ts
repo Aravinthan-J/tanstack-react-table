@@ -24,7 +24,7 @@ export function getRowDepth<T>(row: Row<T>): number {
 
 export function getRowAncestors<T>(
   row: Row<T>,
-  rowModel: RowModel<T>
+  rowModel: RowModel<T>,
 ): Row<T>[] {
   const ancestors: Row<T>[] = [];
   let current = row;
@@ -64,9 +64,9 @@ export function getRowDescendants<T>(row: Row<T>): Row<T>[] {
 
 export function isRowAncestorOf<T>(
   ancestor: Row<T>,
-  descendant: Row<T>
+  descendant: Row<T>,
 ): boolean {
-  let current = descendant;
+  const current = descendant;
 
   while (current.parentId) {
     if (current.parentId === ancestor.id) {
@@ -82,7 +82,7 @@ export function isRowAncestorOf<T>(
 export function canRowBeMovedTo<T>(
   sourceRow: Row<T>,
   targetParentId: string | null,
-  maxDepth = 10
+  maxDepth = 10,
 ): boolean {
   // Can't move to self
   if (sourceRow.id === targetParentId) {
@@ -111,7 +111,7 @@ export function canRowBeMovedTo<T>(
 export function getVisibleRowsInRange<T>(
   rows: Row<T>[],
   startIndex: number,
-  endIndex: number
+  endIndex: number,
 ): Row<T>[] {
   return rows.slice(startIndex, endIndex + 1);
 }
@@ -143,7 +143,7 @@ export function getRowPath<T>(row: Row<T>, rowModel: RowModel<T>): string[] {
 
 export function groupRowsByField<T>(
   rows: Row<T>[],
-  fieldName: string
+  fieldName: string,
 ): Map<any, Row<T>[]> {
   const groups = new Map<any, Row<T>[]>();
 
@@ -161,7 +161,7 @@ export function groupRowsByField<T>(
 export function sortRowsByField<T>(
   rows: Row<T>[],
   fieldName: string,
-  direction: "asc" | "desc" = "asc"
+  direction: "asc" | "desc" = "asc",
 ): Row<T>[] {
   return [...rows].sort((a, b) => {
     const aVal = (a.original as any)[fieldName];
@@ -176,7 +176,7 @@ export function sortRowsByField<T>(
 export function filterRowsByValue<T>(
   rows: Row<T>[],
   fieldName: string,
-  filterValue: any
+  filterValue: any,
 ): Row<T>[] {
   return rows.filter((row) => {
     const value = (row.original as any)[fieldName];

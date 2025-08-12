@@ -18,13 +18,13 @@ export function canColumnSort(column: Column<any>): boolean {
 }
 
 export function getColumnSortDirection(
-  column: Column<any>
+  column: Column<any>,
 ): "asc" | "desc" | false {
   return column.getIsSorted();
 }
 
 export function createColumnFromLegacy(
-  legacyColumn: ColumnProps
+  legacyColumn: ColumnProps,
 ): ColumnDef<any> {
   return {
     id: legacyColumn.Id,

@@ -17,8 +17,8 @@ import type { Virtualizer } from "@tanstack/react-virtual";
 import React, { useCallback, useMemo } from "react";
 
 import { useTable } from "./TableProvider";
-import { UPDATED_EVENTS } from "./utils/events";
 import { NormalRow, VirtualizedRow } from "./TableRow";
+import { UPDATED_EVENTS } from "./utils/events";
 
 interface TableBodyProps {
   rowVirtualizer: Virtualizer<HTMLDivElement, HTMLTableRowElement>;

@@ -40,11 +40,11 @@ export function EditableSelectCell({
       onCommit(newValue);
       setIsOpen(false);
     },
-    [onChange, onCommit]
+    [onChange, onCommit],
   );
 
   const selectedOption = options.find(
-    (option) => option.value === selectedValue
+    (option) => option.value === selectedValue,
   );
   const displayValue = selectedOption?.label || selectedValue || "";
 

@@ -1,6 +1,6 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { EditableTextCell } from "../../src/components/Table/cells/EditableTextCell";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { EditableTextCell } from "../table/cells";
 
 describe("EditableTextCell", () => {
   const defaultProps = {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Table } from "../../table/index.tsx";
 import type { ColumnProps } from "../../table/Table.types";
+import { Table } from "../../table/index.tsx";
 
 const nestedData = [
   {
@@ -72,7 +72,7 @@ export function NestedRowsTable() {
     if (type === "row-expand") {
       const { rowId, expanded } = value;
       setExpandedRows((prev) =>
-        expanded ? [...prev, rowId] : prev.filter((id) => id !== rowId)
+        expanded ? [...prev, rowId] : prev.filter((id) => id !== rowId),
       );
     }
   };
