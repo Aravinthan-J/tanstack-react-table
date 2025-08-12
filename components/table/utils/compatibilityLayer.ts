@@ -40,7 +40,7 @@ export function mapLegacyColumns(
       customRender: !!col.Render,
       fixed: col.Fixed,
       enableOrdering: col.enableOrdering ?? options.enableOrdering,
-      customRender: !!col.Render
+      customRender: !!col.Render,
     },
   }));
 }
@@ -56,11 +56,13 @@ export function createSerialNumberColumn(
     id: "select",
     header: ({ table }) =>
       showRowSelection ? (
-        <Checkbox
-          checked={table.getIsAllRowsSelected()}
-          indeterminate={table.getIsSomeRowsSelected()}
-          onChange={table.getToggleAllRowsSelectedHandler()}
-        />
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <Checkbox
+            checked={table.getIsAllRowsSelected()}
+            indeterminate={table.getIsSomeRowsSelected()}
+            onChange={table.getToggleAllRowsSelectedHandler()}
+          />
+        </div>
       ) : (
         "#"
       ),
@@ -84,9 +86,10 @@ export function createSerialNumberColumn(
     enableResizing: false,
     enableHiding: false,
     enablePinning: false,
-    meta: 
+    meta: {
       fixed: "left",
-      enableOrdering: false,,
+      enableOrdering: false,
+    },
   };
 }
 
@@ -115,7 +118,7 @@ export function validateColumns(columns: ColumnProps[]): {
     if (column.Fixed) {
       warnings.push(
         `Column "${column.Id}": "Fixed" property is deprecated. ` +
-        'Use enablePinning and table.getColumn(id).pin() instead.'
+          "Use enablePinning and table.getColumn(id).pin() instead."
       );
     }
 
@@ -124,7 +127,7 @@ export function validateColumns(columns: ColumnProps[]): {
     if (column.Type && !supportedTypes.includes(column.Type as any)) {
       warnings.push(
         `Column "${column.Id}": Unsupported cell type "${column.Type}". ` +
-        `Supported types: ${supportedTypes.join(', ')}`
+          `Supported types: ${supportedTypes.join(", ")}`
       );
     }
 
@@ -132,7 +135,7 @@ export function validateColumns(columns: ColumnProps[]): {
     if (column.Render && column.Type) {
       warnings.push(
         `Column "${column.Id}": Both "Render" and "Type" specified. ` +
-        '"Render" will take precedence.'
+          '"Render" will take precedence.'
       );
     }
   });
@@ -140,7 +143,7 @@ export function validateColumns(columns: ColumnProps[]): {
   return {
     isValid: errors.length === 0,
     warnings,
-    errors
+    errors,
   };
 }
 
@@ -153,12 +156,16 @@ export function migrateColumn(legacyColumn: any): ColumnProps {
   // Handle common legacy field mappings
   if (legacyColumn.accessor && !migrated.Id) {
     migrated.Id = legacyColumn.accessor;
-    console.warn(`Column: Mapped "accessor" to "Id" for column "${legacyColumn.accessor}"`);
+    console.warn(
+      `Column: Mapped "accessor" to "Id" for column "${legacyColumn.accessor}"`
+    );
   }
 
   if (legacyColumn.header && !migrated.Title) {
     migrated.Title = legacyColumn.header;
-    console.warn(`Column: Mapped "header" to "Title" for column "${migrated.Id}"`);
+    console.warn(
+      `Column: Mapped "header" to "Title" for column "${migrated.Id}"`
+    );
   }
 
   if (legacyColumn.width && !migrated.Width) {
