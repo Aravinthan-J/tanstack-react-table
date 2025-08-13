@@ -102,7 +102,16 @@ export function EditableSelectCell({
         <Select.Value placeholder="Select option...">
           {displayValue}
         </Select.Value>
-        <Select.Icon style={{ marginLeft: "4px" }}>▼</Select.Icon>
+        <Select.Icon style={{ marginLeft: "4px" }}>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+            <path
+              d="M3 5l3 3 3-3"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              fill="none"
+            />
+          </svg>
+        </Select.Icon>
       </Select.Trigger>
 
       <Select.Portal>
@@ -130,7 +139,14 @@ export function EditableSelectCell({
               cursor: "default",
             }}
           >
-            ▲
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+              <path
+                d="M10 3L4.5 8.5L2 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+              />
+            </svg>
           </Select.ScrollUpButton>
 
           <Select.Viewport style={{ padding: "4px" }}>
