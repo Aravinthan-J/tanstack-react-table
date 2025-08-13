@@ -18,7 +18,6 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { type Column, type Header, flexRender } from "@tanstack/react-table";
-import clsx from "clsx";
 
 import { useTable } from "./TableProvider";
 import { UPDATED_EVENTS } from "./utils/events";
@@ -41,13 +40,13 @@ export function TableHeader() {
         });
       }
     },
-    [tableRef],
+    [tableRef]
   );
 
   const sensors = useSensors(
     useSensor(MouseSensor),
     useSensor(TouchSensor),
-    useSensor(KeyboardSensor),
+    useSensor(KeyboardSensor)
   );
 
   return (
@@ -105,7 +104,7 @@ function DraggableTableHeader({ header }: DraggableTableHeaderProps) {
       minWidth: header.column.columnDef.minSize,
       maxWidth: header.column.columnDef.maxSize,
     }),
-    [transform, isPinned, header.column, header.getSize()],
+    [transform, isPinned, header.column, header.getSize()]
   );
 
   const canDrag =
@@ -115,14 +114,12 @@ function DraggableTableHeader({ header }: DraggableTableHeaderProps) {
   return (
     <th
       ref={setNodeRef}
-      className={clsx(
-        "table-header-cell group group flex h-11 items-center justify-between p-3 select-none",
-        "border-b border-r bg-muted",
-        isDragging && "opacity-80 z-20",
-        isPinned && "sticky z-10",
-        isLastLeftPinned && "shadow-inner",
-        canDrag ? "cursor-grab" : "cursor-default"
-      )}
+      className={`table-header-cell group group flex h-11 items-center justify-between p-3 select-none 
+        border-b border-r bg-muted 
+        ${isDragging ? "opacity-80 z-20" : ""}
+        ${isPinned ? "sticky z-10" : ""}
+        ${isLastLeftPinned ? "shadow-inner" : ""}
+        ${canDrag ? "cursor-grab" : "cursor-default"}`}
       style={headerStyle}
       colSpan={header.colSpan}
       {...(canDrag ? { ...attributes, ...listeners } : {})}
@@ -131,9 +128,37 @@ function DraggableTableHeader({ header }: DraggableTableHeaderProps) {
         <div className="header-title flex items-center min-w-0 flex-1">
           {flexRender(header.column.columnDef.header, header.getContext())}
 
-          {header.column.getIsSorted() && (
+          {header.column.getCanSort() && (
             <span className="ml-1">
-              {header.column.getIsSorted() === "desc" ? " ↓" : " ↑"}
+              {header.column.getIsSorted() === "asc" && (
+                <svg
+                  className="w-3 h-3 text-primary"
+                  fill="currentColor"
+                  viewBox="0 0 12 12"
+                >
+                  <path d="M6 3l3 3H3l3-3z" />
+                </svg>
+              )}
+              {header.column.getIsSorted() === "desc" && (
+                <svg
+                  className="w-3 h-3 text-primary"
+                  fill="currentColor"
+                  viewBox="0 0 12 12"
+                >
+                  <path d="M6 9L3 6h6l-3 3z" />
+                </svg>
+              )}
+              {!header.column.getIsSorted() && (
+                <span className="w-3 h-3 opacity-30">
+                  <svg
+                    className="w-3 h-3"
+                    fill="currentColor"
+                    viewBox="0 0 12 12"
+                  >
+                    <path d="M6 3l3 3H3l3-3zM6 9L3 6h6l-3 3z" />
+                  </svg>
+                </span>
+              )}
             </span>
           )}
         </div>
@@ -150,9 +175,9 @@ function DraggableTableHeader({ header }: DraggableTableHeaderProps) {
       {header.column.getCanResize() && (
         <div
           className="resize-handle absolute top-0 right-0 h-full w-1 cursor-col-resize bg-transparent rounded-sm"
-          onDoubleClick={handleDoubleClick}
+          // onDoubleClick={handleDoubleClick}
           onMouseDown={header.getResizeHandler()}
-          onMouseUp={handleResizeEnd}
+          // onMouseUp={handleResizeEnd}
           onTouchStart={header.getResizeHandler()}
         />
       )}
