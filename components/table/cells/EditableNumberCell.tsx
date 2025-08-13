@@ -11,58 +11,45 @@ export function EditableNumberCell({
   onCommit,
   onCancel,
   onChange,
-  validate,
   readOnly = false,
+  isError = false,
+  errors = [],
   autoFocus = false,
   ariaLabel,
 }: CellProps) {
   const [isEditing, setIsEditing] = useState(false);
-  const [editValue, setEditValue] = useState(String(value));
-  const [error, setError] = useState<string | null>(null);
+  const [editValue, setEditValue] = useState(String(value ?? ""));
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setEditValue(String(value));
+    setEditValue(String(value ?? ""));
   }, [value]);
+
+  useEffect(() => {
+    if (isEditing && inputRef.current && autoFocus) {
+      inputRef.current.focus();
+      inputRef.current.select();
+    }
+  }, [isEditing, autoFocus]);
 
   const handleEdit = useCallback(() => {
     if (!readOnly) {
       setIsEditing(true);
       setEditValue(String(value));
-      setError(null);
     }
-  }, [readOnly, value]);
+  }, [readOnly]);
 
   const handleCommit = useCallback(() => {
-    const numValue = Number.parseFloat(editValue);
-
-    if (isNaN(numValue)) {
-      setError("Please enter a valid number");
-      return;
-    }
-
-    if (validate) {
-      const validation = validate(numValue);
-      if (typeof validation === "string") {
-        setError(validation);
-        return;
-      } else if (validation === false) {
-        setError("Invalid value");
-        return;
-      }
-    }
-
+    const numValue = editValue.trim() === "" ? null : Number(editValue);
     if (numValue !== value) {
       onCommit(numValue);
     }
     setIsEditing(false);
-    setError(null);
-  }, [editValue, value, validate, onCommit]);
+  }, [editValue, value, onCommit]);
 
   const handleCancel = useCallback(() => {
-    setEditValue(String(value));
+    setEditValue(String(value ?? ""));
     setIsEditing(false);
-    setError(null);
     onCancel();
   }, [value, onCancel]);
 
@@ -79,17 +66,17 @@ export function EditableNumberCell({
           break;
       }
     },
-    [handleCommit, handleCancel],
+    [handleCommit, handleCancel]
   );
 
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = e.target.value;
       setEditValue(newValue);
-      onChange(newValue);
-      setError(null);
+      const numValue = newValue.trim() === "" ? null : Number(newValue);
+      onChange(numValue);
     },
-    [onChange],
+    [onChange]
   );
 
   const formatDisplay = (val: any) => {
@@ -102,7 +89,6 @@ export function EditableNumberCell({
     <Popover.Root open={isEditing} onOpenChange={setIsEditing}>
       <Popover.Trigger asChild>
         <div
-          className="cell-display number-cell"
           style={{
             width: "100%",
             padding: "4px 8px",
@@ -127,7 +113,9 @@ export function EditableNumberCell({
             }
           }}
           aria-label={ariaLabel || `Edit number ${value}`}
-          className="hover:bg-muted/50 focus:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className={`cell-display number-cell w-full px-2 py-1 min-h-8 flex items-center justify-end rounded cursor-pointer
+        hover:bg-muted/50 focus:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/20
+        ${readOnly ? "cursor-default hover:bg-transparent" : ""}`}
         >
           {formatDisplay(value)}
         </div>
@@ -159,33 +147,21 @@ export function EditableNumberCell({
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
             onBlur={handleCommit}
-            className="number-input"
-            style={{
-              width: "150px",
-              padding: "6px 8px",
-              border: error
-                ? "1px solid hsl(var(--destructive))"
-                : "1px solid hsl(var(--border))",
-              borderRadius: "4px",
-              backgroundColor: "hsl(var(--background))",
-              color: "hsl(var(--foreground))",
-              fontSize: "14px",
-              outline: "none",
-              textAlign: "right",
-            }}
+            className={`
+           number-input w-full px-2 py-1 text-sm bg-background border rounded text-right
+            focus:outline-none focus:ring-2 focus:ring-primary/20
+            ${isError ? "border-destructive" : "border-border"}
+            ${readOnly ? "cursor-not-allowed opacity-50" : ""}
+          `}
+            disabled={readOnly}
             aria-label={ariaLabel}
-            aria-invalid={!!error}
+            aria-invalid={!!errors.length}
           />
-          {error && (
-            <div
-              className="error-message"
-              style={{
-                marginTop: "4px",
-                fontSize: "12px",
-                color: "hsl(var(--destructive))",
-              }}
-            >
-              {error}
+          {errors.length > 0 && (
+            <div className="absolute top-full left-0 z-10 mt-1 p-1 text-xs text-destructive bg-background border border-destructive rounded shadow-sm">
+              {errors.map((error, index) => (
+                <div key={index}>{error}</div>
+              ))}
             </div>
           )}
         </Popover.Content>

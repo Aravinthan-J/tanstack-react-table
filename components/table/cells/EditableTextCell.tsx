@@ -2,7 +2,6 @@ import * as Popover from "@radix-ui/react-popover";
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { CellProps } from "../Table.types";
-import clsx from "clsx";
 
 /**
  * Editable text cell using Radix UI Popover for inline editing
@@ -26,6 +25,13 @@ export function EditableTextCell({
   useEffect(() => {
     setEditValue(String(value));
   }, [value]);
+
+  useEffect(() => {
+    if (isEditing && inputRef.current && autoFocus) {
+      inputRef.current.focus();
+      inputRef.current.select();
+    }
+  }, [isEditing, autoFocus]);
 
   const handleEdit = useCallback(() => {
     if (!readOnly) {
@@ -52,8 +58,8 @@ export function EditableTextCell({
     (e: React.KeyboardEvent) => {
       switch (e.key) {
         case "Enter":
-          e.preventDefault();
-          handleCommit();
+        e.preventDefault();
+        handleCommit();
           break;
         case "Escape":
           e.preventDefault();
@@ -73,16 +79,15 @@ export function EditableTextCell({
     [onChange],
   );
 
-  return (
+    return (
     <Popover.Root open={isEditing} onOpenChange={setIsEditing}>
       <Popover.Trigger asChild>
         <div
-          className={clsx(
-            "cell-display w-full p-2 rounded-md min-h-[32px] flex items-center overflow-hidden text-ellipsis whitespace-nowrap",
-            !readOnly &&
-              "cursor-pointer hover:bg-muted/50 focus:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/20",
-            isError && "border border-destructive bg-destructive/10"
-          )}
+         className={`
+          cell-display w-full px-2 py-1 min-h-8 flex items-center rounded cursor-pointer
+          hover:bg-muted/50 focus:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/20
+          ${readOnly ? "cursor-default hover:bg-transparent" : ""} ${isError ? "border border-destructive bg-destructive/10":""}
+        `}
           onClick={handleEdit}
           onDoubleClick={handleEdit}
           role="button"
@@ -112,24 +117,24 @@ export function EditableTextCell({
             }
           }}
         >
-          <input
-            ref={inputRef}
-            type="text"
-            value={editValue}
-            onChange={handleInputChange}
-            onKeyDown={handleKeyDown}
+        <input
+          ref={inputRef}
+          type="text"
+          value={editValue}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
             onBlur={handleCommit}
             className="w-[200px] px-2 py-1.5 border rounded-md bg-background text-foreground text-sm outline-none"
-            aria-label={ariaLabel}
-          />
-          {errors.length > 0 && (
+          aria-label={ariaLabel}
+        />
+        {errors.length > 0 && (
             <div className="mt-1 text-xs text-destructive">
-              {errors.map((error, index) => (
-                <div key={index}>{error}</div>
-              ))}
-            </div>
-          )}
-        </Popover.Content>
+            {errors.map((error, index) => (
+              <div key={index}>{error}</div>
+            ))}
+          </div>
+        )}
+      </Popover.Content>
       </Popover.Portal>
     </Popover.Root>
   );

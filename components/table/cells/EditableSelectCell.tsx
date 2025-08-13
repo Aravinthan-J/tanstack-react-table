@@ -1,5 +1,5 @@
+import React, { useState, useEffect, useCallback } from "react";
 import * as Select from "@radix-ui/react-select";
-import React, { useState, useCallback, useEffect } from "react";
 import type { CellProps } from "../Table.types";
 
 interface SelectOption {
@@ -40,7 +40,7 @@ export function EditableSelectCell({
       onCommit(newValue);
       setIsOpen(false);
     },
-    [onChange, onCommit],
+    [onChange, onCommit]
   );
 
   const selectedOption = options.find(
@@ -80,29 +80,23 @@ export function EditableSelectCell({
       onOpenChange={setIsOpen}
     >
       <Select.Trigger
-        style={{
-          width: "100%",
-          padding: "4px 8px",
-          border: `1px solid ${
-            isError ? "hsl(var(--destructive))" : "transparent"
-          }`,
-          borderRadius: "4px",
-          backgroundColor: "transparent",
-          color: "hsl(var(--foreground))",
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          minHeight: "20px",
-        }}
-        className="hover:bg-muted/50 focus:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/20 group-hover/table_cell:border-gray-200"
+        className={`
+          w-full px-2 py-1 border rounded bg-background text-foreground
+          flex items-center justify-between min-h-8
+          focus:outline-none focus:ring-2 focus:ring-primary/20
+          ${
+            readOnly
+              ? "cursor-default opacity-50"
+              : "cursor-pointer hover:bg-muted/50"
+          }
+        `}
         aria-label={ariaLabel}
         aria-invalid={isError}
       >
         <Select.Value placeholder="Select option...">
           {displayValue}
         </Select.Value>
-        <Select.Icon style={{ marginLeft: "4px" }}>
+        <Select.Icon className="ml-2">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
             <path
               d="M3 5l3 3 3-3"
@@ -140,13 +134,13 @@ export function EditableSelectCell({
             }}
           >
             <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-              <path
-                d="M10 3L4.5 8.5L2 6"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-              />
-            </svg>
+                    <path
+                      d="M10 3L4.5 8.5L2 6"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      fill="none"
+                    />
+                  </svg>
           </Select.ScrollUpButton>
 
           <Select.Viewport style={{ padding: "4px" }}>
@@ -195,8 +189,8 @@ export function EditableSelectCell({
                     }}
                   >
                     ✓
-                  </Select.ItemIndicator>
-                </Select.Item>
+                </Select.ItemIndicator>
+              </Select.Item>
               ))
             )}
           </Select.Viewport>

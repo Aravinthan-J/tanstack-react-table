@@ -20,6 +20,17 @@ export function EditableEmailCell({
   const [localErrors, setLocalErrors] = useState<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  useEffect(() => {
+    setEditValue(String(value));
+  }, [value]);
+
+  useEffect(() => {
+    if (isEditing && inputRef.current && autoFocus) {
+      inputRef.current.focus();
+      inputRef.current.select();
+    }
+  }, [isEditing, autoFocus]);
+
   const validateEmail = useCallback((email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email) return ["Email is required"];
@@ -56,7 +67,7 @@ export function EditableEmailCell({
         setLocalErrors([]);
       }
     },
-    [handleCommit, onCancel, value],
+    [handleCommit, onCancel, value]
   );
 
   return isEditing ? (
@@ -92,32 +103,21 @@ export function EditableEmailCell({
               setLocalErrors([]);
             }}
             onKeyDown={handleKeyDown}
-            className="email-input"
-            style={{
-              width: "100%",
-              padding: "6px 8px",
-              border: `1px solid ${
-                localErrors.length > 0
-                  ? "hsl(var(--destructive))"
-                  : "hsl(var(--border))"
-              }`,
-              borderRadius: "4px",
-              fontSize: "14px",
-              outline: "none",
-            }}
+            className={`
+              email-input w-full px-2 py-1 text-sm bg-background border rounded
+              focus:outline-none focus:ring-2 focus:ring-primary/20
+              ${isError ? "border-destructive" : "border-border"}
+              ${readOnly ? "cursor-not-allowed opacity-50" : ""}
+            `}
             autoFocus={autoFocus}
             aria-label={ariaLabel || "Edit email"}
             aria-invalid={localErrors.length > 0}
           />
           {localErrors.length > 0 && (
-            <div
-              style={{
-                marginTop: "4px",
-                fontSize: "12px",
-                color: "hsl(var(--destructive))",
-              }}
-            >
-              {localErrors[0]}
+            <div className="absolute top-full left-0 z-10 mt-1 p-1 text-xs text-destructive bg-background border border-destructive rounded shadow-sm">
+              {localErrors.map((error, index) => (
+                <div key={index}>{error}</div>
+              ))}
             </div>
           )}
         </Popover.Content>
@@ -125,18 +125,12 @@ export function EditableEmailCell({
     </Popover.Root>
   ) : (
     <div
-      className="cell-display email-cell"
       onClick={() => !readOnly && setIsEditing(true)}
-      style={{
-        width: "100%",
-        padding: "4px 8px",
-        cursor: readOnly ? "default" : "pointer",
-        borderRadius: "4px",
-        minHeight: "24px",
-        display: "flex",
-        alignItems: "center",
-        color: isError ? "hsl(var(--destructive))" : "inherit",
-      }}
+      className={`
+        cell-display email-cell w-full px-2 py-1 min-h-8 flex items-center rounded cursor-pointer
+        hover:bg-muted/50 focus:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/20
+        ${readOnly ? "cursor-default hover:bg-transparent" : ""}
+      `}
       tabIndex={readOnly ? -1 : 0}
       onKeyDown={(e) => {
         if ((e.key === "Enter" || e.key === " ") && !readOnly) {

@@ -9,19 +9,8 @@ export function ReadOnlyCell({ value, ariaLabel }: CellProps) {
 
   return (
     <div
-      style={{
-        width: "100%",
-        padding: "4px 8px",
-        minHeight: "20px",
-        display: "flex",
-        alignItems: "center",
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        whiteSpace: "nowrap",
-        color: "hsl(var(--foreground))",
-      }}
-      aria-label={ariaLabel}
-      title={displayValue}
+      className="w-full px-2 py-1 min-h-8 flex items-center overflow-hidden text-ellipsis whitespace-nowrap text-foreground bg-transparent"
+      aria-label={ariaLabel || `Read-only value: ${displayValue}`}
     >
       {displayValue || (
         <span
