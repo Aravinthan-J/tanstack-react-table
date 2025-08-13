@@ -37,7 +37,7 @@ export function TableCell({ cell }: TableCellProps) {
       minHeight: `${rowHeight}px`,
       width: column.getSize(),
     }),
-    [isPinned, isLastLeftPinned, column, rowHeight]
+    [isPinned, isLastLeftPinned, column, rowHeight],
   );
 
   const meta = column.columnDef.meta as ColumnMeta | undefined;

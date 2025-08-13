@@ -58,7 +58,7 @@ export function VirtualizedRow({
       virtualRow.start,
       rowHeight,
       isAccordionExpanded,
-    ]
+    ],
   );
 
   return (
@@ -135,7 +135,7 @@ export function NormalRow({ row }: NormalRowProps) {
       transform: CSS.Transform.toString(transform),
       transition,
     }),
-    [transform, transition]
+    [transform, transition],
   );
 
   return (

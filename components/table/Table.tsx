@@ -94,7 +94,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
       ...DEFAULT_OPTIONS,
       ...options,
     }),
-    [options]
+    [options],
   );
 
   // Map legacy columns to TanStack format
@@ -159,8 +159,8 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
       updateData: (rowIndex: number, columnId: string, value: any) => {
         setTableData((old) =>
           old.map((row, index) =>
-            index === rowIndex ? { ...row, [columnId]: value } : row
-          )
+            index === rowIndex ? { ...row, [columnId]: value } : row,
+          ),
         );
       },
     },
@@ -171,7 +171,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
     table,
     virtual,
     rowHeight,
-    tableContainerRef
+    tableContainerRef,
   );
   // const tableCore = useTableCore(table, onEventUpdate);
   const groupingHook = useGrouping(table, groupBy);
@@ -188,8 +188,8 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
         const rowIndex = row.index;
         setTableData((old) =>
           old.map((row, index) =>
-            index === rowIndex ? { ...row, ...changedValue } : row
-          )
+            index === rowIndex ? { ...row, ...changedValue } : row,
+          ),
         );
       },
 
@@ -281,7 +281,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
 
       updateRow: (rowId: string, data: any) => {
         setTableData((old) =>
-          old.map((row) => (row[rowKey] === rowId ? { ...row, ...data } : row))
+          old.map((row) => (row[rowKey] === rowId ? { ...row, ...data } : row)),
         );
       },
 
@@ -300,8 +300,8 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
         const rowIndex = row.index;
         setTableData((old) =>
           old.map((row, index) =>
-            index === rowIndex ? { ...row, [columnId]: value } : row
-          )
+            index === rowIndex ? { ...row, [columnId]: value } : row,
+          ),
         );
       },
 
@@ -375,7 +375,7 @@ export const Table = forwardRef<TableRef, TableProps>((props, ref) => {
         table.resetSorting();
       },
     }),
-    [table, columnOrder, rowSelection, expanded, onEventUpdate, rowKey]
+    [table, columnOrder, rowSelection, expanded, onEventUpdate, rowKey],
   );
 
   // Scroll handler for infinite loading

@@ -66,7 +66,7 @@ export function EditableNumberCell({
           break;
       }
     },
-    [handleCommit, handleCancel]
+    [handleCommit, handleCancel],
   );
 
   const handleInputChange = useCallback(
@@ -76,7 +76,7 @@ export function EditableNumberCell({
       const numValue = newValue.trim() === "" ? null : Number(newValue);
       onChange(numValue);
     },
-    [onChange]
+    [onChange],
   );
 
   const formatDisplay = (val: any) => {

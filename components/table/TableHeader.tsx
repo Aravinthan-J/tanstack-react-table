@@ -40,13 +40,13 @@ export function TableHeader() {
         });
       }
     },
-    [tableRef]
+    [tableRef],
   );
 
   const sensors = useSensors(
     useSensor(MouseSensor),
     useSensor(TouchSensor),
-    useSensor(KeyboardSensor)
+    useSensor(KeyboardSensor),
   );
 
   return (
@@ -104,7 +104,7 @@ function DraggableTableHeader({ header }: DraggableTableHeaderProps) {
       minWidth: header.column.columnDef.minSize,
       maxWidth: header.column.columnDef.maxSize,
     }),
-    [transform, isPinned, header.column, header.getSize()]
+    [transform, isPinned, header.column, header.getSize()],
   );
 
   const canDrag =

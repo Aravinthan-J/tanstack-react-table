@@ -40,7 +40,7 @@ export function EditableSelectCell({
       onCommit(newValue);
       setIsOpen(false);
     },
-    [onChange, onCommit]
+    [onChange, onCommit],
   );
 
   const selectedOption = options.find(
@@ -134,13 +134,13 @@ export function EditableSelectCell({
             }}
           >
             <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-                    <path
-                      d="M10 3L4.5 8.5L2 6"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      fill="none"
-                    />
-                  </svg>
+              <path
+                d="M10 3L4.5 8.5L2 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+              />
+            </svg>
           </Select.ScrollUpButton>
 
           <Select.Viewport style={{ padding: "4px" }}>
@@ -189,8 +189,8 @@ export function EditableSelectCell({
                     }}
                   >
                     ✓
-                </Select.ItemIndicator>
-              </Select.Item>
+                  </Select.ItemIndicator>
+                </Select.Item>
               ))
             )}
           </Select.Viewport>

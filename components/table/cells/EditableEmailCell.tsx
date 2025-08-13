@@ -67,7 +67,7 @@ export function EditableEmailCell({
         setLocalErrors([]);
       }
     },
-    [handleCommit, onCancel, value]
+    [handleCommit, onCancel, value],
   );
 
   return isEditing ? (

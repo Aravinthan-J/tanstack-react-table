@@ -58,8 +58,8 @@ export function EditableTextCell({
     (e: React.KeyboardEvent) => {
       switch (e.key) {
         case "Enter":
-        e.preventDefault();
-        handleCommit();
+          e.preventDefault();
+          handleCommit();
           break;
         case "Escape":
           e.preventDefault();
@@ -79,14 +79,14 @@ export function EditableTextCell({
     [onChange],
   );
 
-    return (
+  return (
     <Popover.Root open={isEditing} onOpenChange={setIsEditing}>
       <Popover.Trigger asChild>
         <div
-         className={`
+          className={`
           cell-display w-full px-2 py-1 min-h-8 flex items-center rounded cursor-pointer
           hover:bg-muted/50 focus:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/20
-          ${readOnly ? "cursor-default hover:bg-transparent" : ""} ${isError ? "border border-destructive bg-destructive/10":""}
+          ${readOnly ? "cursor-default hover:bg-transparent" : ""} ${isError ? "border border-destructive bg-destructive/10" : ""}
         `}
           onClick={handleEdit}
           onDoubleClick={handleEdit}
@@ -117,24 +117,24 @@ export function EditableTextCell({
             }
           }}
         >
-        <input
-          ref={inputRef}
-          type="text"
-          value={editValue}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
+          <input
+            ref={inputRef}
+            type="text"
+            value={editValue}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
             onBlur={handleCommit}
             className="w-[200px] px-2 py-1.5 border rounded-md bg-background text-foreground text-sm outline-none"
-          aria-label={ariaLabel}
-        />
-        {errors.length > 0 && (
+            aria-label={ariaLabel}
+          />
+          {errors.length > 0 && (
             <div className="mt-1 text-xs text-destructive">
-            {errors.map((error, index) => (
-              <div key={index}>{error}</div>
-            ))}
-          </div>
-        )}
-      </Popover.Content>
+              {errors.map((error, index) => (
+                <div key={index}>{error}</div>
+              ))}
+            </div>
+          )}
+        </Popover.Content>
       </Popover.Portal>
     </Popover.Root>
   );

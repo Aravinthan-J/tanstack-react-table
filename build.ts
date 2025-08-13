@@ -22,12 +22,7 @@ async function getAllTsFiles(dir: string): Promise<string[]> {
 
 async function buildCss() {
   console.log("🎨 Building CSS...");
-  const proc = Bun.spawn([
-    "postcss",
-    "index.css",
-    "-o",
-    "dist/bundle.css",
-  ]);
+  const proc = Bun.spawn(["postcss", "index.css", "-o", "dist/bundle.css"]);
   await proc.exited;
 }
 

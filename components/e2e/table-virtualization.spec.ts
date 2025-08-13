@@ -28,7 +28,7 @@ test.describe("Table Virtualization", () => {
     const tableContainer = page.locator(".table-scroll-container");
     for (let i = 0; i < 10; i++) {
       await tableContainer.evaluate((el) =>
-        el.scrollTo(0, Math.random() * el.scrollHeight)
+        el.scrollTo(0, Math.random() * el.scrollHeight),
       );
       await page.waitForTimeout(100);
     }
