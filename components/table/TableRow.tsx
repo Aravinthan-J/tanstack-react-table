@@ -3,7 +3,6 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { type Row, flexRender } from "@tanstack/react-table";
 import type { VirtualItem, Virtualizer } from "@tanstack/react-virtual";
-import clsx from "clsx";
 
 import { TableCell } from "./TableCell";
 import { useTable } from "./TableProvider";
@@ -59,7 +58,7 @@ export function VirtualizedRow({
       virtualRow.start,
       rowHeight,
       isAccordionExpanded,
-    ],
+    ]
   );
 
   return (
@@ -69,12 +68,13 @@ export function VirtualizedRow({
         rowVirtualizer.measureElement(node);
       }}
       data-index={virtualRow.index}
-      className={clsx(
-        "table-row flex absolute w-full",
-        isDragging && "opacity-80 z-10",
-        row.getIsSelected() && "bg-accent",
-        expandEntireRowByClick && "cursor-pointer"
-      )}
+      className={`
+        table-row flex min-w-full border-b border-border bg-background
+        hover:bg-muted/50 transition-colors duration-150
+        ${isDragging ? "opacity-50 shadow-lg z-50" : ""}
+        ${row.getIsSelected() ? "bg-accent" : ""}
+        ${expandEntireRowByClick ? "cursor-pointer" : ""}
+      `}
       style={rowStyle}
       onClick={handleRowClick}
       {...attributes}
@@ -135,18 +135,19 @@ export function NormalRow({ row }: NormalRowProps) {
       transform: CSS.Transform.toString(transform),
       transition,
     }),
-    [transform, transition],
+    [transform, transition]
   );
 
   return (
     <tr
       ref={setNodeRef}
-      className={clsx(
-        "table-row flex w-full border-b",
-        isDragging && "opacity-80 z-10",
-        row.getIsSelected() && "bg-accent",
-        expandEntireRowByClick && "cursor-pointer"
-      )}
+      className={`
+        table-row flex min-w-full border-b border-border bg-background
+        hover:bg-muted/50 transition-colors duration-150
+        ${isDragging ? "opacity-50 shadow-lg z-50" : ""}
+        ${row.getIsSelected() ? "bg-accent" : ""}
+        ${expandEntireRowByClick ? "cursor-pointer" : ""}
+      `}
       style={rowStyle}
       onClick={handleRowClick}
       {...attributes}
