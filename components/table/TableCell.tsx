@@ -1,7 +1,6 @@
 import { type Cell, flexRender } from "@tanstack/react-table";
 import type React from "react";
 import { useMemo } from "react";
-import clsx from "clsx";
 
 import { useTable } from "./TableProvider";
 import { cellRegistry } from "./cells";
@@ -38,7 +37,7 @@ export function TableCell({ cell }: TableCellProps) {
       minHeight: `${rowHeight}px`,
       width: column.getSize(),
     }),
-    [isPinned, isLastLeftPinned, column, rowHeight],
+    [isPinned, isLastLeftPinned, column, rowHeight]
   );
 
   const meta = column.columnDef.meta as ColumnMeta | undefined;
@@ -49,12 +48,11 @@ export function TableCell({ cell }: TableCellProps) {
   if (isCustomRender) {
     return (
       <td
-        className={clsx(
-          "table-cell custom-render flex items-center p-3 border-r",
-          isPinned && "sticky z-10",
-          isLastLeftPinned && "shadow-inner"
-        )}
-        style={style}
+        className={`
+          table-cell custom-render flex items-center p-3 border-r
+          ${isPinned ? "sticky z-10" : ""}
+          ${isLastLeftPinned ? "shadow-inner" : ""}`}
+        style={style as React.CSSProperties}
       >
         {flexRender(column.columnDef.cell, cell.getContext())}
       </td>
@@ -66,11 +64,11 @@ export function TableCell({ cell }: TableCellProps) {
   if (CustomCellComponent) {
     return (
       <td
-        className={clsx(
-          "table-cell custom-component flex items-center p-3 border-r",
-          isPinned && "sticky z-10",
-          isLastLeftPinned && "shadow-inner"
-        )}
+        className={`
+          table-cell custom-component flex items-center p-3 border-r 
+          ${isPinned ? "sticky z-10" : ""}
+          ${isLastLeftPinned ? "shadow-inner" : ""} 
+        `}
         style={style as React.CSSProperties}
       >
         <CustomCellComponent
@@ -104,11 +102,11 @@ export function TableCell({ cell }: TableCellProps) {
 
   return (
     <td
-      className={clsx(
-        "table-cell built-in group/table_cell flex items-center p-3 border-r group/table_cell",
-        isPinned && "sticky z-10",
-        isLastLeftPinned && "shadow-inner"
-      )}
+      className={`
+        table-cell built-in group/table_cell flex items-center p-3 border-r group/table_cell
+        ${isPinned ? "sticky z-10" : ""}
+        ${isLastLeftPinned ? "shadow-inner" : ""}
+      `}
       style={style as React.CSSProperties}
     >
       <CellComponent
