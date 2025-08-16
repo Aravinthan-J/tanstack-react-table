@@ -9,7 +9,7 @@
     "build": "bun build src/index.tsx --outdir dist",
     "lint": "biome lint ./src",
     "format": "biome format --write ./src",
-    "check": "biome check --apply ./src"
+    "check": "biome check ./src"
   },
   "dependencies": {
     "bun-plugin-tailwind": "^0.0.15",

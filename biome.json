@@ -12,6 +12,16 @@
       "recommended": true
     }
   },
+  "css": {
+    "linter": {
+      "enabled": true,
+      "rules": {
+        "nursery": {
+          "noUnknownAtRules": "off"
+        }
+      }
+    }
+  },
   "javascript": {
     "formatter": {
       "quoteStyle": "double",
