@@ -7,8 +7,9 @@
     "dev": "bun --hot src/index.tsx",
     "start": "NODE_ENV=production bun src/index.tsx",
     "build": "bun build src/index.tsx --outdir dist",
-    "biome:check": "biome check ./src",
-    "biome:write": "biome check --apply ./src"
+    "lint": "biome lint ./src",
+    "format": "biome format --write ./src",
+    "check": "biome check --apply ./src"
   },
   "dependencies": {
     "bun-plugin-tailwind": "^0.0.15",
