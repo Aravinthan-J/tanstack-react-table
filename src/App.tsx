@@ -1,18 +1,13 @@
 
-
-import logo from "./logo.svg";
-import reactLogo from "./react.svg";
+import { Table } from './Table';
 
 export function App() {
   return (
-    <div className="max-w-7xl mx-auto p-8 text-center relative z-10">
-      <h1 className="text-5xl font-bold my-4 leading-tight">Bun + React</h1>
-      <p>
-        Edit{" "}
-        <code className="px-2 py-1 rounded font-mono">
-          src/App.tsx
-        </code>{" "}
-      </p>
+    <div className="max-w-7xl mx-auto p-8 relative z-10 font-sans bg-gray-100">
+      <h1 className="text-5xl font-bold my-4 leading-tight text-red-500 text-center">
+        TanStack Table with Virtualization
+      </h1>
+      <Table />
     </div>
   );
 }
