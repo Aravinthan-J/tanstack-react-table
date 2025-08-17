@@ -1,4 +1,4 @@
-import "./index.css";
+
 
 import logo from "./logo.svg";
 import reactLogo from "./react.svg";
@@ -9,7 +9,7 @@ export function App() {
       <h1 className="text-5xl font-bold my-4 leading-tight">Bun + React</h1>
       <p>
         Edit{" "}
-        <code className="bg-[#1a1a1a] px-2 py-1 rounded font-mono">
+        <code className="px-2 py-1 rounded font-mono">
           src/App.tsx
         </code>{" "}
       </p>

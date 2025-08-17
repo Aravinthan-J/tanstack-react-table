@@ -1,3 +1,5 @@
+/* @tailwind base;
+@tailwind components; */
 @tailwind utilities;
 
 /* Put your custom CSS inside Tailwind's base layer */
