@@ -194,7 +194,99 @@ module.exports = {
         "ai-gradient-loader": "var(--ai-gradient-loader)",
         "ai-gradient-border": "var(--ai-gradient-border)",
       },
+
+      backgroundColor: {
+        "ai-gradient-100": "var(--ai-gradient-100)",
+        "ai-gradient-200": "var(--ai-gradient-200)",
+        "ai-gradient-300": "var(--ai-gradient-300)",
+        "ai-gradient-400": "var(--ai-gradient-400)",
+        "ai-gradient-500": "var(--ai-gradient-500)",
+        "ai-gradient-600": "var(--ai-gradient-600)",
+        "ai-gradient-700": "var(--ai-gradient-700)",
+        "ai-gradient-800": "var(--ai-gradient-800)",
+      },
+
+      fontFamily: {
+        sans: ["var(--font-sans)", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
+      },
+
+      fontSize: {
+        xs: ["0.75rem", { lineHeight: "1rem" }],
+        sm: ["0.875rem", { lineHeight: "1.25rem" }],
+        base: ["1rem", { lineHeight: "1.5rem" }],
+        lg: ["1.125rem", { lineHeight: "1.75rem" }],
+        xl: ["1.25rem", { lineHeight: "1.75rem" }],
+        "2xl": ["1.5rem", { lineHeight: "2rem" }],
+        "3xl": ["1.875rem", { lineHeight: "2.25rem" }],
+        "4xl": ["2.25rem", { lineHeight: "2.5rem" }],
+        "5xl": ["3rem", { lineHeight: "1" }],
+      },
+
+      borderRadius: {
+        sm: "0.125rem",
+        DEFAULT: "0.25rem",
+        md: "0.375rem",
+        lg: "0.5rem",
+        xl: "0.75rem",
+        "2xl": "1rem",
+        full: "9999px",
+      },
+
+      spacing: {
+        1: "0.25rem",
+        2: "0.5rem",
+        3: "0.75rem",
+        4: "1rem",
+        5: "1.25rem",
+        6: "1.5rem",
+        8: "2rem",
+        10: "2.5rem",
+        12: "3rem",
+      },
     },
+  },
+  corePlugins: {
+    container: false, // Disable Tailwind's container utility
+    aspectRatio: false, // Disable aspect ratio utility
+    float: false, // Disable float utilities
+    clear: false, // Disable clear utilities
+    isolation: false, // Disable isolation utilities
+    overscrollBehavior: false, // Disable overscroll behavior utilities
+    scrollMargin: false, // Disable scroll margin utilities
+    scrollPadding: false, // Disable scroll padding utilities
+    textDecorationColor: false, // Disable text decoration color utilities
+    textDecorationStyle: false, // Disable text decoration style utilities
+    textDecorationThickness: false, // Disable text decoration thickness utilities
+    transformOrigin: false, // Disable transform origin utilities
+    transitionProperty: false, // Disable transition property utilities
+    transitionTimingFunction: false, // Disable transition timing function utilities
+    willChange: false, // Disable will change utilities
+  },
+  safelist: {
+    standard: [
+      "bg-success-500",
+      "text-white",
+      "shadow-md",
+      "color-p",
+      "bg-ai-gradient-500",
+      "text-white",
+      "p-8",
+      "rounded",
+      "font-mono",
+      "bg-clip-border",
+    ],
+    deep: [
+      /^bg-(primary|secondary|success|error|warning|info|gray)-\d{3,4}$/,
+      /^text-(primary|secondary|success|error|warning|info|gray)-\d{3,4}$/,
+      /^shadow-(sm|md|lg|xl)$/,
+    ],
+  },
+  darkMode: "class", // Enable dark mode support
+  future: {
+    hoverOnlyWhenSupported: true, // Enable hover only when supported
+    removeDeprecatedGapUtilities: true, // Remove deprecated gap utilities
+    purgeLayersByDefault: true, // Purge layers by default
   },
   plugins: [],
 };
