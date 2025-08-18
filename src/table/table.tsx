@@ -211,10 +211,6 @@ export interface TableProps {
    */
   isVirtual: boolean;
 
-  /**
-   * Height of the table
-   */
-  tableHeight: number;
 
   /**
    * Height of each row
@@ -376,13 +372,25 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
   const [columnPinning, setPinnedColumn] = useState({});
   const [rowSelection, setRowSelection] = useState({});
   const [expanded, setExpanded] = useState<ExpandedState>({});
-
   const [tableHeight, setTableHeight] = useState<number>();
 
-  useEffect(function updateTableHeight() {
-    if (tableContainerRef.current) {
-      setTableHeight(tableContainerRef.current.clientHeight);
-    }
+  useEffect(() => {
+    const containerElement = tableContainerRef.current;
+    if (!containerElement) return;
+
+    const parentElement = containerElement.parentElement;
+    if (!parentElement) return;
+
+    const resizeObserver = new ResizeObserver(() => {
+      setTableHeight(parentElement.clientHeight);
+    });
+
+    resizeObserver.observe(parentElement);
+    setTableHeight(parentElement.clientHeight);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
   }, []);
 
   useEffect(
@@ -525,13 +533,13 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
       columnOrder,
       columnPinning,
       rowSelection,
-      expanded
+      expanded,
     },
     initialState: {
       columnOrder,
       columnPinning,
       rowSelection: selectedKeys,
-      expanded: expandedKeys
+      expanded: expandedKeys,
     },
     enableRowSelection: showRowSelection,
     enableExpanding: isExpandable,
@@ -553,8 +561,8 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
     getSortedRowModel: getSortedRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
     meta: {
-      enableRowOrdering: tableOptions?.enableRowOrdering
-    }
+      enableRowOrdering: tableOptions?.enableRowOrdering,
+    },
   });
 
   useImperativeHandle(tableRef, () => ({
@@ -683,7 +691,10 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
           <table className="grid border-collapse font-sans table-fixed tableContainer">
             <TableHeader />
             {data.length === 0 ? (
-              <EmptyState emptyState={emptyState} />
+              <EmptyState
+                emptyState={emptyState}
+                colSpan={table.getVisibleLeafColumns().length}
+              />
             ) : (
               <TableBody
                 rowVirtualizer={rowVirtualizer}
@@ -699,12 +710,19 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
 
 interface EmptyStateProps {
   emptyState?: ReactNode;
+  colSpan: number;
 }
 
-export function EmptyState({ emptyState }: EmptyStateProps) {
+export function EmptyState({ emptyState, colSpan }: EmptyStateProps) {
   return (
-    emptyState || (
-      <div className="text-center p-28 flex w-fit">No Data Available</div>
-    )
+    <tbody>
+      <tr>
+        <td colSpan={colSpan}>
+          {emptyState || (
+            <div className="flex w-fit text-center p-28">No Data Available</div>
+          )}
+        </td>
+      </tr>
+    </tbody>
   );
 }
