@@ -1,4 +1,5 @@
-import { Table } from "./Table";
+import { Table } from "./table/index.ts";
+import { dummyColumn, dummyData } from "./table/mock";
 
 export function App() {
   return (
@@ -6,7 +7,14 @@ export function App() {
       <h1 className="text-5xl font-bold my-4 leading-tight text-red-500 text-center">
         TanStack Table with Virtualization
       </h1>
-      <Table />
+      <Table
+        datasource={dummyData}
+        columns={dummyColumn}
+        rowKey={"id"}
+        onEventUpdate={(args) => {
+          console.log("Updated Data", args);
+        }}
+      />
     </div>
   );
 }
