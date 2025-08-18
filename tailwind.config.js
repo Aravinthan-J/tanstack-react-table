@@ -118,6 +118,10 @@ module.exports = {
           800: "var(--color-secondary-ten-800)",
         },
 
+        red: {
+          600: "#ef4444",
+        },
+
         /* Semantic colors */
         success: {
           100: "var(--color-success-100)",

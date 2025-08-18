@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import {
   useReactTable,
   getCoreRowModel,
   getSortedRowModel,
   flexRender,
-} from '@tanstack/react-table';
-import { useVirtualizer } from '@tanstack/react-virtual';
-import type { ColumnDef, SortingState } from '@tanstack/react-table';
+} from "@tanstack/react-table";
+import { useVirtualizer } from "@tanstack/react-virtual";
+import type { ColumnDef, SortingState } from "@tanstack/react-table";
 
 type Person = {
   firstName: string;
@@ -18,48 +18,48 @@ type Person = {
 };
 
 const makeData = (count: number): Person[] => {
-    return Array.from({ length: count }, (_, i) => ({
-        firstName: `FirstName${i}`,
-        lastName: `LastName${i}`,
-        age: Math.floor(Math.random() * 100),
-        visits: Math.floor(Math.random() * 1000),
-        status: Math.random() > 0.5 ? 'In Relationship' : 'Single',
-        progress: Math.floor(Math.random() * 100),
-    }));
-}
+  return Array.from({ length: count }, (_, i) => ({
+    firstName: `FirstName${i}`,
+    lastName: `LastName${i}`,
+    age: Math.floor(Math.random() * 100),
+    visits: Math.floor(Math.random() * 1000),
+    status: Math.random() > 0.5 ? "In Relationship" : "Single",
+    progress: Math.floor(Math.random() * 100),
+  }));
+};
 
 const defaultData = makeData(10000);
 
 const columns: ColumnDef<Person>[] = [
   {
-    accessorKey: 'firstName',
-    header: 'First Name',
-    cell: info => info.getValue(),
+    accessorKey: "firstName",
+    header: "First Name",
+    cell: (info) => info.getValue(),
   },
   {
-    accessorKey: 'lastName',
-    header: 'Last Name',
-    cell: info => info.getValue(),
+    accessorKey: "lastName",
+    header: "Last Name",
+    cell: (info) => info.getValue(),
   },
   {
-    accessorKey: 'age',
-    header: 'Age',
-    cell: info => info.getValue(),
+    accessorKey: "age",
+    header: "Age",
+    cell: (info) => info.getValue(),
   },
   {
-    accessorKey: 'visits',
-    header: 'Visits',
-    cell: info => info.getValue(),
+    accessorKey: "visits",
+    header: "Visits",
+    cell: (info) => info.getValue(),
   },
   {
-    accessorKey: 'status',
-    header: 'Status',
-    cell: info => info.getValue(),
+    accessorKey: "status",
+    header: "Status",
+    cell: (info) => info.getValue(),
   },
   {
-    accessorKey: 'progress',
-    header: 'Profile Progress',
-    cell: info => info.getValue(),
+    accessorKey: "progress",
+    header: "Profile Progress",
+    cell: (info) => info.getValue(),
   },
 ];
 
@@ -101,26 +101,26 @@ export function Table() {
       : 0;
 
   return (
-    <div className="p-2">
+    <div className="p-2 font-sans text-red-600">
       <div className="h-2" />
-      <div ref={tableContainerRef} className="h-[500px] overflow-auto">
-        <table className="w-full">
-          <thead className="bg-gray-100 sticky top-0">
-            {getHeaderGroups().map(headerGroup => (
+      <div ref={tableContainerRef} className="h-[500px] overflow-auto border border-gray-200 rounded-lg">
+        <table className="w-full bg-white">
+          <thead className="bg-gray-50 sticky top-0">
+            {getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
-                {headerGroup.headers.map(header => (
+                {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
                     colSpan={header.colSpan}
-                    className="p-2 text-left"
+                    className="p-4 text-left font-medium text-gray-500 uppercase tracking-wider"
                     style={{ width: header.getSize() }}
                   >
                     {header.isPlaceholder ? null : (
                       <div
                         {...{
                           className: header.column.getCanSort()
-                            ? 'cursor-pointer select-none'
-                            : '',
+                            ? "cursor-pointer select-none"
+                            : "",
                           onClick: header.column.getToggleSortingHandler(),
                         }}
                       >
@@ -129,8 +129,8 @@ export function Table() {
                           header.getContext()
                         )}
                         {{
-                          asc: ' 🔼',
-                          desc: ' 🔽',
+                          asc: " 🔼",
+                          desc: " 🔽",
                         }[header.column.getIsSorted() as string] ?? null}
                       </div>
                     )}
@@ -139,25 +139,31 @@ export function Table() {
               </tr>
             ))}
           </thead>
-          <tbody>
+          <tbody className="bg-white divide-y divide-gray-200">
             {paddingTop > 0 && (
               <tr>
                 <td style={{ height: `${paddingTop}px` }} />
               </tr>
             )}
-            {virtualRows.map(virtualRow => {
+            {virtualRows.map((virtualRow) => {
               const row = rows[virtualRow.index];
               return (
-                <tr key={row.id} className="hover:bg-gray-50" style={{ height: `${virtualRow.size}px` }}>
-                  {row.getVisibleCells().map(cell => (
-                    <td key={cell.id} className="p-2">
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </td>
-                  ))}
-                </tr>
+                row && (
+                  <tr
+                    key={row.id}
+                    className="hover:bg-gray-100"
+                    style={{ height: `${virtualRow.size}px` }}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <td key={cell.id} className="p-4 whitespace-nowrap">
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                )
               );
             })}
             {paddingBottom > 0 && (
