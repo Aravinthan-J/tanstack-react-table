@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "bun --hot src/index.tsx",
     "start": "NODE_ENV=production bun src/index.tsx",
-    "build:css": "./node_modules/.bin/tailwindcss -i src/index.css -o dist/index.css",
+    "build:css": "bunx tailwindcss -i src/index.css -o dist/index.css",
     "build": "bun run build:css && bun build src/frontend.tsx --outdir dist && cp src/index.html dist/index.html",
     "lint": "biome lint ./src",
     "format": "biome format --write ./src",
