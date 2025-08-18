@@ -20,7 +20,7 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import { restrictToHorizontalAxis } from "@dnd-kit/modifiers";
+import { restrictToHorizontalAxis, restrictToParentElement } from "@dnd-kit/modifiers";
 import {
   horizontalListSortingStrategy,
   SortableContext,
@@ -85,7 +85,7 @@ export function TableHeader() {
     <thead className="grid sticky top-0 z-[1] tableHeadContainer">
       <DndContext
         collisionDetection={closestCenter}
-        modifiers={[restrictToHorizontalAxis]}
+        modifiers={[restrictToHorizontalAxis, restrictToParentElement]}
         onDragEnd={handleDragEnd}
         sensors={sensors}
       >
@@ -139,7 +139,7 @@ function DraggableTableHeader({
     position: isPinned ? "sticky" : "relative",
     transform: CSS.Translate.toString(transform),
     transition: "width transform 0.2s ease-in-out",
-    zIndex: isDragging || isPinned ? 11 : undefined,
+    zIndex: isDragging || isPinned ? 1 : 0,
   };
 
   // const onColumnPinChange = useCallback(() => {
