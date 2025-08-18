@@ -101,7 +101,7 @@ export function Table() {
       : 0;
 
   return (
-    <div className="p-2 font-sans text-red-600">
+    <div className="p-2 font-sans text-gray-700">
       <div className="h-2" />
       <div ref={tableContainerRef} className="h-[500px] overflow-auto border border-gray-200 rounded-lg">
         <table className="w-full bg-white">
