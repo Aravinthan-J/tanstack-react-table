@@ -27,9 +27,10 @@ yarn add react-table-component
 bun add react-table-component
 ```
 
-> **Peer dependencies:**  
-> - `react` ^19  
-> - `react-dom` ^19  
+> **Peer dependencies:**
+>
+> - `react` ^19
+> - `react-dom` ^19
 > - `@tanstack/react-table` ^8
 
 ---
@@ -164,19 +165,19 @@ Use your own or built-in Tailwind themes, Radix states, or external theme librar
 
 ## 📑 API Reference
 
-| Prop                | Type                  | Description                       |
-|---------------------|----------------------|-----------------------------------|
-| `dataSource`        | `Array`         | Table data                        |
-| `columns`           | `ColumnProps[]`      | Column definitions                |
-| `rowKey`            | `string`             | Unique ID key for rows            |
-| `showSerialNumber`  | `boolean`            | Show row numbers                  |
-| `showRowSelection`  | `boolean`            | Show checkboxes for selection     |
-| `isVirtual`         | `boolean`            | Enable virtualized rendering      |
-| `rowHeight`         | `number`             | Row height (px)                   |
-| `expandable`        | `object`             | Tree/row expansion config         |
-| `options`           | `object`             | Feature toggles (sorting, etc)    |
-| `onEventUpdate`     | `function`           | Event callback                    |
-| `onEndReached`      | `function`           | Infinite scroll callback          |
+| Prop               | Type            | Description                    |
+| ------------------ | --------------- | ------------------------------ |
+| `dataSource`       | `Array`         | Table data                     |
+| `columns`          | `ColumnProps[]` | Column definitions             |
+| `rowKey`           | `string`        | Unique ID key for rows         |
+| `showSerialNumber` | `boolean`       | Show row numbers               |
+| `showRowSelection` | `boolean`       | Show checkboxes for selection  |
+| `isVirtual`        | `boolean`       | Enable virtualized rendering   |
+| `rowHeight`        | `number`        | Row height (px)                |
+| `expandable`       | `object`        | Tree/row expansion config      |
+| `options`          | `object`        | Feature toggles (sorting, etc) |
+| `onEventUpdate`    | `function`      | Event callback                 |
+| `onEndReached`     | `function`      | Infinite scroll callback       |
 
 ## Exposed Table Ref Methods
 
