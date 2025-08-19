@@ -15,7 +15,7 @@ This is a simple, fast, and highly customizable table component for React, built
 To get started, clone the repository and install the dependencies:
 
 ```bash
-git clone https://github.com/aravinthan-m/react_table.git
+git clone https://github.com/aravinthan-j/react_table.git
 cd react-table
 bun install
 ```
