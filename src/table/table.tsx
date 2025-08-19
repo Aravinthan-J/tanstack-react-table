@@ -386,7 +386,7 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
     });
 
     resizeObserver.observe(parentElement);
-    setTableHeight(parentElement.clientHeight);
+    // setTableHeight(parentElement.clientHeight);
 
     return () => {
       resizeObserver.disconnect();
