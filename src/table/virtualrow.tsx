@@ -161,8 +161,8 @@ export function NormalRowRender({ row }: { row: Row<object> }) {
         className={`tableRow flex relative w-full cursor-pointer ${
           isLastSubRow ? "border-b-1 border-gray-200" : ""
         } flex-nowrap ${
-          row.getIsSelected() ? "bg-primary-25" : "bg-white"
-        } hover:bg-gray-500 group/tablerow`}
+          row.getIsSelected() ? "bg-primary-100" : "bg-white"
+        } hover:bg-gray-100 group/tablerow`}
         onClick={handleRowClick}
         onKeyDown={handleRowClick}
       >
