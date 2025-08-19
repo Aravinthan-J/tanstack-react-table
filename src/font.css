@@ -1,6 +1,6 @@
 /* stylelint-disable unit-disallowed-list */
 
-:root {
+@theme {
   --font-family: "Inter", "Noto Sans Arabic", sans-serif, serif;
 
   /* font weights */

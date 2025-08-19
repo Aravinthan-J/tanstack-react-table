@@ -6,60 +6,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    /* Common colors */
-    --color-white: #ffffff;
-    --color-black: #000000;
-    --color-transparent: transparent;
-
-    /* Alpha colors */
-    --color-white-alpha-75: rgba(255, 255, 255, 0.75);
-    --color-white-alpha-50: rgba(255, 255, 255, 0.5);
-    --color-white-alpha-25: rgba(255, 255, 255, 0.25);
-    --color-white-alpha-20: rgba(255, 255, 255, 0.2);
-    --color-white-alpha-10: rgba(255, 255, 255, 0.1);
-
-    /* Backgrounds */
-    --bg-white: #ffffff;
-    --bg-overlay-white: #ffffff;
-    --bg-gray: #f5f7fa;
-    --bg-black: #000000;
-    --overlay-gray: rgba(21, 22, 23, 0.8);
-    --overlay-gray-50: rgba(21, 22, 23, 0.5);
-    --overlay-gray-75: rgba(255, 255, 255, 0.75);
-
-    /* Gray alpha variations */
-    --gray-alpha-25: rgba(175, 183, 199, 0.25);
-    --gray-alpha-50: rgba(175, 183, 199, 0.5);
-    --gray-alpha-75: rgba(175, 183, 199, 0.75);
-
-    /* Filters */
-    --green-filter-500: invert(49%) sepia(81%) saturate(351%) hue-rotate(70deg)
-      brightness(93%) contrast(87%);
-    --magenta-filter-500: invert(46%) sepia(30%) saturate(5520%)
-      hue-rotate(293deg) brightness(86%) contrast(92%);
-    --yellow-filter-500: invert(89%) sepia(31%) saturate(4871%)
-      hue-rotate(351deg) brightness(93%) contrast(101%);
-    --orange-filter-500: invert(74%) sepia(49%) saturate(5485%)
-      hue-rotate(346deg) brightness(98%) contrast(96%);
-    --red-filter-500: invert(49%) sepia(48%) saturate(7449%) hue-rotate(339deg)
-      brightness(92%) contrast(91%);
-    --purple-filter-500: invert(46%) sepia(39%) saturate(1511%)
-      hue-rotate(210deg) brightness(90%) contrast(89%);
-    --teal-filter-500: invert(65%) sepia(91%) saturate(2988%) hue-rotate(141deg)
-      brightness(97%) contrast(96%);
-    --skyblue-filter-500: invert(59%) sepia(70%) saturate(3495%)
-      hue-rotate(163deg) brightness(97%) contrast(98%);
-    --bittersweet-filter-500: invert(52%) sepia(12%) saturate(7490%)
-      hue-rotate(324deg) brightness(105%) contrast(104%);
-    --orangebrown-filter-500: invert(41%) sepia(95%) saturate(2674%)
-      hue-rotate(15deg) brightness(95%) contrast(98%);
-    --icon-dark-filter: invert(39%) sepia(7%) saturate(569%) hue-rotate(185deg)
-      brightness(97%) contrast(88%);
-    --gray-filter-500: invert(56%) sepia(31%) saturate(250%) hue-rotate(175deg)
-      brightness(95%) contrast(96%);
-  }
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
 }
 
 .ellipsis {
