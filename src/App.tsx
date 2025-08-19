@@ -3,10 +3,7 @@ import { dummyColumn, dummyData } from "./table/mock";
 
 export function App() {
   return (
-    <>
-      <h1 className="text-5xl font-bold my-4 leading-tight text-red-600 text-center">
-        TanStack Table with Virtualization
-      </h1>
+    <div className="flex flex-col h-800">
       <Table
         datasource={dummyData}
         columns={dummyColumn}
@@ -15,7 +12,7 @@ export function App() {
           console.log("Updated Data", args);
         }}
       />
-    </>
+    </div>
   );
 }
 
