@@ -384,23 +384,10 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
   const [expanded, setExpanded] = useState<ExpandedState>({});
   const [tableHeight, setTableHeight] = useState<number>();
 
-  useEffect(() => {
-    const containerElement = tableContainerRef.current;
-    if (!containerElement) return;
-
-    const parentElement = containerElement.parentElement;
-    if (!parentElement) return;
-
-    const resizeObserver = new ResizeObserver(() => {
-    setTableHeight(parentElement.clientHeight);
-    });
-
-    resizeObserver.observe(parentElement);
-    // setTableHeight(parentElement.clientHeight);
-
-    return () => {
-      resizeObserver.disconnect();
-    };
+  useEffect(function updateTableHeight() {
+    if (tableContainerRef.current) {
+      setTableHeight(tableContainerRef.current.clientHeight);
+    }
   }, []);
 
   useEffect(
@@ -695,7 +682,7 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
         }}
       >
         <div
-          className="border border-gray-200 rounded-12 overflow-auto relative"
+          className="border border-gray-200 rounded-12 overflow-auto relative w-fit"
           ref={tableContainerRef}
           onScroll={onScroll}
           style={{ maxHeight: `${tableHeight}px` }}
