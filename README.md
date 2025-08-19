@@ -1,4 +1,4 @@
-# react-table-component
+# tanstack-react-table
 
 A production-ready, highly customizable React table component built with [TanStack Table](https://tanstack.com/table), [Radix UI](https://www.radix-ui.com/), DnD Kit, and TypeScript. Feature-rich, accessible, performant, and designed for real business needs.
 
@@ -20,11 +20,11 @@ A production-ready, highly customizable React table component built with [TanSta
 ## 📦 Installation
 
 ```
-npm install react-table-component
+npm install tanstack-react-table
 # or
-yarn add react-table-component
+yarn add tanstack-react-table
 # or
-bun add react-table-component
+bun add tanstack-react-table
 ```
 
 > **Peer dependencies:**
@@ -39,8 +39,8 @@ bun add react-table-component
 
 ```
 import React from "react";
-import { TableComponent } from "react-table-component";
-import type { ColumnProps } from "react-table-component";
+import { TableComponent } from "tanstack-react-table";
+import type { ColumnProps } from "tanstack-react-table";
 
 const columns: ColumnProps[] = [
   {
