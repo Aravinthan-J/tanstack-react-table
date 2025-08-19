@@ -1,8 +1,14 @@
 {
-  "name": "bun-react-template",
+  "name": "react-table-component",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "*.md"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,6 +16,26 @@
     "lint": "biome lint ./src",
     "format": "biome format --write ./src",
     "check": "biome check ./src"
+  },
+  "keywords": [
+    "react",
+    "table",
+    "data table",
+    "tanstack",
+    "radix-ui",
+    "tailwindcss",
+    "component"
+  ],
+  "author": "Aravinthan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aravinthan-J/react_table.git"
+  },
+  "peerDependencies": {
+    "react": "^19",
+    "react-dom": "^19",
+    "@tanstack/react-table": "^8.17.3"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.2.0",
@@ -24,11 +50,8 @@
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-switch": "^1.0.3",
     "@tailwindcss/vite": "^4.1.12",
-    "@tanstack/react-table": "^8.17.3",
     "@tanstack/react-virtual": "^3.2.0",
     "date-fns": "4.1.0",
-    "react": "^19",
-    "react-dom": "^19",
     "stylelint": "^16.23.1",
     "stylelint-config-standard": "^39.0.0",
     "tailwind-variants": "0.2.1",
