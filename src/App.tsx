@@ -8,6 +8,13 @@ export function App() {
         datasource={dummyData}
         columns={dummyColumn}
         rowKey={"id"}
+        selectedItems={[]}
+        showSerialNumber={true}
+        showRowSelection={true}
+        emptyState={<div>No data</div>}
+        onEndReached={() => {}}
+        isVirtual={false}
+        rowHeight={60}
         onEventUpdate={(args) => {
           console.log("Updated Data", args);
         }}
