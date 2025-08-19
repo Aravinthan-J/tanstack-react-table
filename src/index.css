@@ -1,6 +1,4 @@
-/* @tailwind base;
-@tailwind components; */
-@tailwind utilities;
+@import "tailwindcss";
 
 /* Put your custom CSS inside Tailwind's base layer */
 @layer base {
@@ -183,7 +181,7 @@
     --gray-900: #292b2f;
     --gray-999: #151617;
     --gray-300: #d8dce5;
-    
+
     --gray-alpha-25: rgba(175, 183, 199, 0.25);
     --gray-alpha-50: rgba(175, 183, 199, 0.5);
     --gray-alpha-75: rgba(175, 183, 199, 0.75);
