@@ -1,0 +1,700 @@
+export const dummyColumn = [
+  {
+    Id: "id",
+    Title: "Id",
+    Fixed: "left",
+    enablePinning: false,
+    enableSorting: true,
+    enableResizing: false,
+    enableOrdering: false,
+    Width: 150,
+    MinWidth: 120,
+    MaxWidth: 200
+  },
+  {
+    Id: "firstName",
+    Title: "First Name",
+    enableSorting: true,
+    enableResizing: true,
+    Width: 200,
+    MinWidth: 200,
+    MaxWidth: 600
+  },
+  {
+    Id: "lastName",
+    Title: "Last Name",
+    Type: "text",
+    enableSorting: true,
+    enableResizing: true,
+    Width: 200,
+    MinWidth: 200,
+    MaxWidth: 600
+  },
+  {
+    Id: "age",
+    Title: "Age",
+    Type: "number",
+    enableSorting: true,
+    enableResizing: true,
+    Width: 150,
+    MinWidth: 120,
+    MaxWidth: 200
+  },
+  {
+    Id: "visits",
+    Title: "Visits",
+    Type: "number",
+    enableSorting: true,
+    enableResizing: true,
+    Width: 150,
+    MinWidth: 75,
+    MaxWidth: 300
+  },
+  {
+    Id: "status",
+    Title: "Status",
+    Type: "text",
+    enableSorting: true,
+    enableResizing: true,
+    Width: 200,
+    MinWidth: 200,
+    MaxWidth: 600
+  },
+  {
+    Id: "progress",
+    Title: "Profile",
+    Type: "number",
+    enableSorting: true,
+    enableResizing: true,
+    Width: 200,
+    MinWidth: 200,
+    MaxWidth: 200
+  },
+  {
+    Id: "createdAt",
+    Title: "Created At",
+    Type: "text",
+    enableSorting: true,
+    enableResizing: true,
+    Width: 200,
+    MinWidth: 200,
+    MaxWidth: 600
+  }
+];
+
+export const dummyData = [
+  {
+    id: "Id-1",
+    firstName: "Sienna",
+    lastName: "Stanton",
+    age: 21,
+    visits: 652,
+    progress: 31,
+    createdAt: "2024-03-31T23:18:38.140Z",
+    status: "complicated",
+    subRows: [
+      {
+        id: "Id-1-1",
+        firstName: "Aravinth",
+        lastName: "Jai",
+        age: 24,
+        visits: 100,
+        progress: 18,
+        createdAt: "2000-10-05T15:18:21.24Z",
+        status: "single"
+      }
+    ]
+  },
+  {
+    id: "Id-2",
+    firstName: "Amparo",
+    lastName: "Jakubowski",
+    age: 30,
+    visits: 193,
+    progress: 26,
+    createdAt: "2025-02-12T16:21:39.274Z",
+    status: "relationship",
+    subRows: [
+      {
+        id: "Id-2-1",
+        firstName: "Leland",
+        lastName: "Smith",
+        age: 26,
+        visits: 742,
+        progress: 44,
+        createdAt: "2025-08-25T00:18:18.057Z",
+        status: "single"
+      },
+      {
+        id: "Id-2-2",
+        firstName: "Herbert",
+        lastName: "Botsford",
+        age: 1,
+        visits: 948,
+        progress: 40,
+        createdAt: "2025-03-17T21:33:12.872Z",
+        status: "complicated"
+      }
+    ]
+  },
+  {
+    id: "Id-3",
+    firstName: "Rowland",
+    lastName: "Predovic",
+    age: 37,
+    visits: 658,
+    progress: 45,
+    createdAt: "2025-04-06T04:25:23.819Z",
+    status: "complicated"
+  },
+  {
+    id: "Id-4",
+    firstName: "Luna",
+    lastName: "Weissnat",
+    age: 20,
+    visits: 20,
+    progress: 96,
+    createdAt: "2024-12-19T09:40:30.292Z",
+    status: "relationship"
+  },
+  {
+    id: "Id-5",
+    firstName: "Kayleigh",
+    lastName: "Botsford",
+    age: 31,
+    visits: 633,
+    progress: 56,
+    createdAt: "2025-05-18T11:07:54.566Z",
+    status: "single",
+    subRows: [
+      {
+        id: "Id-5-1",
+        firstName: "Leland",
+        lastName: "Smith",
+        age: 26,
+        visits: 742,
+        progress: 44,
+        createdAt: "2025-08-25T00:18:18.057Z",
+        status: "single"
+      },
+      {
+        id: "Id-5-2",
+        firstName: "Herbert",
+        lastName: "Botsford",
+        age: 1,
+        visits: 948,
+        progress: 40,
+        createdAt: "2025-03-17T21:33:12.872Z",
+        status: "complicated"
+      }
+    ]
+  },
+  {
+    id: "Id-6",
+    firstName: "Rosalinda",
+    lastName: "Trantow",
+    age: 30,
+    visits: 395,
+    progress: 37,
+    createdAt: "2025-06-26T15:11:59.880Z",
+    status: "complicated"
+  },
+  {
+    id: "Id-7",
+    firstName: "Theo",
+    lastName: "Prohaska",
+    age: 11,
+    visits: 218,
+    progress: 97,
+    createdAt: "2025-09-14T03:14:47.407Z",
+    status: "single",
+    subRows: [
+      {
+        id: "Id-7-1",
+        firstName: "Leland",
+        lastName: "Smith",
+        age: 26,
+        visits: 742,
+        progress: 44,
+        createdAt: "2025-08-25T00:18:18.057Z",
+        status: "single"
+      },
+      {
+        id: "Id-7-2",
+        firstName: "Herbert",
+        lastName: "Botsford",
+        age: 1,
+        visits: 948,
+        progress: 40,
+        createdAt: "2025-03-17T21:33:12.872Z",
+        status: "complicated"
+      }
+    ]
+  },
+  {
+    id: "Id-8",
+    firstName: "Gilbert",
+    lastName: "Mann",
+    age: 23,
+    visits: 298,
+    progress: 48,
+    createdAt: "2024-01-09T15:56:13.970Z",
+    status: "relationship"
+  },
+  {
+    id: "Id-9",
+    firstName: "Quinten",
+    lastName: "Schmidt",
+    age: 33,
+    visits: 664,
+    progress: 38,
+    createdAt: "2024-07-26T23:45:55.122Z",
+    status: "single"
+  },
+  {
+    id: "Id-10",
+    firstName: "Jamal",
+    lastName: "Larkin",
+    age: 18,
+    visits: 5,
+    progress: 39,
+    createdAt: "2024-05-07T02:58:06.730Z",
+    status: "relationship",
+    subRows: [
+      {
+        id: "Id-10-1",
+        firstName: "Aravinth",
+        lastName: "Jai",
+        age: 24,
+        visits: 100,
+        progress: 18,
+        createdAt: "2000-10-05T15:18:21.24Z",
+        status: "single"
+      }
+    ]
+  },
+  {
+    id: "Id-11",
+    firstName: "Beth",
+    lastName: "Kulas",
+    age: 37,
+    visits: 243,
+    progress: 23,
+    createdAt: "2024-09-08T02:05:00.319Z",
+    status: "single"
+  },
+  {
+    id: "Id-12",
+    firstName: "Liliane",
+    lastName: "Cormier",
+    age: 38,
+    visits: 819,
+    progress: 81,
+    createdAt: "2025-11-18T21:10:11.452Z",
+    status: "relationship",
+    subRows: [
+      {
+        id: "Id-12-1",
+        firstName: "Aravinth",
+        lastName: "Jai",
+        age: 24,
+        visits: 100,
+        progress: 18,
+        createdAt: "2000-10-05T15:18:21.24Z",
+        status: "single"
+      }
+    ]
+  },
+  {
+    id: "Id-13",
+    firstName: "Nickolas",
+    lastName: "Marquardt",
+    age: 29,
+    visits: 775,
+    progress: 66,
+    createdAt: "2024-07-11T19:51:18.514Z",
+    status: "complicated"
+  },
+  {
+    id: "Id-14",
+    firstName: "Bud",
+    lastName: "Renner",
+    age: 36,
+    visits: 436,
+    progress: 49,
+    createdAt: "2024-01-20T00:54:28.130Z",
+    status: "single"
+  },
+  {
+    id: "Id-15",
+    firstName: "Bradford",
+    lastName: "Gottlieb",
+    age: 5,
+    visits: 983,
+    progress: 72,
+    createdAt: "2024-05-29T23:07:25.861Z",
+    status: "complicated"
+  },
+  {
+    id: "Id-16",
+    firstName: "Mohammad",
+    lastName: "Lynch",
+    age: 20,
+    visits: 284,
+    progress: 80,
+    createdAt: "2024-05-07T15:31:41.930Z",
+    status: "single"
+  },
+  {
+    id: "Id-17",
+    firstName: "Rachelle",
+    lastName: "Bins",
+    age: 20,
+    visits: 32,
+    progress: 32,
+    createdAt: "2024-11-30T06:11:46.345Z",
+    status: "single"
+  },
+  {
+    id: "Id-18",
+    firstName: "Tillman",
+    lastName: "Reichert",
+    age: 21,
+    visits: 581,
+    progress: 84,
+    createdAt: "2025-07-20T22:49:32.118Z",
+    status: "single"
+  },
+  {
+    id: "Id-19",
+    firstName: "Lorenzo",
+    lastName: "Shanahan",
+    age: 25,
+    visits: 919,
+    progress: 61,
+    createdAt: "2025-08-02T10:05:46.636Z",
+    status: "single"
+  },
+  {
+    id: "Id-20",
+    firstName: "Leland",
+    lastName: "Smith",
+    age: 26,
+    visits: 742,
+    progress: 44,
+    createdAt: "2025-08-25T00:18:18.057Z",
+    status: "single"
+  },
+  {
+    id: "Id-21",
+    firstName: "Herbert",
+    lastName: "Botsford",
+    age: 1,
+    visits: 948,
+    progress: 40,
+    createdAt: "2025-03-17T21:33:12.872Z",
+    status: "complicated",
+    subRows: [
+      {
+        id: "Id-21-1",
+        firstName: "Aravinth",
+        lastName: "Jai",
+        age: 24,
+        visits: 100,
+        progress: 18,
+        createdAt: "2000-10-05T15:18:21.24Z",
+        status: "single"
+      }
+    ]
+  },
+  {
+    id: "Id-22",
+    firstName: "Zander",
+    lastName: "Miller",
+    age: 0,
+    visits: 670,
+    progress: 62,
+    createdAt: "2025-05-04T00:32:47.449Z",
+    status: "complicated"
+  },
+  {
+    id: "Id-23",
+    firstName: "Randy",
+    lastName: "Larson",
+    age: 34,
+    visits: 299,
+    progress: 85,
+    createdAt: "2025-08-14T09:05:42.794Z",
+    status: "relationship"
+  },
+  {
+    id: "Id-24",
+    firstName: "Erna",
+    lastName: "Yundt",
+    age: 3,
+    visits: 278,
+    progress: 31,
+    createdAt: "2023-12-09T02:39:16.573Z",
+    status: "single"
+  },
+  {
+    id: "Id-25",
+    firstName: "Lizeth",
+    lastName: "Adams",
+    age: 21,
+    visits: 152,
+    progress: 4,
+    createdAt: "2025-03-19T03:16:34.770Z",
+    status: "single"
+  },
+  {
+    id: "Id-26",
+    firstName: "Maybelle",
+    lastName: "Gerlach",
+    age: 0,
+    visits: 625,
+    progress: 19,
+    createdAt: "2024-11-30T16:17:40.368Z",
+    status: "relationship"
+  },
+  {
+    id: "Id-27",
+    firstName: "Leta",
+    lastName: "Mann",
+    age: 10,
+    visits: 321,
+    progress: 80,
+    createdAt: "2024-09-06T01:18:18.766Z",
+    status: "single"
+  },
+  {
+    id: "Id-28",
+    firstName: "Keyshawn",
+    lastName: "Brekke",
+    age: 2,
+    visits: 768,
+    progress: 99,
+    createdAt: "2025-02-01T11:02:23.483Z",
+    status: "complicated"
+  },
+  {
+    id: "Id-29",
+    firstName: "Ulices",
+    lastName: "Harris",
+    age: 31,
+    visits: 752,
+    progress: 54,
+    createdAt: "2024-02-25T02:02:09.552Z",
+    status: "complicated"
+  },
+  {
+    id: "Id-30",
+    firstName: "Colleen",
+    lastName: "Harris",
+    age: 38,
+    visits: 650,
+    progress: 15,
+    createdAt: "2025-07-09T02:28:48.408Z",
+    status: "single"
+  },
+  {
+    id: "Id-31",
+    firstName: "Peyton",
+    lastName: "Considine",
+    age: 10,
+    visits: 780,
+    progress: 96,
+    createdAt: "2025-02-18T13:05:53.121Z",
+    status: "relationship"
+  },
+  {
+    id: "Id-32",
+    firstName: "Angie",
+    lastName: "Stark",
+    age: 15,
+    visits: 477,
+    progress: 72,
+    createdAt: "2025-03-27T08:09:49.984Z",
+    status: "single"
+  },
+  {
+    id: "Id-33",
+    firstName: "Kaya",
+    lastName: "Halvorson",
+    age: 39,
+    visits: 898,
+    progress: 72,
+    createdAt: "2023-12-25T04:10:25.031Z",
+    status: "complicated"
+  },
+  {
+    id: "Id-34",
+    firstName: "Trevion",
+    lastName: "Jaskolski",
+    age: 29,
+    visits: 802,
+    progress: 96,
+    createdAt: "2024-10-11T13:38:48.937Z",
+    status: "relationship"
+  },
+  {
+    id: "Id-35",
+    firstName: "Zelma",
+    lastName: "Shields",
+    age: 13,
+    visits: 817,
+    progress: 85,
+    createdAt: "2025-08-31T18:42:55.807Z",
+    status: "relationship"
+  },
+  {
+    id: "Id-36",
+    firstName: "Chelsey",
+    lastName: "Fadel",
+    age: 39,
+    visits: 99,
+    progress: 83,
+    createdAt: "2024-08-29T22:31:55.470Z",
+    status: "single"
+  },
+  {
+    id: "Id-37",
+    firstName: "Adrain",
+    lastName: "Reichert",
+    age: 30,
+    visits: 116,
+    progress: 93,
+    createdAt: "2025-11-05T06:36:43.977Z",
+    status: "complicated"
+  },
+  {
+    id: "Id-38",
+    firstName: "Patricia",
+    lastName: "Parisian",
+    age: 37,
+    visits: 749,
+    progress: 36,
+    createdAt: "2024-07-09T03:47:07.667Z",
+    status: "relationship"
+  },
+  {
+    id: "Id-39",
+    firstName: "Marques",
+    lastName: "Hahn",
+    age: 27,
+    visits: 801,
+    progress: 31,
+    createdAt: "2025-10-22T10:32:58.321Z",
+    status: "relationship"
+  },
+  {
+    id: "Id-40",
+    firstName: "Jacques",
+    lastName: "Von",
+    age: 27,
+    visits: 69,
+    progress: 6,
+    createdAt: "2024-09-17T17:56:28.879Z",
+    status: "single"
+  },
+  {
+    id: "Id-41",
+    firstName: "Billie",
+    lastName: "Halvorson",
+    age: 1,
+    visits: 599,
+    progress: 31,
+    createdAt: "2024-10-16T01:36:27.141Z",
+    status: "complicated"
+  },
+  {
+    id: "Id-42",
+    firstName: "Camylle",
+    lastName: "Rutherford",
+    age: 40,
+    visits: 997,
+    progress: 65,
+    createdAt: "2024-11-03T07:15:02.130Z",
+    status: "relationship"
+  },
+  {
+    id: "Id-43",
+    firstName: "Mose",
+    lastName: "O'Hara",
+    age: 31,
+    visits: 845,
+    progress: 0,
+    createdAt: "2024-11-25T16:41:11.080Z",
+    status: "single"
+  },
+  {
+    id: "Id-44",
+    firstName: "Rebecca",
+    lastName: "Walsh",
+    age: 8,
+    visits: 75,
+    progress: 9,
+    createdAt: "2024-01-02T18:48:04.741Z",
+    status: "relationship"
+  },
+  {
+    id: "Id-45",
+    firstName: "Drake",
+    lastName: "Tremblay",
+    age: 22,
+    visits: 483,
+    progress: 31,
+    createdAt: "2025-09-16T11:52:13.640Z",
+    status: "complicated"
+  },
+  {
+    id: "Id-46",
+    firstName: "Zetta",
+    lastName: "Connelly",
+    age: 1,
+    visits: 398,
+    progress: 37,
+    createdAt: "2024-06-15T22:11:22.662Z",
+    status: "relationship"
+  },
+  {
+    id: "Id-47",
+    firstName: "Darian",
+    lastName: "Kemmer",
+    age: 28,
+    visits: 633,
+    progress: 92,
+    createdAt: "2025-09-26T01:27:43.955Z",
+    status: "complicated"
+  },
+  {
+    id: "Id-48",
+    firstName: "Reymundo",
+    lastName: "Reichert",
+    age: 29,
+    visits: 286,
+    progress: 45,
+    createdAt: "2024-11-16T02:10:33.111Z",
+    status: "relationship"
+  },
+  {
+    id: "Id-49",
+    firstName: "Vernice",
+    lastName: "Ziemann",
+    age: 7,
+    visits: 842,
+    progress: 33,
+    createdAt: "2024-10-14T04:25:20.733Z",
+    status: "complicated"
+  },
+  {
+    id: "Id-50",
+    firstName: "Shaniya",
+    lastName: "Rolfson",
+    age: 1,
+    visits: 53,
+    progress: 3,
+    createdAt: "2024-09-03T02:04:15.975Z",
+    status: "relationship"
+  }
+];
