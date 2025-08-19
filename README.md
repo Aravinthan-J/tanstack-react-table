@@ -129,6 +129,7 @@ interface ColumnProps {
 Efficient rendering for huge datasets:
 
 ```
+<TableComponent dataSource={largeData} columns={columns} isVirtual={true} rowHeight={50} />
 
 ```
 
