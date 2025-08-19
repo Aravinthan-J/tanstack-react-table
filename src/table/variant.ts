@@ -12,7 +12,7 @@ export const InputVariants = tv({
     },
     readOnly: {
       true: {
-        base: "hover:!bg-gray-50 cursor-pointer border-solid border-transparent hover:border-transparent group-hover/table_cell:border-transparent group-hover/table_cell:!bg-gray-50"
+        base: "hover:!bg-gray-500 cursor-pointer border-solid border-transparent hover:border-transparent group-hover/table_cell:border-transparent group-hover/table_cell:!bg-gray-500"
       }
     }
   }
@@ -30,7 +30,7 @@ export const RatingVariants = tv({
     },
     readOnly: {
       true: {
-        base: "hover:!bg-gray-50 cursor-pointer border-solid border-transparent hover:border-transparent group-hover/table_cell:border-transparent group-hover/table_cell:!bg-gray-50"
+        base: "hover:!bg-gray-500 cursor-pointer border-solid border-transparent hover:border-transparent group-hover/table_cell:border-transparent group-hover/table_cell:!bg-gray-500"
       }
     }
   }
@@ -48,7 +48,7 @@ export const DateTimeBoxVariants = tv({
     },
     readOnly: {
       true: {
-        base: "hover:!bg-gray-50 cursor-pointer border-1 border-solid border-transparent hover:border-transparent group-hover/table_cell:border-transparent group-hover/table_cell:bg-gray-50 focus:!shadow-none"
+        base: "hover:!bg-gray-500 cursor-pointer border-1 border-solid border-transparent hover:border-transparent group-hover/table_cell:border-transparent group-hover/table_cell:bg-gray-500 focus:!shadow-none"
       }
     }
   }
@@ -66,7 +66,7 @@ export const MultiLineVariants = tv({
     },
     readOnly: {
       true: {
-        base: "hover:!bg-gray-50 cursor-pointer border-solid border-transparent hover:border-transparent group-hover/table_cell:border-transparent group-hover/table_cell:!bg-gray-50"
+        base: "hover:!bg-gray-500 cursor-pointer border-solid border-transparent hover:border-transparent group-hover/table_cell:border-transparent group-hover/table_cell:!bg-gray-500"
       }
     }
   }

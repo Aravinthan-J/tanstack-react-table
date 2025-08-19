@@ -31,8 +31,8 @@ export function SelectDropdown({
      disabled={readOnly}
    >
      <Select.Trigger
-       className={`flex items-center justify-between px-3 py-2 border rounded w-full ${
-         isError ? 'border-red-500' : 'border-gray-300'
+       className={`flex items-center justify-between px-3 py-2 border rounded-4 w-full ${
+         isError ? 'border-secondary-four-500' : 'border-gray-300'
        } ${readOnly ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
      >
        <Select.Value />

@@ -32,7 +32,7 @@ export function DateCell({
       </Popover.Trigger>
 
       <Popover.Portal>
-        <Popover.Content className="bg-white p-4 rounded-lg shadow-lg border">
+        <Popover.Content className="bg-white p-4 rounded-6 shadow-200 border">
           <input
             type="date"
             value={value ? formatDate(value, "yyyy-MM-dd") : ""}
@@ -47,8 +47,8 @@ export function DateCell({
             onBlur={() => {
               setEdit(false);
             }}
-            className={`px-3 py-2 border rounded ${
-              isError ? "border-red-500" : "border-gray-300"
+            className={`px-3 py-2 border rounded-0 ${
+              isError ? "border-secondary-four-500" : "border-gray-300"
             }`}
             disabled={readOnly}
             autoFocus={true}

@@ -42,7 +42,7 @@ export const TextAreaCell = ({
 
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/50" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-lg shadow-lg w-96 max-w-[90vw]">
+        <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-8 shadow-500 w-96 max-w-[90vw]">
           <textarea
             readOnly={readOnly}
             disabled={readOnly}

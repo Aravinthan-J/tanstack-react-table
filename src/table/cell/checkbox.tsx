@@ -34,16 +34,16 @@ export function CheckboxComponent({
         checked={checked}
         onCheckedChange={onChange}
         disabled={disabled}
-        className={[
-          "peer inline-flex h-20 w-20 shrink-0 items-center justify-center rounded-4 border cursor-pointer",
-          "border-gray-300 bg-white",
-          "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2",
-          "data-[state=checked]:border-primary-500 data-[state=checked]:bg-primary-500",
-          "data-[state=indeterminate]:border-primary-500 data-[state=indeterminate]:bg-primary-500",
-          "disabled:cursor-not-allowed disabled:opacity-50",
-          "hover:border-primary-500 focus-visible:ring-offset-50",
-          className || "",
-        ].join(" ")}
+        className={`
+          peer inline-flex h-20 w-20 shrink-0 items-center justify-center rounded-4 border cursor-pointer
+          border-gray-300 bg-white
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2
+          data-[state=checked]:border-primary-500 data-[state=checked]:bg-primary-500
+          data-[state=indeterminate]:border-primary-500 data-[state=indeterminate]:bg-primary-500
+          disabled:cursor-not-allowed disabled:opacity-50
+          hover:border-primary-500
+          ${className || ""}
+        `}
       >
         <Checkbox.Indicator className="text-white">
           {checked === "indeterminate" ? (

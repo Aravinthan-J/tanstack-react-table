@@ -32,7 +32,7 @@ export function DateTimeCell({
       </Popover.Trigger>
 
       <Popover.Portal>
-        <Popover.Content className="bg-white p-4 rounded-lg shadow-lg border">
+        <Popover.Content className="bg-white p-4 rounded-2 shadow-200 border">
           <input
             type="datetime-local"
             value={value ? formatDate(value, "yyyy-MM-dd'T'HH:mm") : ""}
@@ -48,7 +48,7 @@ export function DateTimeCell({
               setEdit(false);
             }}
             className={`px-3 py-2 border rounded ${
-              isError ? "border-red-500" : "border-gray-300"
+              isError ? "border-secondary-four-500" : "border-gray-300"
             }`}
             disabled={readOnly}
             autoFocus={true}
