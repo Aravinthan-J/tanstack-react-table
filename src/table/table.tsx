@@ -43,7 +43,7 @@ interface ColumnProps {
   Id: string;
 
   // Display title of the column
-  Title: string | JSX.Element;
+  Title: string | ReactNode;
 
   // Optional data type of the column
   Type?: string;
@@ -63,7 +63,7 @@ interface ColumnProps {
       rowId: string;
       changedValue: object;
     }) => void;
-  }) => JSX.Element;
+  }) => ReactNode;
 
   // Optional fixed position for the column (e.g., 'left' or 'right')
   Fixed?: string | null;
@@ -93,10 +93,10 @@ interface ColumnProps {
   MaxWidth?: number;
 
   // Optional custom footer renderer for the column
-  Footer?: () => JSX.Element;
+  Footer?: () => ReactNode;
 
   // Optional custom header renderer for the column
-  Header?: () => JSX.Element;
+  Header?: () => ReactNode;
 }
 
 export interface ExpandableProps {
@@ -199,7 +199,7 @@ export interface TableProps {
   /**
    * Expandable props
    */
-  expandable: ExpandableProps;
+  expandable?: ExpandableProps;
 
   /**
    * Callback function to fetch the next page of data when the user reaches the end of the table
@@ -224,7 +224,7 @@ export interface TableProps {
   /**
    * Table options
    */
-  options: TableOptionProps;
+  options?: TableOptionProps;
 }
 
 export interface DataTableRef {
@@ -354,7 +354,7 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
     onEventUpdate,
   } = props;
   const tableContainerRef = useRef<HTMLDivElement>(null);
-  const tableRef = useRef<DataTableRef>();
+  const tableRef = useRef<DataTableRef>(null);
 
   const tableOptions = useMemo(
     () => ({
