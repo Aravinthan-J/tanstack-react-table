@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{html,js,jsx,ts,tsx}", "./src/index.css"],
   theme: {
     extend: {
       colors: {
@@ -197,17 +197,6 @@ export default {
         "ai-gradient-800": "var(--ai-gradient-800)",
         "ai-gradient-loader": "var(--ai-gradient-loader)",
         "ai-gradient-border": "var(--ai-gradient-border)",
-      },
-
-      backgroundColor: {
-        "ai-gradient-100": "var(--ai-gradient-100)",
-        "ai-gradient-200": "var(--ai-gradient-200)",
-        "ai-gradient-300": "var(--ai-gradient-300)",
-        "ai-gradient-400": "var(--ai-gradient-400)",
-        "ai-gradient-500": "var(--ai-gradient-500)",
-        "ai-gradient-600": "var(--ai-gradient-600)",
-        "ai-gradient-700": "var(--ai-gradient-700)",
-        "ai-gradient-800": "var(--ai-gradient-800)",
       },
 
       fontFamily: {

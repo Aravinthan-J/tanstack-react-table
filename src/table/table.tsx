@@ -7,7 +7,7 @@ import {
   useImperativeHandle,
   useMemo,
   useRef,
-  useState
+  useState,
 } from "react";
 import {
   type ColumnOrderState,
@@ -18,7 +18,7 @@ import {
   useReactTable,
   type ColumnDef,
   type Row,
-  type ExpandedState
+  type ExpandedState,
 } from "@tanstack/react-table";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { arrayMove } from "@dnd-kit/sortable";
@@ -29,7 +29,6 @@ import { TableHeader } from "./header.tsx";
 import { TableBody } from "./body.tsx";
 import { TableProvider } from "./tablecontext.tsx";
 import { DEFAULT_KEYS, EXPANDABLE_TYPES, UPDATED_EVENTS } from "./constant.ts";
-
 
 declare module "@tanstack/react-table" {
   // biome-ignore lint/correctness/noUnusedVariables: <explanation>
@@ -53,14 +52,17 @@ interface ColumnProps {
   Render?: ({
     row,
     onExpand,
-    onDone
+    onDone,
   }: {
     row: Row<object>;
     onExpand: () => void;
     onDone: ({
       rowId,
-      changedValue
-    }: { rowId: string; changedValue: object }) => void;
+      changedValue,
+    }: {
+      rowId: string;
+      changedValue: object;
+    }) => void;
   }) => JSX.Element;
 
   // Optional fixed position for the column (e.g., 'left' or 'right')
@@ -183,8 +185,11 @@ export interface TableProps {
    */
   onEventUpdate: ({
     type,
-    value
-  }: { type: string; value: string | object | string[] }) => void;
+    value,
+  }: {
+    type: string;
+    value: string | object | string[];
+  }) => void;
 
   /**
    * Key of the column to be used as the row key
@@ -211,7 +216,6 @@ export interface TableProps {
    */
   isVirtual: boolean;
 
-
   /**
    * Height of each row
    */
@@ -229,16 +233,22 @@ export interface DataTableRef {
    */
   onRowUpdate: ({
     rowId,
-    changedValue
-  }: { rowId: string; changedValue: object }) => void;
+    changedValue,
+  }: {
+    rowId: string;
+    changedValue: object;
+  }) => void;
 
   /**
    * Updates the table data
    */
   updateTableData: ({
     type,
-    value
-  }: { type: string; value: string | object | string[] }) => void;
+    value,
+  }: {
+    type: string;
+    value: string | object | string[];
+  }) => void;
 
   /**
    * Updates the validate of the column
@@ -317,7 +327,7 @@ const DEFAULT_TABLE_OPTIONS: TableOptionProps = {
   enableHiding: true,
   enablePinning: true,
   enableOrdering: true,
-  enableRowOrdering: true
+  enableRowOrdering: true,
 };
 
 export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
@@ -337,11 +347,11 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
       isExpandable: false,
       expandedRowKeys: [],
       expandedRowRender: null,
-      expandEntireRowByClick: false
+      expandEntireRowByClick: false,
     },
     options = DEFAULT_TABLE_OPTIONS,
     onEndReached,
-    onEventUpdate
+    onEventUpdate,
   } = props;
   const tableContainerRef = useRef<HTMLDivElement>(null);
   const tableRef = useRef<DataTableRef>();
@@ -349,7 +359,7 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
   const tableOptions = useMemo(
     () => ({
       ...DEFAULT_TABLE_OPTIONS,
-      ...options
+      ...options,
     }),
     [options]
   );
@@ -358,12 +368,12 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
     const {
       type: expandableType,
       isExpandable,
-      expandedRowKeys = []
+      expandedRowKeys = [],
     } = expandable;
     return {
       expandableType,
       isExpandable,
-      expandedRowKeys
+      expandedRowKeys,
     };
   }, [expandable]);
 
@@ -408,7 +418,7 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
         enableResizing: wholeEnableResizing,
         enableHiding: wholeEnableHiding,
         enablePinning: wholeEnablePinning,
-        enableOrdering: wholeEnableOrdering
+        enableOrdering: wholeEnableOrdering,
       } = tableOptions;
 
       const modifiedColumns = columns.map(
@@ -448,7 +458,7 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
             meta: {
               type: Type,
               enableOrdering: wholeEnableOrdering && enableOrdering,
-              ...rest
+              ...rest,
             },
             ...(Render && {
               cell: ({ row }: { row: Row<object> }) => {
@@ -462,18 +472,18 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
                   onDone: ({ rowId, changedValue }) => {
                     tableRef.current?.onRowUpdate({
                       rowId,
-                      changedValue
+                      changedValue,
                     });
                     tableRef.current?.updateTableData?.({
                       type: UPDATED_EVENTS.CELL_EDIT,
-                      value: { rowId, changedValue, columnId: Id }
+                      value: { rowId, changedValue, columnId: Id },
                     });
-                  }
+                  },
                 });
-              }
+              },
             }),
             ...(MinWidth && { minSize: MinWidth }),
-            ...(MaxWidth && { maxSize: MaxWidth })
+            ...(MaxWidth && { maxSize: MaxWidth }),
           };
         }
       );
@@ -591,8 +601,11 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
     },
     updateTableData: ({
       type,
-      value
-    }: { type: string; value: string | object | string[] }) => {
+      value,
+    }: {
+      type: string;
+      value: string | object | string[];
+    }) => {
       onEventUpdate?.({ type, value });
     },
     onVisibilityChange: (columnId: string, value: boolean) => {
@@ -636,7 +649,7 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
     },
     resetColumnVisibility: (value: boolean) => {
       table.resetColumnVisibility(value);
-    }
+    },
   }));
 
   useImperativeHandle(ref, () => tableRef.current as DataTableRef, []);
@@ -652,7 +665,7 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
         ? (element) => element?.getBoundingClientRect().height
         : undefined,
     overscan: 10,
-    enabled: isVirtual
+    enabled: isVirtual,
   });
 
   function onScroll() {
@@ -679,11 +692,11 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
         className="butterfly-components"
         style={{
           display: "grid",
-          height: "inherit"
+          height: "inherit",
         }}
       >
         <div
-          className="border border-gray-200 rounded-12 overflow-auto relative"
+          className="border border-gray-200 rounded-xl overflow-auto relative"
           ref={tableContainerRef}
           onScroll={onScroll}
           style={{ maxHeight: `${tableHeight}px` }}
