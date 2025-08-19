@@ -1,16 +1,42 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+// Optional: dts for generating TypeScript definitions
+import dts from "vite-plugin-dts";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    dts({ outDir: "dist", insertTypesEntry: true }),
+  ],
   build: {
-    cssCodeSplit: true,
+    lib: {
+      entry: "src/index.ts", // Adjust this to your main export file
+      name: "TableComponent",
+      formats: ["es", "cjs"], // ESM and CommonJS support
+      fileName: (format) => (format === "es" ? "index.mjs" : "index.js"), // These match package.json
+    },
     rollupOptions: {
+      // Don't bundle external dependencies (keep peer deps external)
+      external: [
+        "react",
+        "react-dom",
+        "@tanstack/react-table",
+        "@tanstack/react-virtual",
+        "@dnd-kit/core",
+        "@radix-ui/react-checkbox",
+        "@radix-ui/react-dialog",
+        "@radix-ui/react-popover",
+        "@radix-ui/react-select",
+      ],
       output: {
-        assetFileNames: '[name].[ext]'
-      }
-    }
-  }
-})
+        assetFileNames: "[name].[ext]",
+      },
+    },
+    cssCodeSplit: true, // remains for css splitting
+    sourcemap: true, // recommended for library consumers
+    outDir: "dist",
+    emptyOutDir: true,
+  },
+});
