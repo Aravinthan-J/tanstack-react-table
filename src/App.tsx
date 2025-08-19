@@ -3,8 +3,8 @@ import { dummyColumn, dummyData } from "./table/mock";
 
 export function App() {
   return (
-    <div className="max-w-7xl mx-auto p-8 relative z-10 font-sans bg-gray-100 text-gray-900 min-h-screen">
-      <h1 className="text-5xl font-bold my-4 leading-tight text-red-500 text-center">
+    <>
+      <h1 className="text-5xl font-bold my-4 leading-tight text-red-600 text-center">
         TanStack Table with Virtualization
       </h1>
       <Table
@@ -15,7 +15,7 @@ export function App() {
           console.log("Updated Data", args);
         }}
       />
-    </div>
+    </>
   );
 }
 
