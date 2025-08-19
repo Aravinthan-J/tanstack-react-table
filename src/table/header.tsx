@@ -162,7 +162,7 @@ function DraggableTableHeader({
       style={{ width: header.getSize(), ...style }}
       colSpan={header.colSpan}
       ref={setNodeRef}
-      className="h-44 text-left flex items-center py-12 px-8 cursor-pointer bg-gray-100 border-b-1 border-gray-200 text-gray-900 hover:bg-gray-alpha-50 group tableHeadCell ellipsis box-border"
+      className="h-44 text-left flex items-center py-12 px-8 cursor-pointer bg-gray-100 border-b-1 border-gray-200 text-gray-900 hover:bg-gray-200 group tableHeadCell ellipsis box-border"
     >
       <div
         className={`grid items-center w-full gap-12 ${
