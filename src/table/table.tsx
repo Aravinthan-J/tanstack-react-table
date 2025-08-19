@@ -392,7 +392,7 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
     if (!parentElement) return;
 
     const resizeObserver = new ResizeObserver(() => {
-      setTableHeight(parentElement.clientHeight);
+    setTableHeight(parentElement.clientHeight);
     });
 
     resizeObserver.observe(parentElement);
@@ -689,14 +689,13 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
       tableRef={tableRef.current as DataTableRef}
     >
       <div
-        className="butterfly-components"
         style={{
           display: "grid",
           height: "inherit",
         }}
       >
         <div
-          className="border border-gray-200 rounded-xl overflow-auto relative"
+          className="border border-gray-200 rounded-12 overflow-auto relative"
           ref={tableContainerRef}
           onScroll={onScroll}
           style={{ maxHeight: `${tableHeight}px` }}
