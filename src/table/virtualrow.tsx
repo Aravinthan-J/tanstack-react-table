@@ -98,11 +98,11 @@ export const TableBodyRow = React.memo(function TableBodyRowMemo({
         style={style}
         className={`tableRow flex absolute w-full cursor-pointer ${
           isAccordionExpandable || isLastSubRow
-            ? "border-b-1 border-solid border-gray-200"
+            ? "border-b-1 border-gray-200"
             : ""
         } flex-nowrap ${
-          row.getIsSelected() ? "bg-primary-25" : "bg-white"
-        } hover:bg-gray-50 group/tablerow`}
+          row.getIsSelected() ? "bg-primary-200" : "bg-white"
+        } hover:bg-gray-100 group/tablerow`}
         onClick={handleRowClick}
         onKeyDown={handleRowClick}
       >
@@ -159,10 +159,10 @@ export function NormalRowRender({ row }: { row: Row<object> }) {
         ref={setNodeRef}
         style={style}
         className={`tableRow flex relative w-full cursor-pointer ${
-          isLastSubRow ? "border-b-1 border-solid border-gray-200" : ""
+          isLastSubRow ? "border-b-1 border-gray-200" : ""
         } flex-nowrap ${
           row.getIsSelected() ? "bg-primary-25" : "bg-white"
-        } hover:bg-gray-50 group/tablerow`}
+        } hover:bg-gray-500 group/tablerow`}
         onClick={handleRowClick}
         onKeyDown={handleRowClick}
       >
@@ -210,7 +210,7 @@ function TableCell({ cell }: { cell: Cell<object, unknown> }) {
     <td
       key={cell.id}
       style={{ width: column.getSize(), ...style }}
-      className="flex bg-inherit px-12 py-4 items-center relative border-b-1 border-solid border-gray-200 group/table_cell"
+      className="flex bg-inherit px-12 py-4 items-center relative border-b-1 border-gray-200 box-border group/table_cell"
     >
       {flexRender(column.columnDef.cell, cell.getContext())}
     </td>
@@ -284,7 +284,21 @@ export const RowDragHandleCell = ({ rowId }: { rowId: string }) => {
         "cursor-grab flex justify-center opacity-0 -left-10 items-center absolute group-hover/tablerow:opacity-100 transition-opacity duration-200"
       }
     >
-      XXX
+      <svg
+        width="20"
+        height="20"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        aria-hidden="true"
+        style={{ display: "inline", verticalAlign: "middle" }}
+      >
+        <circle cx="7" cy="6" r="1.2" />
+        <circle cx="13" cy="6" r="1.2" />
+        <circle cx="7" cy="10" r="1.2" />
+        <circle cx="13" cy="10" r="1.2" />
+        <circle cx="7" cy="14" r="1.2" />
+        <circle cx="13" cy="14" r="1.2" />
+      </svg>
     </div>
   );
 };
