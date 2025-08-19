@@ -118,9 +118,9 @@ export default {
           800: "var(--color-secondary-ten-800)",
         },
 
-        red: {
-          600: "#ef4444",
-        },
+      red: {
+        600: "#ef4444",
+      },
 
         /* Semantic colors */
         success: {
@@ -185,20 +185,6 @@ export default {
         lg: "var(--shadow-300)",
         xl: "var(--shadow-500)",
       },
-
-      backgroundImage: {
-        "ai-gradient-100": "var(--ai-gradient-100)",
-        "ai-gradient-200": "var(--ai-gradient-200)",
-        "ai-gradient-300": "var(--ai-gradient-300)",
-        "ai-gradient-400": "var(--ai-gradient-400)",
-        "ai-gradient-500": "var(--ai-gradient-500)",
-        "ai-gradient-600": "var(--ai-gradient-600)",
-        "ai-gradient-700": "var(--ai-gradient-700)",
-        "ai-gradient-800": "var(--ai-gradient-800)",
-        "ai-gradient-loader": "var(--ai-gradient-loader)",
-        "ai-gradient-border": "var(--ai-gradient-border)",
-      },
-
       fontFamily: {
         sans: ["var(--font-sans)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
@@ -262,7 +248,6 @@ export default {
       "text-white",
       "shadow-md",
       "color-p",
-      "bg-ai-gradient-500",
       "text-white",
       "p-8",
       "rounded",
