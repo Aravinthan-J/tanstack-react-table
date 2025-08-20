@@ -19,6 +19,13 @@ export const dummyColumn = [
     Width: 200,
     MinWidth: 200,
     MaxWidth: 600,
+    headerOptions: [
+      {
+        id: "filter",
+        value: "Filter",
+        onClick: () => console.log("Filter clicked"),
+      },
+    ],
   },
   {
     Id: "lastName",
