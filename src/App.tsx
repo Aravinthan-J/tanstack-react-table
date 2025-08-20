@@ -9,7 +9,7 @@ import "./index.css";
 
 export function App() {
   return (
-    <div className="flex flex-col gap-20 m-8 p-16 h-screen">
+    <div className="flex flex-col gap-20 m-8 p-16 h-full">
       <h1>All Example Tables</h1>
       <section className="mb-8 h-400">
         <h2 className="text-primary-500">Default Table</h2>
@@ -35,7 +35,7 @@ export function App() {
         <BasicTable />
       </section>
 
-      <section className="mb-8 mt-10  max-h-500">
+      <section className="mb-8 mt-10  h-500">
         <h2>Nested Rows Table</h2>
         <NestedRowsTable />
       </section>

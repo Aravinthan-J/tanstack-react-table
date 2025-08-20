@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { ColumnProps } from "../table";
-import { Table } from "../index";
+import { EXPANDABLE_TYPES, Table } from "../index";
 
 const nestedData = [
   {
@@ -14,19 +14,12 @@ const nestedData = [
         name: "Frontend Team",
         type: "Team",
         count: 8,
-        subRows: [
-          { id: "1-1-1", name: "John Doe", type: "Developer", count: 0 },
-          { id: "1-1-2", name: "Jane Smith", type: "Developer", count: 0 },
-        ],
       },
       {
         id: "1-2",
         name: "Backend Team",
         type: "Team",
         count: 7,
-        subRows: [
-          { id: "1-2-1", name: "Bob Johnson", type: "Developer", count: 0 },
-        ],
       },
     ],
   },
@@ -84,13 +77,13 @@ export function NestedRowsTable() {
       rowKey="id"
       selectedItems={[]}
       showSerialNumber={false}
-      showRowSelection={true}
+      showRowSelection={false}
       isVirtual={false}
       rowHeight={50}
       loading={false}
       emptyState={<div>No nested data available</div>}
       expandable={{
-        type: "row",
+        type: EXPANDABLE_TYPES.ROW,
         isExpandable: true,
         expandedRowKeys: expandedRows,
         expandedRowRender: null,
