@@ -19,9 +19,9 @@ export function BooleanCell({
         onDone();
       }}
       disabled={readOnly}
-      className="w-11 h-6 bg-gray-200 rounded-full relative data-[state=checked]:bg-primary-300 outline-none cursor-default disabled:cursor-not-allowed disabled:opacity-50"
+      className="peer shrink-0 p-2 relative inline-flex items-center cursor-pointer rounded-full transition-colors focus-visible:outline-hidden focus-visible:focus-outer disabled:cursor-not-allowed data-[state=unchecked]:bg-gray-400 data-[state=unchecked]:hover:bg-gray-500 data-[state=unchecked]:active:bg-gray-600 group h-[24px] w-[40px] data-[state=checked]:bg-secondary-one-500 data-[state=checked]:hover:bg-secondary-one-600 data-[state=checked]:active:bg-secondary-one-600 switch border-0"
     >
-      <Switch.Thumb className="block w-5 h-5 bg-white rounded-full transition-transform duration-100 translate-x-0.5 will-change-transform data-[state=checked]:translate-x-[22px]" />
+      <Switch.Thumb className="h-full block aspect-square rounded-full bg-white transition-aspect data-[state=unchecked]:translate-x-0 peer-disabled:pointer-events-none duration-200 group-active:aspect-[1.2/1] data-[state=checked]:translate-x-16" />
     </Switch.Root>
   );
 }

@@ -9,7 +9,7 @@ export const dummyColumn = [
     enableOrdering: false,
     Width: 150,
     MinWidth: 120,
-    MaxWidth: 200
+    MaxWidth: 200,
   },
   {
     Id: "firstName",
@@ -18,7 +18,14 @@ export const dummyColumn = [
     enableResizing: true,
     Width: 200,
     MinWidth: 200,
-    MaxWidth: 600
+    MaxWidth: 600,
+    headerOptions: [
+      {
+        id: "filter",
+        value: "Filter",
+        onClick: () => console.log("Filter clicked"),
+      },
+    ],
   },
   {
     Id: "lastName",
@@ -28,7 +35,7 @@ export const dummyColumn = [
     enableResizing: true,
     Width: 200,
     MinWidth: 200,
-    MaxWidth: 600
+    MaxWidth: 600,
   },
   {
     Id: "age",
@@ -38,7 +45,7 @@ export const dummyColumn = [
     enableResizing: true,
     Width: 150,
     MinWidth: 120,
-    MaxWidth: 200
+    MaxWidth: 200,
   },
   {
     Id: "visits",
@@ -48,7 +55,7 @@ export const dummyColumn = [
     enableResizing: true,
     Width: 150,
     MinWidth: 75,
-    MaxWidth: 300
+    MaxWidth: 300,
   },
   {
     Id: "status",
@@ -58,7 +65,7 @@ export const dummyColumn = [
     enableResizing: true,
     Width: 200,
     MinWidth: 200,
-    MaxWidth: 600
+    MaxWidth: 600,
   },
   {
     Id: "progress",
@@ -68,7 +75,7 @@ export const dummyColumn = [
     enableResizing: true,
     Width: 200,
     MinWidth: 200,
-    MaxWidth: 200
+    MaxWidth: 200,
   },
   {
     Id: "createdAt",
@@ -78,8 +85,8 @@ export const dummyColumn = [
     enableResizing: true,
     Width: 200,
     MinWidth: 200,
-    MaxWidth: 600
-  }
+    MaxWidth: 600,
+  },
 ];
 
 export const dummyData = [
@@ -101,9 +108,9 @@ export const dummyData = [
         visits: 100,
         progress: 18,
         createdAt: "2000-10-05T15:18:21.24Z",
-        status: "single"
-      }
-    ]
+        status: "single",
+      },
+    ],
   },
   {
     id: "Id-2",
@@ -123,7 +130,7 @@ export const dummyData = [
         visits: 742,
         progress: 44,
         createdAt: "2025-08-25T00:18:18.057Z",
-        status: "single"
+        status: "single",
       },
       {
         id: "Id-2-2",
@@ -133,9 +140,9 @@ export const dummyData = [
         visits: 948,
         progress: 40,
         createdAt: "2025-03-17T21:33:12.872Z",
-        status: "complicated"
-      }
-    ]
+        status: "complicated",
+      },
+    ],
   },
   {
     id: "Id-3",
@@ -145,7 +152,7 @@ export const dummyData = [
     visits: 658,
     progress: 45,
     createdAt: "2025-04-06T04:25:23.819Z",
-    status: "complicated"
+    status: "complicated",
   },
   {
     id: "Id-4",
@@ -155,7 +162,7 @@ export const dummyData = [
     visits: 20,
     progress: 96,
     createdAt: "2024-12-19T09:40:30.292Z",
-    status: "relationship"
+    status: "relationship",
   },
   {
     id: "Id-5",
@@ -175,7 +182,7 @@ export const dummyData = [
         visits: 742,
         progress: 44,
         createdAt: "2025-08-25T00:18:18.057Z",
-        status: "single"
+        status: "single",
       },
       {
         id: "Id-5-2",
@@ -185,9 +192,9 @@ export const dummyData = [
         visits: 948,
         progress: 40,
         createdAt: "2025-03-17T21:33:12.872Z",
-        status: "complicated"
-      }
-    ]
+        status: "complicated",
+      },
+    ],
   },
   {
     id: "Id-6",
@@ -197,7 +204,7 @@ export const dummyData = [
     visits: 395,
     progress: 37,
     createdAt: "2025-06-26T15:11:59.880Z",
-    status: "complicated"
+    status: "complicated",
   },
   {
     id: "Id-7",
@@ -217,7 +224,7 @@ export const dummyData = [
         visits: 742,
         progress: 44,
         createdAt: "2025-08-25T00:18:18.057Z",
-        status: "single"
+        status: "single",
       },
       {
         id: "Id-7-2",
@@ -227,9 +234,9 @@ export const dummyData = [
         visits: 948,
         progress: 40,
         createdAt: "2025-03-17T21:33:12.872Z",
-        status: "complicated"
-      }
-    ]
+        status: "complicated",
+      },
+    ],
   },
   {
     id: "Id-8",
@@ -239,7 +246,7 @@ export const dummyData = [
     visits: 298,
     progress: 48,
     createdAt: "2024-01-09T15:56:13.970Z",
-    status: "relationship"
+    status: "relationship",
   },
   {
     id: "Id-9",
@@ -249,7 +256,7 @@ export const dummyData = [
     visits: 664,
     progress: 38,
     createdAt: "2024-07-26T23:45:55.122Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-10",
@@ -269,9 +276,9 @@ export const dummyData = [
         visits: 100,
         progress: 18,
         createdAt: "2000-10-05T15:18:21.24Z",
-        status: "single"
-      }
-    ]
+        status: "single",
+      },
+    ],
   },
   {
     id: "Id-11",
@@ -281,7 +288,7 @@ export const dummyData = [
     visits: 243,
     progress: 23,
     createdAt: "2024-09-08T02:05:00.319Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-12",
@@ -301,9 +308,9 @@ export const dummyData = [
         visits: 100,
         progress: 18,
         createdAt: "2000-10-05T15:18:21.24Z",
-        status: "single"
-      }
-    ]
+        status: "single",
+      },
+    ],
   },
   {
     id: "Id-13",
@@ -313,7 +320,7 @@ export const dummyData = [
     visits: 775,
     progress: 66,
     createdAt: "2024-07-11T19:51:18.514Z",
-    status: "complicated"
+    status: "complicated",
   },
   {
     id: "Id-14",
@@ -323,7 +330,7 @@ export const dummyData = [
     visits: 436,
     progress: 49,
     createdAt: "2024-01-20T00:54:28.130Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-15",
@@ -333,7 +340,7 @@ export const dummyData = [
     visits: 983,
     progress: 72,
     createdAt: "2024-05-29T23:07:25.861Z",
-    status: "complicated"
+    status: "complicated",
   },
   {
     id: "Id-16",
@@ -343,7 +350,7 @@ export const dummyData = [
     visits: 284,
     progress: 80,
     createdAt: "2024-05-07T15:31:41.930Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-17",
@@ -353,7 +360,7 @@ export const dummyData = [
     visits: 32,
     progress: 32,
     createdAt: "2024-11-30T06:11:46.345Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-18",
@@ -363,7 +370,7 @@ export const dummyData = [
     visits: 581,
     progress: 84,
     createdAt: "2025-07-20T22:49:32.118Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-19",
@@ -373,7 +380,7 @@ export const dummyData = [
     visits: 919,
     progress: 61,
     createdAt: "2025-08-02T10:05:46.636Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-20",
@@ -383,7 +390,7 @@ export const dummyData = [
     visits: 742,
     progress: 44,
     createdAt: "2025-08-25T00:18:18.057Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-21",
@@ -403,9 +410,9 @@ export const dummyData = [
         visits: 100,
         progress: 18,
         createdAt: "2000-10-05T15:18:21.24Z",
-        status: "single"
-      }
-    ]
+        status: "single",
+      },
+    ],
   },
   {
     id: "Id-22",
@@ -415,7 +422,7 @@ export const dummyData = [
     visits: 670,
     progress: 62,
     createdAt: "2025-05-04T00:32:47.449Z",
-    status: "complicated"
+    status: "complicated",
   },
   {
     id: "Id-23",
@@ -425,7 +432,7 @@ export const dummyData = [
     visits: 299,
     progress: 85,
     createdAt: "2025-08-14T09:05:42.794Z",
-    status: "relationship"
+    status: "relationship",
   },
   {
     id: "Id-24",
@@ -435,7 +442,7 @@ export const dummyData = [
     visits: 278,
     progress: 31,
     createdAt: "2023-12-09T02:39:16.573Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-25",
@@ -445,7 +452,7 @@ export const dummyData = [
     visits: 152,
     progress: 4,
     createdAt: "2025-03-19T03:16:34.770Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-26",
@@ -455,7 +462,7 @@ export const dummyData = [
     visits: 625,
     progress: 19,
     createdAt: "2024-11-30T16:17:40.368Z",
-    status: "relationship"
+    status: "relationship",
   },
   {
     id: "Id-27",
@@ -465,7 +472,7 @@ export const dummyData = [
     visits: 321,
     progress: 80,
     createdAt: "2024-09-06T01:18:18.766Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-28",
@@ -475,7 +482,7 @@ export const dummyData = [
     visits: 768,
     progress: 99,
     createdAt: "2025-02-01T11:02:23.483Z",
-    status: "complicated"
+    status: "complicated",
   },
   {
     id: "Id-29",
@@ -485,7 +492,7 @@ export const dummyData = [
     visits: 752,
     progress: 54,
     createdAt: "2024-02-25T02:02:09.552Z",
-    status: "complicated"
+    status: "complicated",
   },
   {
     id: "Id-30",
@@ -495,7 +502,7 @@ export const dummyData = [
     visits: 650,
     progress: 15,
     createdAt: "2025-07-09T02:28:48.408Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-31",
@@ -505,7 +512,7 @@ export const dummyData = [
     visits: 780,
     progress: 96,
     createdAt: "2025-02-18T13:05:53.121Z",
-    status: "relationship"
+    status: "relationship",
   },
   {
     id: "Id-32",
@@ -515,7 +522,7 @@ export const dummyData = [
     visits: 477,
     progress: 72,
     createdAt: "2025-03-27T08:09:49.984Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-33",
@@ -525,7 +532,7 @@ export const dummyData = [
     visits: 898,
     progress: 72,
     createdAt: "2023-12-25T04:10:25.031Z",
-    status: "complicated"
+    status: "complicated",
   },
   {
     id: "Id-34",
@@ -535,7 +542,7 @@ export const dummyData = [
     visits: 802,
     progress: 96,
     createdAt: "2024-10-11T13:38:48.937Z",
-    status: "relationship"
+    status: "relationship",
   },
   {
     id: "Id-35",
@@ -545,7 +552,7 @@ export const dummyData = [
     visits: 817,
     progress: 85,
     createdAt: "2025-08-31T18:42:55.807Z",
-    status: "relationship"
+    status: "relationship",
   },
   {
     id: "Id-36",
@@ -555,7 +562,7 @@ export const dummyData = [
     visits: 99,
     progress: 83,
     createdAt: "2024-08-29T22:31:55.470Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-37",
@@ -565,7 +572,7 @@ export const dummyData = [
     visits: 116,
     progress: 93,
     createdAt: "2025-11-05T06:36:43.977Z",
-    status: "complicated"
+    status: "complicated",
   },
   {
     id: "Id-38",
@@ -575,7 +582,7 @@ export const dummyData = [
     visits: 749,
     progress: 36,
     createdAt: "2024-07-09T03:47:07.667Z",
-    status: "relationship"
+    status: "relationship",
   },
   {
     id: "Id-39",
@@ -585,7 +592,7 @@ export const dummyData = [
     visits: 801,
     progress: 31,
     createdAt: "2025-10-22T10:32:58.321Z",
-    status: "relationship"
+    status: "relationship",
   },
   {
     id: "Id-40",
@@ -595,7 +602,7 @@ export const dummyData = [
     visits: 69,
     progress: 6,
     createdAt: "2024-09-17T17:56:28.879Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-41",
@@ -605,7 +612,7 @@ export const dummyData = [
     visits: 599,
     progress: 31,
     createdAt: "2024-10-16T01:36:27.141Z",
-    status: "complicated"
+    status: "complicated",
   },
   {
     id: "Id-42",
@@ -615,7 +622,7 @@ export const dummyData = [
     visits: 997,
     progress: 65,
     createdAt: "2024-11-03T07:15:02.130Z",
-    status: "relationship"
+    status: "relationship",
   },
   {
     id: "Id-43",
@@ -625,7 +632,7 @@ export const dummyData = [
     visits: 845,
     progress: 0,
     createdAt: "2024-11-25T16:41:11.080Z",
-    status: "single"
+    status: "single",
   },
   {
     id: "Id-44",
@@ -635,7 +642,7 @@ export const dummyData = [
     visits: 75,
     progress: 9,
     createdAt: "2024-01-02T18:48:04.741Z",
-    status: "relationship"
+    status: "relationship",
   },
   {
     id: "Id-45",
@@ -645,7 +652,7 @@ export const dummyData = [
     visits: 483,
     progress: 31,
     createdAt: "2025-09-16T11:52:13.640Z",
-    status: "complicated"
+    status: "complicated",
   },
   {
     id: "Id-46",
@@ -655,7 +662,7 @@ export const dummyData = [
     visits: 398,
     progress: 37,
     createdAt: "2024-06-15T22:11:22.662Z",
-    status: "relationship"
+    status: "relationship",
   },
   {
     id: "Id-47",
@@ -665,7 +672,7 @@ export const dummyData = [
     visits: 633,
     progress: 92,
     createdAt: "2025-09-26T01:27:43.955Z",
-    status: "complicated"
+    status: "complicated",
   },
   {
     id: "Id-48",
@@ -675,7 +682,7 @@ export const dummyData = [
     visits: 286,
     progress: 45,
     createdAt: "2024-11-16T02:10:33.111Z",
-    status: "relationship"
+    status: "relationship",
   },
   {
     id: "Id-49",
@@ -685,7 +692,7 @@ export const dummyData = [
     visits: 842,
     progress: 33,
     createdAt: "2024-10-14T04:25:20.733Z",
-    status: "complicated"
+    status: "complicated",
   },
   {
     id: "Id-50",
@@ -695,6 +702,54 @@ export const dummyData = [
     visits: 53,
     progress: 3,
     createdAt: "2024-09-03T02:04:15.975Z",
-    status: "relationship"
-  }
+    status: "relationship",
+  },
 ];
+
+export const dummyUserTheme = {
+  "Color.Primary.500": {
+    value: "#df4440",
+  },
+  "Color.Secondary.One.500": {
+    value: "#0bac06",
+  },
+  "Color.Gray.100": {
+    value: "#f7f7f8",
+  },
+  "Color.Gray.200": {
+    value: "#e7e8eb",
+  },
+  "Color.Gray.300": {
+    value: "#cfd2d7",
+  },
+  "Color.Gray.400": {
+    value: "#afb4bc",
+  },
+  "Color.Gray.500": {
+    value: "#979da8",
+  },
+  "Color.Gray.600": {
+    value: "#7f8693",
+  },
+  "Color.Gray.700": {
+    value: "#5c636e",
+  },
+  "Color.Gray.800": {
+    value: "#3f444c",
+  },
+  "Color.Gray.900": {
+    value: "#2e3137",
+  },
+  "Color.Gray.999": {
+    value: "#17191c",
+  },
+  "Color.Bg.White": {
+    value: "#ffffff",
+  },
+  "Color.Bg.Gray": {
+    value: "#f5f7fa",
+  },
+  "Color.Icon.Dark.Gray": {
+    value: "#3f444c",
+  },
+};

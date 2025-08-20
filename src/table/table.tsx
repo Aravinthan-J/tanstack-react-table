@@ -29,6 +29,7 @@ import { TableHeader } from "./header.tsx";
 import { TableBody } from "./body.tsx";
 import { TableProvider } from "./tablecontext.tsx";
 import { DEFAULT_KEYS, EXPANDABLE_TYPES, UPDATED_EVENTS } from "./constant.ts";
+import { applyUserTheme } from "../utils/index.ts";
 
 declare module "@tanstack/react-table" {
   // biome-ignore lint/correctness/noUnusedVariables: <explanation>
@@ -38,7 +39,7 @@ declare module "@tanstack/react-table" {
   }
 }
 
-interface ColumnProps {
+export interface ColumnProps {
   // Unique identifier for the column
   Id: string;
 
@@ -225,6 +226,11 @@ export interface TableProps {
    * Table options
    */
   options?: TableOptionProps;
+
+  /**
+   * Custom theme for the table
+   */
+  theme?: Record<string, { value: string }>;
 }
 
 export interface DataTableRef {
@@ -339,7 +345,7 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
     rowKey,
     selectedItems,
     rowHeight = 60,
-    // loading = false,
+    theme = {},
     isVirtual = true,
     emptyState,
     expandable = {
@@ -383,6 +389,13 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
   const [rowSelection, setRowSelection] = useState({});
   const [expanded, setExpanded] = useState<ExpandedState>({});
   const [tableHeight, setTableHeight] = useState<number>();
+
+  useEffect(
+    function updateUserApplyTheme() {
+      if (theme && Object.keys(theme).length > 0) applyUserTheme(theme);
+    },
+    [theme]
+  );
 
   useEffect(function updateTableHeight() {
     if (tableContainerRef.current) {
@@ -682,7 +695,7 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
         }}
       >
         <div
-          className="border border-gray-200 rounded-12 overflow-auto relative w-fit"
+          className="border border-gray-300 rounded-12 overflow-auto relative w-full"
           ref={tableContainerRef}
           onScroll={onScroll}
           style={{ maxHeight: `${tableHeight}px` }}

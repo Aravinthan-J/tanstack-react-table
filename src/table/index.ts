@@ -1,4 +1,16 @@
-import { DataTable as Table, type TableProps } from "./table.tsx";
+import {
+  DataTable as Table,
+  type TableProps,
+  type ColumnProps,
+} from "./table.tsx";
 import { EXPANDABLE_TYPES, UPDATED_EVENTS } from "./constant.ts";
+import { CellTypes as CELL_TYPES } from "./cell/constant.ts";
 
-export { Table, type TableProps, EXPANDABLE_TYPES, UPDATED_EVENTS };
+export {
+  Table,
+  type TableProps,
+  EXPANDABLE_TYPES,
+  UPDATED_EVENTS,
+  type ColumnProps,
+  CELL_TYPES,
+};
