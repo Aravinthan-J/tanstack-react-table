@@ -35,7 +35,7 @@ export function App() {
         <BasicTable />
       </section>
 
-      <section className="mb-8 mt-10  h-500">
+      <section className="mb-8 mt-10  h-240">
         <h2>Nested Rows Table</h2>
         <NestedRowsTable />
       </section>
