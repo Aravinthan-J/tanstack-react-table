@@ -29,7 +29,7 @@ import { TableHeader } from "./header.tsx";
 import { TableBody } from "./body.tsx";
 import { TableProvider } from "./tablecontext.tsx";
 import { DEFAULT_KEYS, EXPANDABLE_TYPES, UPDATED_EVENTS } from "./constant.ts";
-import { applyUserTheme } from "../utils/utils.ts";
+import { applyUserTheme } from "../utils/index.ts";
 
 declare module "@tanstack/react-table" {
   // biome-ignore lint/correctness/noUnusedVariables: <explanation>
