@@ -7,4 +7,5 @@ export {
   EXPANDABLE_TYPES,
   UPDATED_EVENTS,
   type ColumnProps,
+  CELL_TYPES,
 } from "./table/index.ts";

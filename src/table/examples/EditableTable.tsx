@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { ColumnProps } from "../table";
-import { Table } from "../index";
+import { CELL_TYPES, Table } from "../index";
 
 const editableData = [
   {
@@ -27,37 +27,37 @@ const editableColumns: ColumnProps[] = [
   {
     Id: "name",
     Title: "Name",
-    Type: "text",
+    Type: CELL_TYPES.TEXT,
     Width: 200,
   },
   {
     Id: "email",
     Title: "Email",
-    Type: "email",
+    Type: CELL_TYPES.EMAIL,
     Width: 250,
   },
   {
     Id: "age",
     Title: "Age",
-    Type: "number",
+    Type: CELL_TYPES.NUMBER,
     Width: 100,
   },
   {
     Id: "active",
     Title: "Active",
-    Type: "boolean",
+    Type: CELL_TYPES.BOOLEAN,
     Width: 80,
   },
   {
     Id: "rating",
     Title: "Rating",
-    Type: "rating",
+    Type: CELL_TYPES.RATING,
     Width: 120,
   },
   {
     Id: "notes",
     Title: "Notes",
-    Type: "textarea",
+    Type: CELL_TYPES.TEXTAREA,
     Width: 300,
   },
 ];

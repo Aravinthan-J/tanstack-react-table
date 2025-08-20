@@ -4,6 +4,7 @@ import {
   type ColumnProps,
 } from "./table.tsx";
 import { EXPANDABLE_TYPES, UPDATED_EVENTS } from "./constant.ts";
+import { CellTypes as CELL_TYPES } from "./cell/constant.ts";
 
 export {
   Table,
@@ -11,4 +12,5 @@ export {
   EXPANDABLE_TYPES,
   UPDATED_EVENTS,
   type ColumnProps,
+  CELL_TYPES,
 };
