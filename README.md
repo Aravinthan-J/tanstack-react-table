@@ -29,8 +29,8 @@ bun add tanstack-react-table
 
 > **Peer dependencies:**
 >
-> - `react` ^19
-> - `react-dom` ^19
+> - `react` ^18
+> - `react-dom` ^18
 > - `@tanstack/react-table` ^8
 
 ---
@@ -180,19 +180,6 @@ Use your own or built-in Tailwind themes, Radix states, or external theme librar
 | `onEventUpdate`    | `function`      | Event callback                 |
 | `onEndReached`     | `function`      | Infinite scroll callback       |
 
-## Exposed Table Ref Methods
-
-```
-const tableRef = useRef(null);
-// Usage:
-tableRef.current?.addRow(newRow);
-tableRef.current?.removeRow("row-id");
-tableRef.current?.updateRow("row-id", { name: "Changed" });
-tableRef.current?.expandRow("row-id");
-tableRef.current?.selectRow("row-id", true);
-tableRef.current?.getSelectedRows();
-```
-
 ---
 
 ## 📣 Events
@@ -200,7 +187,7 @@ tableRef.current?.getSelectedRows();
 ```
 const handleEventUpdate = ({ type, value }) => {
   switch (type) {
-    case "cell-edit": /* ... */ break;
+    case "UPDATE_EVENTS.CELL_EDIT": /* ... */ break;
     case "row-select": /* ... */ break;
     case "column-resize": /* ... */ break;
     // ...
