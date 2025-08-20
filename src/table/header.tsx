@@ -30,17 +30,9 @@ import {
   useSortable,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-// import { KfIcon, ICON_STROKE, ICON_SIZE, MoreVertical } from "kf-icons";
-
-// import {
-//   Menu,
-//   MenuContent,
-//   MenuTrigger,
-//   MenuItem
-// } from "@/components/menu/menu.tsx";
-// import { MENU_ALIGN, MENU_SIZE } from "@/components/menu/constant.ts";
 import { DEFAULT_KEYS, UPDATED_EVENTS } from "./constant.ts";
 import { useTable } from "./tablecontext.tsx";
+import { MenuAction } from "./moreoption.tsx";
 
 interface HeaderOptionsProps {
   id: string;
@@ -187,13 +179,12 @@ function DraggableTableHeader({
               ?.headerOptions || []
           )?.length > 0 && (
             <>
-              {/* <MenuAction
+              <MenuAction
                 headerOptions={
                   (header.column.columnDef.meta as ExtendedColumnMeta)
                     .headerOptions as Array<HeaderOptionsProps>
                 }
-              /> */}
-              <div>:::</div>
+              />
             </>
           )}
       </div>
@@ -230,49 +221,3 @@ function DraggableTableHeader({
   );
 }
 
-// const MenuAction = ({
-//   headerOptions
-// }: { headerOptions: Array<HeaderOptionsProps> }) => {
-//   // const { tableRef } = useTable();
-
-//   const [menuActive, setMenuActive] = useState(false);
-//   const headerRef = useRef<HTMLSpanElement>(null);
-
-//   return (
-//     <span
-//       className={`${menuActive ? "visible" : "invisible"} relative group-hover:visible`}
-//       ref={headerRef}
-//     >
-//       <Menu
-//         size={MENU_SIZE.MEDIUM}
-//         onOpenChange={setMenuActive}
-//         open={menuActive}
-//       >
-//         <MenuTrigger>
-//           <div>
-//             <KfIcon
-//               name={MoreVertical}
-//               size={ICON_SIZE.SIZE_12}
-//               stroke={ICON_STROKE.LIGHT}
-//               color="fill-gray-600"
-//             />
-//           </div>
-//         </MenuTrigger>
-//         <MenuContent
-//           align={MENU_ALIGN.START}
-//           data-testid="menuContent"
-//           className="z-10"
-//           container={headerRef.current}
-//         >
-//           {headerOptions.map((menuitem: HeaderOptionsProps) => {
-//             return (
-//               <MenuItem key={menuitem.id} onClick={menuitem.onClick}>
-//                 {menuitem.value}
-//               </MenuItem>
-//             );
-//           })}
-//         </MenuContent>
-//       </Menu>
-//     </span>
-//   );
-// };
