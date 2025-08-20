@@ -258,7 +258,7 @@ MIT License – see the [LICENSE](LICENSE) file for details.
 
 ## 📚 Links
 
-- [GitHub](https://github.com/Aravinthan-J/react_table)
+- [GitHub](https://github.com/Aravinthan-J/tanstack-react-table)
 - [TanStack Table Docs](https://tanstack.com/table/v8)
 - [Radix UI Docs](https://www.radix-ui.com/)
 - [Tailwind CSS Docs](https://tailwindcss.com/)
