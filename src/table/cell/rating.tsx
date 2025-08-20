@@ -31,13 +31,13 @@ export function RatingCell({
         value={value.toString()}
         onValueChange={handleValueChange}
         disabled={readOnly}
-        className="flex gap-1"
+        className="flex gap-4"
       >
         {[1, 2, 3, 4, 5].map((rating) => (
           <RadioGroup.Item
             key={rating}
             value={rating.toString()}
-            className="w-6 h-6 cursor-pointer disabled:cursor-not-allowed"
+            className="w-20 h-fit cursor-pointer disabled:cursor-not-allowed"
           >
             <span
               className={`text-xl ${

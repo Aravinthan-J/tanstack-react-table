@@ -26,7 +26,6 @@ export default defineConfig({
         "@tanstack/react-virtual",
         "@dnd-kit/core",
         "@radix-ui/react-checkbox",
-        "@radix-ui/react-dialog",
         "@radix-ui/react-popover",
         "@radix-ui/react-select",
       ],
