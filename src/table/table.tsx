@@ -695,7 +695,7 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
         }}
       >
         <div
-          className="border border-gray-200 rounded-12 overflow-auto relative w-fit"
+          className="border border-gray-300 rounded-12 overflow-auto relative w-full"
           ref={tableContainerRef}
           onScroll={onScroll}
           style={{ maxHeight: `${tableHeight}px` }}
