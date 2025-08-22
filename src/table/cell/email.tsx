@@ -56,7 +56,7 @@ export const EmailCell = ({
           !isEdit && !readOnly && setEdit(true);
         }
       }}
-      className="mx-10 cursor-pointer"
+      className="my-2 mx-0 cursor-pointer"
       role="button"
       tabIndex={readOnly ? -1 : 0}
     >

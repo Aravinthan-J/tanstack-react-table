@@ -2,7 +2,7 @@ import { tv } from "tailwind-variants";
 
 export const InputVariants = tv({
   slots: {
-    base: "p-8 border-1 border-solid border-transparent !bg-inherit group-hover/table_cell:border-gray-200 focus:border-primary-500 [&:not([data-disabled]):not([data-readonly]):hover]:border-primary-400",
+    base: "p-8 min-w-full border-1 border-solid border-transparent !bg-inherit group-hover/table_cell:border-gray-200 focus:border-primary-500 [&:not([data-disabled]):not([data-readonly]):hover]:border-primary-400",
   },
   variants: {
     isError: {

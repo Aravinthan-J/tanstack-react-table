@@ -46,7 +46,7 @@ export const TextAreaCell = ({
           setEdit(false);
         }
       }}
-      className={`${base()} w-full h-32 resize-none`}
+      className={`${base()} w-full h-32 resize-none min-h-60 p-4 m-0`}
       autoFocus={true}
     />
   ) : (
@@ -59,7 +59,7 @@ export const TextAreaCell = ({
           !isEdit && !readOnly && setEdit(true);
         }
       }}
-      className="mx-10 cursor-pointer"
+      className="my-2 mx-0 cursor-pointer"
       role="button"
       tabIndex={readOnly ? -1 : 0}
     >
