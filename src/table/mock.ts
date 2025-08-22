@@ -753,3 +753,16 @@ export const dummyUserTheme = {
     value: "#3f444c",
   },
 };
+
+export const dummyLargeTheme = {
+  "--mock-color-primary-500": "#df4440",
+  "--mock-color-secondary-500": "#0bac06",
+  "--mock-color-gray-100": "#f7f7f8",
+  "--mock-color-gray-200": "#e7e8eb",
+  "--mock-color-gray-300": "#cfd2d7",
+  "--mock-color-gray-400": "#afb4bc",
+  "--mock-color-gray-500": "#979da8",
+  "--mock-color-gray-600": "#7f8693",
+  "--mock-color-gray-700": "#5c636e",
+  "--mock-color-gray-800": "#3f444c",
+};

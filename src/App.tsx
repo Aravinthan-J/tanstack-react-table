@@ -3,7 +3,12 @@ import { EditableTable } from "./table/examples/EditableTable.tsx";
 import { NestedRowsTable } from "./table/examples/NestedRowsTable.tsx";
 import { VirtualizedTable } from "./table/examples/VirtualizedTable.tsx";
 import { Table } from "./table/index.ts";
-import { dummyColumn, dummyData, dummyUserTheme } from "./table/mock";
+import {
+  dummyColumn,
+  dummyData,
+  dummyLargeTheme,
+  dummyUserTheme,
+} from "./table/mock";
 
 import "./index.css";
 
@@ -27,26 +32,32 @@ export function App() {
           onEventUpdate={(args) => {
             console.log("Updated Data", args);
           }}
-          theme={dummyUserTheme}
+          theme={{
+            prefix: {
+              oldPrefix: "theme",
+              newPrefix: "mock",
+            },
+            variables: dummyLargeTheme,
+          }}
         />
       </section>
       <section className="mb-8 mt-10  h-200">
-        <h2>Basic Table</h2>
+        <h2 className="text-primary-500">Basic Table</h2>
         <BasicTable />
       </section>
 
       <section className="mb-8 mt-10  h-240">
-        <h2>Nested Rows Table</h2>
+        <h2 className="text-primary-500">Nested Rows Table</h2>
         <NestedRowsTable />
       </section>
 
       <section className="mb-8 mt-10  h-800">
-        <h2>Virtualized Table</h2>
+        <h2 className="text-primary-500">Virtualized Table</h2>
         <VirtualizedTable />
       </section>
 
       <section className="mb-8 mt-10  h-300">
-        <h2>Editable Table</h2>
+        <h2 className="text-primary-500">Editable Table</h2>
         <EditableTable />
       </section>
     </div>

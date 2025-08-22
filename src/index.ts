@@ -8,4 +8,5 @@ export {
   UPDATED_EVENTS,
   type ColumnProps,
   CELL_TYPES,
+  DEFAULT_THEME_VARIABLES,
 } from "./table/index.ts";

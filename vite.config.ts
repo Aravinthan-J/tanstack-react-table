@@ -1,8 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-// Optional: dts for generating TypeScript definitions
 import dts from "vite-plugin-dts";
+import postcssPrefixSelector from "postcss-prefix-selector";
 
 export default defineConfig({
   plugins: [
@@ -10,6 +10,28 @@ export default defineConfig({
     tailwindcss(),
     dts({ outDir: "dist", insertTypesEntry: true }),
   ],
+  css: {
+    postcss: {
+      plugins: [
+        postcssPrefixSelector({
+          transform: function (
+            prefix: any,
+            selector: string,
+            prefixedSelector: string
+          ) {
+            if (
+              selector === ":root" ||
+              selector === ":host" ||
+              selector === "@theme"
+            ) {
+              return "*";
+            }
+            return selector;
+          },
+        }),
+      ],
+    },
+  },
   build: {
     lib: {
       entry: "src/index.ts", // Adjust this to your main export file
