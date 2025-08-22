@@ -1,16 +1,10 @@
+/* Your custom imports can stay first if they define CSS variables, fonts, etc. */
 @import "./theme.css";
 @import "./font.css";
 @import "./space.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-family);
-}
+/* Tailwind v4 consolidated import */
+@import "tailwindcss";
 
 .ellipsis {
   white-space: nowrap;
