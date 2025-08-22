@@ -34,7 +34,7 @@
     "url": "https://github.com/Aravinthan-J/react_table.git"
   },
   "peerDependencies": {
-    "@tanstack/react-table": "8.17.3",
+    "@tanstack/react-table": ">=8.20.0",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
   },
