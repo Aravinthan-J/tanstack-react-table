@@ -24,7 +24,6 @@ export const MenuAction = ({
     >
       <DropdownMenu.Root
         onOpenChange={(open) => {
-          console.log("🚀 Aravinth :  ~ open:", open);
           setMenuActive(open);
         }}
         modal={false}
@@ -47,14 +46,14 @@ export const MenuAction = ({
           <DropdownMenu.Content
             side="bottom"
             align="start"
-            sideOffset={8}
-            className="z-10 min-w-100 rounded-4 bg-white shadow-lg p-2 border-1 border-gray-300"
+            sideOffset={4}
+            className="z-10 min-w-100 rounded-8 bg-white shadow-lg p-2 border-1 border-gray-300 font-semibold max-w-300"
           >
             {headerOptions.map((item) => (
               <DropdownMenu.Item
                 key={item.id}
                 onSelect={item.onClick}
-                className="m-6 p-6 hover:bg-gray-100 text-gray-900 cursor-pointer rounded-4 outline-0 border-0"
+                className="m-6 p-6 hover:bg-gray-100 text-gray-900 cursor-pointer rounded-4 outline-0 border-0 ellipsis"
               >
                 {item.value}
               </DropdownMenu.Item>
