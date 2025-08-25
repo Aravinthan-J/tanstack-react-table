@@ -48,10 +48,20 @@ export default defineConfig({
         "@tanstack/react-virtual",
         "@dnd-kit/core",
         "@radix-ui/react-checkbox",
+        "@radix-ui/react-dropdown-menu",
+        "@radix-ui/react-icons",
         "@radix-ui/react-popover",
+        "@radix-ui/react-radio-group",
         "@radix-ui/react-select",
+        "@radix-ui/react-switch",
+        "tailwindcss"
       ],
       output: {
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+          "@tanstack/react-table": "ReactTable",
+        },
         assetFileNames: "[name].[ext]",
       },
     },
