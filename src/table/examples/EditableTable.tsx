@@ -124,7 +124,7 @@ const editableColumns: ColumnProps[] = [
     Id: "rating",
     Title: "Rating",
     Type: CELL_TYPES.RATING,
-    Width: 120,
+    Width: 250,
   },
   {
     Id: "notes",
