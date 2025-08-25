@@ -90,6 +90,6 @@ export default {
       },
     },
   },
-  // Add plugins if needed
   plugins: [],
+  corePlugins: { preflight: false },
 };

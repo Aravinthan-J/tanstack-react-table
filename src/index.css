@@ -1,10 +1,13 @@
-/* Your custom imports can stay first if they define CSS variables, fonts, etc. */
 @import "./theme.css";
 @import "./font.css";
 @import "./space.css";
 
-/* Tailwind v4 consolidated import */
-@import "tailwindcss";
+/* Define layers but omit base */
+@layer theme, utilities;
+
+/* Import only theme and utilities - skip preflight/base entirely */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 
 .ellipsis {
   white-space: nowrap;
