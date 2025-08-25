@@ -37,7 +37,7 @@ export function RatingCell({
           <RadioGroup.Item
             key={rating}
             value={rating.toString()}
-            className="w-20 h-fit cursor-pointer disabled:cursor-not-allowed"
+            className="w-fit h-fit cursor-pointer disabled:cursor-not-allowed"
           >
             <span
               className={`text-xl ${
