@@ -10,6 +10,7 @@ A production-ready, highly customizable React table component built with [TanSta
 - **Editable Cells:** Radix UI-based editors (text, number, select, date, boolean, rating, textarea)
 - **Drag & Drop:** Column and row reordering with DnD Kit
 - **Nested Rows:** Expand/collapse hierarchical data
+- **Column Management:** Resizing, hiding, pinning, and reordering columns
 - **Theming:** Easy theming with Tailwind CSS and Radix states
 - **Accessibility:** Full keyboard navigation and screen reader support
 - **TypeScript:** Complete type safety with rich interfaces
@@ -99,26 +100,23 @@ Built-in Radix UI-based cell editors:
 
 ## 🛠️ Column Definition
 
-```
-interface ColumnProps {
-  id: string; // Unique key
-  header: string | JSX.Element; // Header cell
-  type?: string; // text | number | select | etc.
-  width?: number;
-  minWidth?: number;
-  maxWidth?: number;
-  enableSorting?: boolean;
-  enableResizing?: boolean;
-  enableHiding?: boolean;
-  enablePinning?: boolean;
-  enableOrdering?: boolean;
-  render?: (props) => JSX.Element; // Custom cell renderer
-  headerRender?: () => JSX.Element; // Custom header
-  footerRender?: () => JSX.Element; // Custom footer
-  fixed?: "left" | "right";
-  meta?: Record;
-}
-```
+| Prop             | Type                                       | Description                                                       |
+| ---------------- | ------------------------------------------ | ----------------------------------------------------------------- |
+| `Id`             | `string`                                   | Unique identifier for the column.                                 |
+| `Title`          | `string` \| `ReactNode`                    | Display title of the column.                                      |
+| `Type`           | `string`                                   | Optional data type of the column.                                 |
+| `Render`         | `({ row, onExpand, onDone }) => ReactNode` | Optional custom render function for the column cell.              |
+| `Fixed`          | `string` \| `null`                         | Optional fixed position for the column (e.g., 'left' or 'right'). |
+| `enableSorting`  | `boolean`                                  | Enable sorting functionality for the column.                      |
+| `enableResizing` | `boolean`                                  | Enable resizing functionality for the column.                     |
+| `enableHiding`   | `boolean`                                  | Enable hiding functionality for the column.                       |
+| `enablePinning`  | `boolean`                                  | Enable pinning functionality for the column.                      |
+| `enableOrdering` | `boolean`                                  | Enable ordering functionality for the column.                     |
+| `Width`          | `number`                                   | Initial width of the column.                                      |
+| `MinWidth`       | `number`                                   | Minimum width the column can be resized to.                       |
+| `MaxWidth`       | `number`                                   | Maximum width the column can be resized to.                       |
+| `Footer`         | `() => ReactNode`                          | Optional custom footer renderer for the column.                   |
+| `Header`         | `() => ReactNode`                          | Optional custom header renderer for the column.                   |
 
 ---
 
@@ -166,19 +164,66 @@ Use your own or built-in Tailwind themes, Radix states, or external theme librar
 
 ## 📑 API Reference
 
-| Prop               | Type            | Description                    |
-| ------------------ | --------------- | ------------------------------ |
-| `dataSource`       | `Array`         | Table data                     |
-| `columns`          | `ColumnProps[]` | Column definitions             |
-| `rowKey`           | `string`        | Unique ID key for rows         |
-| `showSerialNumber` | `boolean`       | Show row numbers               |
-| `showRowSelection` | `boolean`       | Show checkboxes for selection  |
-| `isVirtual`        | `boolean`       | Enable virtualized rendering   |
-| `rowHeight`        | `number`        | Row height (px)                |
-| `expandable`       | `object`        | Tree/row expansion config      |
-| `options`          | `object`        | Feature toggles (sorting, etc) |
-| `onEventUpdate`    | `function`      | Event callback                 |
-| `onEndReached`     | `function`      | Infinite scroll callback       |
+| Prop               | Type                        | Description                                                                                  |
+| ------------------ | --------------------------- | -------------------------------------------------------------------------------------------- |
+| `selectedItems`    | `Array<string>`             | Selected items in the table.                                                                 |
+| `showSerialNumber` | `boolean`                   | Show or hide the serial number column.                                                       |
+| `showRowSelection` | `boolean`                   | Show or hide the row selection column.                                                       |
+| `columns`          | `Array<ColumnProps>`        | Array of column properties.                                                                  |
+| `datasource`       | `Array<object>`             | Array of data objects.                                                                       |
+| `emptyState`       | `ReactNode`                 | Empty state component.                                                                       |
+| `onEventUpdate`    | `({ type, value }) => void` | Callback function when the user makes a change to the table.                                 |
+| `rowKey`           | `string`                    | Key of the column to be used as the row key.                                                 |
+| `expandable`       | `ExpandableProps`           | Expandable props.                                                                            |
+| `onEndReached`     | `() => void`                | Callback function to fetch the next page of data when the user reaches the end of the table. |
+| `loading`          | `boolean`                   | Flag to indicate if the table is loading.                                                    |
+| `isVirtual`        | `boolean`                   | Flag to indicate if the table is vitrual.                                                    |
+| `rowHeight`        | `number`                    | Height of each row.                                                                          |
+| `options`          | `TableOptionProps`          | Table options.                                                                               |
+| `theme`            | `LargeThemeConfig`          | Custom theme for the table.                                                                  |
+| `tableId`          | `string`                    | Its used to get the table id.                                                                |
+
+### ExpandableProps
+
+| Prop                     | Type                                              | Description                                              |
+| ------------------------ | ------------------------------------------------- | -------------------------------------------------------- |
+| `type`                   | `string`                                          | Type of expansion (e.g., 'accordion', 'row').            |
+| `isExpandable`           | `boolean`                                         | Determines if the row is expandable.                     |
+| `expandEntireRowByClick` | `boolean`                                         | Optional: Expands the entire row upon click.             |
+| `expandedRowKeys`        | `Array<string>`                                   | Optional: Keys of the rows that are expanded by default. |
+| `expandedRowRender`      | `((row: Row<object>) => React.ReactNode) \| null` | Optional custom renderer for expanded rows.              |
+
+### TableOptionProps
+
+| Prop                | Type      | Description                                         |
+| ------------------- | --------- | --------------------------------------------------- |
+| `enableSorting`     | `boolean` | Enables sorting functionality for the all columns.  |
+| `enableResizing`    | `boolean` | Enables resizing functionality for the all columns. |
+| `enableHiding`      | `boolean` | Enables hiding functionality for the all columns.   |
+| `enablePinning`     | `boolean` | Enables pinning functionality for the all columns.  |
+| `enableOrdering`    | `boolean` | Enables ordering functionality for the all columns. |
+| `enableRowOrdering` | `boolean` | Enables row ordering functionality for the table.   |
+
+### DataTableRef
+
+| Prop                    | Type                                     | Description                                    |
+| ----------------------- | ---------------------------------------- | ---------------------------------------------- |
+| `onRowUpdate`           | `({ rowId, changedValue }) => void`      | Updates the data of the table.                 |
+| `updateTableData`       | `({ type, value }) => void`              | Updates the table data.                        |
+| `onColumnValidate`      | `({ columnId }) => void`                 | Updates the validate of the column.            |
+| `onVisibilityChange`    | `(columnId, value) => void`              | Updates the visibility of the column.          |
+| `onColumnDrag`          | `(fromId, toId) => void`                 | Updates the order of the columns.              |
+| `onRowDrag`             | `(fromId, toId) => void`                 | Updates the order of the rows.                 |
+| `onPinColumn`           | `(columnId, value) => void`              | Pins or unpins a column.                       |
+| `onAllRowsSelected`     | `(value) => void`                        | Selects or deselects all rows.                 |
+| `onRowSelect`           | `(rowId, value) => void`                 | Selects or deselects a specific row.           |
+| `onAllRowsExpand`       | `(value) => void`                        | Expands or collapses all rows.                 |
+| `onRowExpand`           | `(rowId, value) => void`                 | Expands or collapses a specific row.           |
+| `resetColumnVisibility` | `(value) => void`                        | Resets column visibility to the default state. |
+| `getTableValues`        | `() => ReturnType<typeof useReactTable>` | Returns the current table values.              |
+| `getSelectedItems`      | `() => string[]`                         | Returns the selected row IDs.                  |
+| `getExpandedItems`      | `() => string[]`                         | Returns the expanded row IDs.                  |
+| `getHiddenColumns`      | `() => Record<string, boolean>`          | Returns the current column visibility state.   |
 
 ---
 
@@ -207,33 +252,96 @@ const handleEventUpdate = ({ type, value }) => {
 
 ---
 
+## 🔧 Troubleshooting
+
+### Common Issues
+
+**Q: Table not rendering properly?**
+A: Ensure all peer dependencies are installed and check console for TypeScript errors.
+
+**Q: Custom renderers causing performance issues?**
+A: Wrap custom components with `React.memo` and avoid creating new objects/functions in render.
+
+**Q: Virtualization not working?**
+A: Make sure `isVirtual={true}` and `rowHeight` is set to a consistent value.
+
+**Q: Column resizing not working?**
+A: Ensure `enableResizing: true` is set on column definitions and container has defined width.
+
+---
+
 ## 🧑‍💻 Development
 
-```
-# Install deps
+```bash
+# Install dependencies
 bun install
-# Start dev server
+
+# Start development server
 bun run dev
+
 # Build the library
 bun run build
+
 # Run tests
 bun test
-# Lint/fix
+
+# Lint and fix code
 bun run lint
 bun run format
-# Typecheck
+
+# Type checking
 bun run typecheck
+
+# Generate documentation
+bun run docs
 ```
 
 ---
 
 ## 🤝 Contributing
 
-1. Fork the repo
-2. Create a feature branch (`git checkout -b feat/new-feature`)
-3. Commit changes (`git commit -m "Add new feature"`)
-4. Push to GitHub
-5. Open a Pull Request
+We welcome contributions! Please follow these steps:
+
+1. **Fork the repository**
+2. **Create a feature branch** (`git checkout -b feat/new-feature`)
+3. **Follow coding standards** (Biome)
+4. **Add tests** for new functionality
+5. **Update documentation** as needed
+6. **Commit changes** (`git commit -m "Add new feature"`)
+7. **Push to GitHub** (`git push origin feat/new-feature`)
+8. **Open a Pull Request**
+
+---
+
+### Development Guidelines
+
+- Follow TypeScript best practices
+- Maintain backward compatibility
+- Add unit tests for new features
+- Update README for API changes
+- Use conventional commit messages
+
+---
+
+## 📊 Browser Support
+
+- **Chrome** 88+
+- **Firefox** 85+
+- **Safari** 14+
+- **Edge** 88+
+
+---
+
+## 🗂️ Examples
+
+Check out our comprehensive examples in the `/examples` directory:
+
+- [Basic Table](./examples/basic-table)
+- [Editable Cells](./examples/editable-cells)
+- [Virtualized Table](./examples/virtualized-table)
+- [Nested Rows](./examples/nested-rows)
+- [Custom Renderers](./examples/custom-renderers)
+- [Column Management](./examples/column-management)
 
 ---
 
@@ -245,10 +353,22 @@ MIT License – see the [LICENSE](LICENSE) file for details.
 
 ## 📚 Links
 
-- [GitHub](https://github.com/Aravinthan-J/tanstack-react-table)
-- [TanStack Table Docs](https://tanstack.com/table/v8)
-- [Radix UI Docs](https://www.radix-ui.com/)
-- [Tailwind CSS Docs](https://tailwindcss.com/)
+- **[GitHub Repository](https://github.com/Aravinthan-J/tanstack-react-table)**
+- **[Documentation](https://github.com/Aravinthan-J/tanstack-react-table/docs)**
+- **[Examples](https://github.com/Aravinthan-J/tanstack-react-table/examples)**
+- **[TanStack Table Docs](https://tanstack.com/table/v8)**
+- **[Radix UI Docs](https://www.radix-ui.com/)**
+- **[Tailwind CSS Docs](https://tailwindcss.com/)**
+
+---
+
+## 🙏 Acknowledgments
+
+Built with ❤️ using:
+- [TanStack Table](https://tanstack.com/table) - Headless table utilities
+- [Radix UI](https://www.radix-ui.com/) - Low-level UI primitives
+- [DnD Kit](https://dndkit.com/) - Drag and drop utilities
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 
 ---
 
