@@ -1,6 +1,6 @@
 {
   "name": "tanstack-react-table",
-  "version": "0.1.0-beta.14",
+  "version": "0.1.0-beta.15",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
