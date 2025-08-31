@@ -336,12 +336,10 @@ We welcome contributions! Please follow these steps:
 
 Check out our comprehensive examples in the `/examples` directory:
 
-- [Basic Table](./examples/basic-table)
-- [Editable Cells](./examples/editable-cells)
-- [Virtualized Table](./examples/virtualized-table)
-- [Nested Rows](./examples/nested-rows)
-- [Custom Renderers](./examples/custom-renderers)
-- [Column Management](./examples/column-management)
+- [Basic Table](./src/table/examples/BasicTable.tsx)
+- [Editable Cells](./src/table/examples/EditableTable.tsx)
+- [Virtualized Table](./src/table/examples/VirtualizedTable.tsx)
+- [Nested Rows](./src/table/examples/VirtualizedTable.tsx)
 
 ---
 
