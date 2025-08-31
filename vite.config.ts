@@ -40,27 +40,16 @@ export default defineConfig({
       fileName: (format) => (format === "es" ? "index.mjs" : "index.js"), // These match package.json
     },
     rollupOptions: {
-      // Don't bundle external dependencies (keep peer deps external)
-      external: [
-        "react",
-        "react-dom",
-        "@tanstack/react-table",
-        "@tanstack/react-virtual",
-        "@dnd-kit/core",
-        "@radix-ui/react-checkbox",
-        "@radix-ui/react-dropdown-menu",
-        "@radix-ui/react-icons",
-        "@radix-ui/react-popover",
-        "@radix-ui/react-radio-group",
-        "@radix-ui/react-select",
-        "@radix-ui/react-switch",
-        "tailwindcss"
-      ],
+      // Only externalize peer dependencies - bundle everything else
+      external: ["react", "react-dom", "@tanstack/react-table", "tailwindcss"],
+      // Remove all @radix-ui/*, @tanstack/react-virtual, @dnd-kit/* from external
+      // so they get bundled with your library
       output: {
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
           "@tanstack/react-table": "ReactTable",
+          tailwindcss: "tailwindcss",
         },
         assetFileNames: "[name].[ext]",
       },
