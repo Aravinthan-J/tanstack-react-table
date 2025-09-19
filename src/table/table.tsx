@@ -179,7 +179,7 @@ export interface TableProps {
   /**
    * Empty state component
    */
-  emptyState: ReactNode;
+  emptyState?: ReactNode | undefined;
 
   /**
    * Callback function when the user makes a change to the table
@@ -723,20 +723,14 @@ export const DataTable = forwardRef<DataTableRef, TableProps>((props, ref) => {
 });
 
 interface EmptyStateProps {
-  emptyState?: ReactNode;
+  emptyState?: ReactNode | undefined;
   colSpan: number;
 }
 
 export function EmptyState({ emptyState, colSpan }: EmptyStateProps) {
   return (
-    <tbody>
-      <tr>
-        <td colSpan={colSpan}>
-          {emptyState || (
-            <div className="flex w-fit text-center p-28">No Data Available</div>
-          )}
-        </td>
-      </tr>
-    </tbody>
+    emptyState || (
+      <div className="flex w-fit text-center p-28">No Data Available</div>
+    )
   );
 }

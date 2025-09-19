@@ -45,7 +45,7 @@ export function BasicTable() {
       isVirtual={false}
       rowHeight={50}
       loading={false}
-      emptyState={<div>No data available</div>}
+      emptyState={<div className="p-12 ">No data available</div>}
       expandable={{
         type: "none",
         isExpandable: false,

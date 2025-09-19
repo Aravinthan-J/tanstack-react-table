@@ -60,6 +60,28 @@ export function App() {
         </div>
       </section>
 
+      <section className="my-10">
+        <h2 className="text-primary-500 my-10 font-bold text-2xl">
+          Empty state Table
+        </h2>
+        <div className="h-240 w-fit">
+          <Table
+            datasource={[]}
+            columns={dummyColumn}
+            rowKey={"id"}
+            selectedItems={[]}
+            showSerialNumber={true}
+            showRowSelection={true}
+            onEndReached={() => {}}
+            isVirtual={false}
+            rowHeight={60}
+            onEventUpdate={(args) => {
+              console.log("Updated Data", args);
+            }}
+          />
+        </div>
+      </section>
+
       <section className="my-10 ">
         <h2 className="text-primary-500 my-10 font-bold text-2xl">
           Virtualized Table
