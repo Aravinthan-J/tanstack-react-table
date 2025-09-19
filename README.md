@@ -71,7 +71,11 @@ const data = [
 
 function MyTable() {
   return (
-     {
+    <TableComponent
+      columns={columns}
+      dataSource={data}
+      rowKey={"id"}
+      onEventUpdate={({ type, value }) => {
         console.log("Event:", type, value);
       }}
       onEndReached={() => {}}
@@ -181,7 +185,7 @@ Use your own or built-in Tailwind themes, Radix states, or external theme librar
 | `rowHeight`        | `number`                    | Height of each row.                                                                          |
 | `options`          | `TableOptionProps`          | Table options.                                                                               |
 | `theme`            | `LargeThemeConfig`          | Custom theme for the table.                                                                  |
-| `tableId`          | `string`                    | Its used to get the table id.                                                                |
+| `tableId`          | `string`                    | Its used to get the table id and used for theming also .                                                                |
 
 ### ExpandableProps
 
@@ -371,3 +375,30 @@ Built with ❤️ using:
 ---
 
 &copy; 2025 Aravinthan
+
+---
+
+## Table ID
+
+The `tableId` prop is a unique identifier for the table. It is used for two main purposes:
+
+1.  **Theming**: The `tableId` is used to scope the CSS variables for the table. This allows you to have multiple tables on the same page with different themes.
+2.  **DOM ID**: The `tableId` is also used as the `id` attribute for the root `div` element of the table. This allows you to target the table with CSS or JavaScript.
+
+### Example
+
+```tsx
+<TableComponent
+  tableId="my-custom-table"
+  columns={columns}
+  dataSource={data}
+/>
+```
+
+In this example, the table will have the ID `my-custom-table`. You can then use this ID to style the table:
+
+```css
+#my-custom-table {
+  border: 1px solid red;
+}
+```
