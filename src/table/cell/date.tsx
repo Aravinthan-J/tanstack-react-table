@@ -3,7 +3,6 @@ import { useState } from "react";
 import { formatDate } from "date-fns";
 import { DEFAULT_DATE_FORMAT } from "./constant";
 
-
 export function DateCell({
   value,
   onChange,
@@ -32,7 +31,7 @@ export function DateCell({
       </Popover.Trigger>
 
       <Popover.Portal>
-        <Popover.Content className="bg-white p-4 rounded-6 shadow-200 border">
+        <Popover.Content className="bg-light p-4 rounded-6 shadow-200 border">
           <input
             type="date"
             value={value ? formatDate(value, "yyyy-MM-dd") : ""}

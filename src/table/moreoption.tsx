@@ -47,7 +47,7 @@ export const MenuAction = ({
             side="bottom"
             align="start"
             sideOffset={4}
-            className="z-10 min-w-100 rounded-8 bg-white shadow-lg p-2 border-1 border-gray-300 font-semibold max-w-300"
+            className="z-10 min-w-100 rounded-8 bg-light shadow-lg p-2 border-1 border-gray-300 font-semibold max-w-300"
           >
             {headerOptions.map((item) => (
               <DropdownMenu.Item

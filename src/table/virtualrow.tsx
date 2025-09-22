@@ -101,7 +101,7 @@ export const TableBodyRow = React.memo(function TableBodyRowMemo({
             ? "border-b-1 border-gray-200"
             : ""
         } flex-nowrap ${
-          row.getIsSelected() ? "bg-primary-200" : "bg-white"
+          row.getIsSelected() ? "bg-primary-200" : "bg-light"
         } hover:bg-gray-100 group/tablerow`}
         onClick={handleRowClick}
         onKeyDown={handleRowClick}
@@ -161,7 +161,7 @@ export function NormalRowRender({ row }: { row: Row<object> }) {
         className={`tableRow flex relative w-full cursor-pointer ${
           isLastSubRow ? "border-b-1 border-gray-200" : ""
         } flex-nowrap ${
-          row.getIsSelected() ? "bg-primary-100" : "bg-white"
+          row.getIsSelected() ? "bg-primary-100" : "bg-light"
         } hover:bg-gray-100 group/tablerow`}
         onClick={handleRowClick}
         onKeyDown={handleRowClick}

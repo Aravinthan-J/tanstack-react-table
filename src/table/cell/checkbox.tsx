@@ -36,7 +36,7 @@ export function CheckboxComponent({
         disabled={disabled}
         className={`
           peer inline-flex h-20 w-20 shrink-0 items-center justify-center rounded-4 border cursor-pointer
-          border-gray-300 bg-white
+          border-gray-300 bg-light
           focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2
           data-[state=checked]:border-primary-500 data-[state=checked]:bg-primary-500
           data-[state=indeterminate]:border-primary-500 data-[state=indeterminate]:bg-primary-500

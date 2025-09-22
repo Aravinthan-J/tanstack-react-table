@@ -50,7 +50,7 @@ export function CurrencyCell({
       </Popover.Trigger>
 
       <Popover.Portal>
-        <Popover.Content className="bg-white p-4 rounded-8 shadow-lg border">
+        <Popover.Content className="bg-light p-4 rounded-8 shadow-lg border">
           <div className="flex gap-2">
             <input
               type="number"
@@ -75,7 +75,7 @@ export function CurrencyCell({
               </Select.Trigger>
 
               <Select.Portal>
-                <Select.Content className="bg-white border rounded shadow-lg">
+                <Select.Content className="bg-light border rounded shadow-lg">
                   <Select.Viewport className="p-1">
                     {/* Add your currency options here */}
                     <Select.Item

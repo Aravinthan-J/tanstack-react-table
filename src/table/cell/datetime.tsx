@@ -3,7 +3,6 @@ import * as Popover from "@radix-ui/react-popover";
 import { formatDate } from "date-fns";
 import { DEFAULT_DATETIME_FORMAT } from "./constant";
 
-
 export function DateTimeCell({
   value,
   onChange,
@@ -32,7 +31,7 @@ export function DateTimeCell({
       </Popover.Trigger>
 
       <Popover.Portal>
-        <Popover.Content className="bg-white p-4 rounded-2 shadow-200 border">
+        <Popover.Content className="bg-light p-4 rounded-2 shadow-200 border">
           <input
             type="datetime-local"
             value={value ? formatDate(value, "yyyy-MM-dd'T'HH:mm") : ""}
