@@ -183,6 +183,7 @@
   );
 
   /* Backgrounds */
+  --color-light: var(--theme-color-bg-white, #ffffff);
   --color-overlay-white: var(--theme-color-overlay-white, #ffffff);
   --color-gray: var(--theme-color-gray, #f5f7fa);
   --color-overlay-gray: var(--theme-color-overlay-gray, rgba(21, 22, 23, 0.8));

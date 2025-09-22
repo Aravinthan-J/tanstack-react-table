@@ -177,6 +177,7 @@ export const DEFAULT_THEME_VARIABLES = {
   "--theme-color-white-alpha-10": "rgba(255, 255, 255, 0.1)",
 
   // Background colors
+  "--theme-color-bg-white": "#ffffff",
   "--theme-color-overlay-white": "#ffffff",
   "--theme-color-gray": "#f5f7fa",
   "--theme-color-overlay-gray": "rgba(21, 22, 23, 0.8)",

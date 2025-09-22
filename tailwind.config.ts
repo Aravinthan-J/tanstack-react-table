@@ -87,6 +87,7 @@ export default {
         white: "var(--theme-color-white)",
         black: "var(--theme-color-black)",
         transparent: "var(--theme-color-transparent)",
+        light: "var(--theme-color-bg-white)",
       },
     },
   },
